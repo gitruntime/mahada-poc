@@ -49,7 +49,7 @@ const Footer = () => {
 
       {/* 3️⃣ DISCLAIMER */}
       <div className="w-full bg-[#262626] py-6">
-        <p className=" text-[12px] mx-auto h-[33px] text-start w-[1200px] text-[11px] text-white leading-relaxed">
+        <p className=" text-[12px] mx-auto h-[33px] text-start max-w-[1200px] text-[11px] text-white leading-relaxed">
           Disclaimer: Magicbricks Realty Services Limited is only an intermediary offering its platform to advertise properties of Seller for a Customer/Buyer/User coming on its Website and is not and cannot be a
           party to or privy to or control in any manner any transactions between the Seller and the Customer/Buyer/User. All the offers and discounts on this Website have been extended by<span className="underline cursor-pointer text-[#606060]"> Read more</span>
         </p>

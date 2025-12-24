@@ -1,6 +1,7 @@
 import React from "react";
 import { Poppins } from "next/font/google";
 import Image from "next/image";
+import Link from "next/link";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,10 +23,10 @@ const LandlordDash = () => {
           </p>
         </div>
 
-        <button className="h-[48px] px-[20px] bg-[#F97415] rounded-[12px] text-white text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
+        <Link href="/addproperty" className="h-[48px] px-[20px] bg-[#F97415] rounded-[12px] text-white text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
           <Image src="/plsu.png" width={16} height={16} alt="plus" />
           Add New Property
-        </button>
+        </Link>
       </div>
 
       {/* STATS */}
