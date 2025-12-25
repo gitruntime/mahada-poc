@@ -29,7 +29,7 @@ const AddNewPropertyPage = () => {
         <div className="w-full h-auto mb-[30px] bg-[#F9FAFB]">
 
             {/* NAVBAR */}
-            <BlankNavbar/>
+            <BlankNavbar />
 
             {/* GO BACK */}
             <div className={`px-[20px] sm:px-[40px] lg:px-[80px] mt-6 ${poppins.className}`}>
