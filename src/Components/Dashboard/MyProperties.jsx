@@ -1,9 +1,8 @@
 import React from "react";
 import { ArrowUpRight, MoreVertical } from "lucide-react";
 import { Button } from "@/Components/ui/button";
-
 import { Poppins } from "next/font/google";
-import Applications from "../Homepage/Properties/Applications";
+import Applications from "@/Components/Homepage/Properties/Applications";
 
 const poppins = Poppins({
   subsets: ["latin"],
