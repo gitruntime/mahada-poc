@@ -6,6 +6,8 @@ import Image from 'next/image';
 import PropertyInfo from './PropertyInfo';
 import PropImage from './PropImage';
 import PropDoc from './PropDoc';
+import { useEffect, useState } from 'react';
+
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -19,6 +21,17 @@ const arimo = Arimo({
 
 
 const Form3 = () => {
+    const [images, setImages] = useState([]);
+    const [docs, setDocs] = useState([]);
+
+    useEffect(() => {
+        const storedImages = JSON.parse(localStorage.getItem('uploadedImages')) || [];
+        const storedDocs = JSON.parse(localStorage.getItem('uploadedDocs')) || [];
+
+        setImages(storedImages);
+        setDocs(storedDocs);
+    }, []);
+
     return (
         <div>
             <BlankNavbar />
@@ -47,11 +60,11 @@ const Form3 = () => {
                     <div className="w-full">
                         <PropertyInfo />
                     </div>
-                     <div className="w-full">
-                        <PropImage />
+                    <div className="w-full">
+                        <PropImage images={images} />
                     </div>
-                     <div className="w-full">
-                        <PropDoc />
+                    <div className="w-full">
+                        <PropDoc docs={docs} />
                     </div>
 
 

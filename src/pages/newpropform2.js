@@ -46,13 +46,26 @@ const NewPropForm2 = () => {
       handleFiles(e.target.files, type);
     }
   };
-
   const handleFiles = (files, type) => {
     const fileArray = Array.from(files);
-    type === 'images'
-      ? setImageFiles(prev => [...prev, ...fileArray])
-      : setDocumentFiles(prev => [...prev, ...fileArray]);
+
+    const mappedFiles = fileArray.map(file => ({
+      name: file.name,
+      type: file.type,
+      preview: URL.createObjectURL(file),
+    }));
+
+    if (type === 'images') {
+      const updatedImages = [...imageFiles, ...mappedFiles];
+      setImageFiles(updatedImages);
+      localStorage.setItem('uploadedImages', JSON.stringify(updatedImages));
+    } else {
+      const updatedDocs = [...documentFiles, ...mappedFiles];
+      setDocumentFiles(updatedDocs);
+      localStorage.setItem('uploadedDocs', JSON.stringify(updatedDocs));
+    }
   };
+
 
   const removeFile = (index, type) => {
     type === 'images'
@@ -124,7 +137,7 @@ const NewPropForm2 = () => {
                 {imageFiles.map((file, index) => (
                   <div key={index} className="relative group rounded-lg overflow-hidden border shadow-sm">
                     <img
-                      src={URL.createObjectURL(file)}
+                     src={file.preview}
                       alt={file.name}
                       className="w-full h-28 object-cover transition-transform duration-200 group-hover:scale-105"
                     />
