@@ -1,6 +1,6 @@
 import React from "react";
 import { ArrowUpRight, MoreVertical } from "lucide-react";
-import { Button } from "@/Components/ui/button";
+// import { Button } from "@/Components/ui/button";
 import { Poppins } from "next/font/google";
 import Applications from "@/Components/Homepage/Properties/Applications";
 
@@ -67,13 +67,9 @@ const PropertyCard = ({ title, location, price, status, imageUrl }) => {
       </div>
 
       {/* Menu */}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="self-start sm:self-center text-gray-500 hover:text-gray-900"
-      >
-        <MoreVertical className="h-5 w-5" />
-      </Button>
+     <button className="self-start sm:self-center text-gray-500 hover:text-gray-900">
+  <MoreVertical className="h-5 w-5" />
+</button>
     </div>
   );
 };
