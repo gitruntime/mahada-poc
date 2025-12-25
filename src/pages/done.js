@@ -2,12 +2,17 @@ import BlankNavbar from '@/Components/BlankNavbar'
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Poppins } from 'next/font/google'
+import { Poppins ,Arimo} from 'next/font/google'
 
 const poppins = Poppins({
     subsets: ['latin'],
     weight: ['400', '600', '700'],
 })
+const arimo = Arimo({
+    subsets: ['latin'],
+    weight: ['400', '700'],
+});
+
 const property = {
     title: "Modern 2BHK in Andheri West",
     location: "Andheri West, Near DN Nagar Metro",
@@ -158,7 +163,8 @@ const Done = () => {
                     {/* RIGHT SUCCESS CARD */}
                     <div
                         className="
-              w-[326px] h-full
+                         shadow-[0px_4px_20px_-2px_rgba(229,231,235,0.8)]
+              w-[326px] h-[440px]
               rounded-[12px]
               border border-[#0000001A]
               bg-white
@@ -168,31 +174,32 @@ const Done = () => {
               px-6
             "
                     >
-                        <div className="w-14 h-14 flex items-center justify-center rounded-full border border-green-600">
-                            <span className="text-green-600 text-3xl">✓</span>
+                        <div className=" flex items-center justify-center ">
+                           <Image src="/check_icon.png" width={64} height={64}/>
                         </div>
 
-                        <h3 className="text-lg font-semibold">
+                        <h3 className={`text[16px] ${arimo.className} font-normal`}>
                             New Property added
                         </h3>
 
-                        <p className="text-sm text-gray-500">
+                        <p className={`text[16px]  text-[#717182] ${arimo.className} font-normal`}>
                             Your application is under review. You’ll receive an update soon
                         </p>
 
-                        <button
-                            className="
-                mt-4
+                        <Link href="/"
+                            className={`   mt-4
                 bg-orange-500
                 text-white
                 px-6 py-2
-                rounded-lg
+                rounded-[8px]
+                font-semibold text-[14px] ${poppins.className}
                 hover:bg-orange-600
-                transition
-              "
+                transition`}
+             
+              
                         >
                             Go to Homepage
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
