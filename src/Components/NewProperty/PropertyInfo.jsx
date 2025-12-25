@@ -10,7 +10,7 @@ const poppins = Poppins({
 const PropertyInfo = () => {
     return (
         <div
-            className={`w-full max-w-[893px] 
+            className={`w-full 
       border-2 border-[#D1D5DC] 
       rounded-[10px] 
       bg-[#F9FAFB] 

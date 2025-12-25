@@ -60,7 +60,13 @@ const Form3 = () => {
                     <div className="w-full">
                         <PropertyInfo />
                     </div>
-                    <div className="w-full">
+
+                    <div className={`w-full  
+      border-2 border-[#D1D5DC] 
+      rounded-[10px] 
+      bg-[#F9FAFB] 
+      px-4 sm:px-6 py-6 
+      ${poppins.className}`}>
                         <PropImage images={images} />
                     </div>
                     <div className="w-full">
@@ -69,9 +75,9 @@ const Form3 = () => {
 
 
                     {/* Navigation Buttons */}
-                    <div className="flex flex-col sm:flex-row justify-between gap-4 sm:gap-0 mt-6">
+                    <div className="flex flex-col sm:flex-row justify-between gap-4 mb-[20px] mx-5 sm:gap-0 mt-6">
                         <Link
-                            href="/addproperty"
+                            href="/newpropform2"
                             className="w-full sm:w-auto px-6 py-2 text-center bg-white border-2 border-slate-300 rounded-lg text-slate-700 hover:bg-slate-50 transition"
                         >
                             Previous
