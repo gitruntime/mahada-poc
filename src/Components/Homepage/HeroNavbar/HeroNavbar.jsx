@@ -4,6 +4,9 @@ import { Bell, MapPin } from 'lucide-react'
 import { Poppins } from "next/font/google";
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
+import { useRouter } from "next/router";
+
+
 
 
 const poppins = Poppins({
@@ -13,22 +16,27 @@ const poppins = Poppins({
 
 
 const HeroNavbar = () => {
+    const router = useRouter();
+    const handleLogout = () => {
+        sessionStorage.removeItem("isAuthenticated");
+        router.push("/login");
+    };
+
     return (
         <nav className="w-full h-[64px] px-[80px] flex items-center justify-between bg-[#2f2f2f]/30 text-white">
 
-            {/* Left: Logo */}
             <div className={`flex w-full h-[36px] items-center px-[20px] gap-2 ${poppins.className}`}>
                 <h1 className="relative text-[24px] font-semibold">
                     Mhada <span className="text-orange-500">Estate</span>
 
-                    {/* underline */}
+
                     <span className="absolute left-0 -bottom-0.5 w-full h-[2px] bg-orange-500"></span>
                 </h1>
             </div>
 
 
 
-            {/* Center: Menu */}
+
             <div className="hidden md:flex items-center gap-6 text-white/60">
 
                 <div className="relative group">
@@ -124,7 +132,6 @@ const HeroNavbar = () => {
                 </div>
 
                 <div className="relative group">
-                    {/* SELL BUTTON */}
                     <div
                         className={`flex items-center justify-center gap-1 
       w-[71px] h-[40px] rounded-[12px] px-[10px]
@@ -144,7 +151,6 @@ const HeroNavbar = () => {
                         </svg>
                     </div>
 
-                    {/* HOVER MODAL */}
                     <div
                         className="
                                 absolute left-1/2 -translate-x-1/2 top-[40px]
@@ -257,6 +263,31 @@ const HeroNavbar = () => {
                     {/* Right Chevron Icon from image */}
                     <ChevronDown size={16} strokeWidth={2} className="flex-shrink-0" />
                 </div>
+                <div
+                    onClick={handleLogout}
+                    className="
+    flex items-center justify-center
+    h-[32px]
+    px-[14px]
+    w-[100px]
+    rounded-full
+    border border-white
+    bg-red-500/90
+    text-white
+    text-[12px]
+    font-medium
+    cursor-pointer
+    hover:bg-red-600
+    hover:border-red-500
+    active:scale-95
+    transition-all
+    duration-200
+    shadow-sm
+  "
+                >
+                    Logout
+                </div>
+
 
             </div>
         </nav>
