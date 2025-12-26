@@ -96,7 +96,8 @@ const Login = () => {
                                                     bg-[#F7FBFF]
                                                     rounded-[12px]
                                                     border
-                                                      border-[#D4D7E3]
+                                                     border-[#D4D7E3]
+                                                    
                                                     px-4
                                                     font-poppins
                                                     font-normal
@@ -121,7 +122,7 @@ const Login = () => {
                                     </a>
                                 </div>
 
-                                <button
+                                <button  onClick={() => window.location.href = '/personalinfo'}
                                     type="submit"
                                     className={`h-[40px] w-full rounded-[10px] bg-[#F97415] cursor-pointer text-[20px] text-white font-medium
                                     shadow-[0px_2px_4px_-2px_rgba(0,0,0,0.1),_0px_4px_6px_-1px_rgba(0,0,0,0.1)]
