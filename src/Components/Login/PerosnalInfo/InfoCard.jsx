@@ -36,7 +36,7 @@ const InfoCard = () => {
             <div className="w-full relative h-2 mb-6 bg-gray-300 rounded-full">
               <div
                 className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full"
-                style={{ width: "33.33%" }}
+                style={{ width: "5.33%" }}
               ></div>
             </div>
 

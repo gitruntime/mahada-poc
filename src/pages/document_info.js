@@ -1,9 +1,10 @@
+import DocInfoCard from '@/Components/Login/Documents/DocInfoCard'
 import React from 'react'
 
 const document_info = () => {
   return (
     <div>
-        this is the document info page
+        <DocInfoCard/>
       
     </div>
   )
