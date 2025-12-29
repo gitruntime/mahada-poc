@@ -61,6 +61,7 @@ const Login = () => {
                                     </label>
                                     <input
                                         type="email"
+                                        required
                                         placeholder="Example@email.com"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
@@ -111,16 +112,16 @@ const Login = () => {
 
                             {/* Social Login */}
                             <div className="space-y-3">
-                                <button className="h-12 w-full text-[16px] font-normal flex text-[#313957] items-center justify-center gap-3 rounded-xl bg-[#F3F9FA]">
-                                    <Image src="/googleicon.png" width={28} height={28} alt="Google" />
-                                    <span>Sign in with Google</span>
-                                </button>
+  <button className="h-12 w-full text-[16px] font-normal flex text-[#313957] items-center justify-center gap-3 rounded-xl bg-[#F3F9FA] hover:bg-[#E2EEF1] transition-colors duration-200">
+    <Image src="/googleicon.png" width={28} height={28} alt="Google" />
+    <span>Sign in with Google</span>
+  </button>
 
-                                <button className="h-12 w-full flex text-[16px] font-normal text-[#313957] items-center justify-center gap-3 rounded-xl bg-[#F3F9FA]">
-                                    <Image src="/facebooklogo.png" width={28} height={28} alt="Facebook" />
-                                    <span>Sign in with Facebook</span>
-                                </button>
-                            </div>
+  <button className="h-12 w-full flex text-[16px] font-normal text-[#313957] items-center justify-center gap-3 rounded-xl bg-[#F3F9FA] hover:bg-[#E2EEF1] transition-colors duration-200">
+    <Image src="/facebooklogo.png" width={28} height={28} alt="Facebook" />
+    <span>Sign in with Facebook</span>
+  </button>
+</div>
 
                             {/* Sign up */}
                             <p className={`mt-8 font-normal text-center ${roboto.className} text-[16px] sm:text-[18px]`}>

@@ -5,9 +5,10 @@ import { Poppins } from "next/font/google";
 import { ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from "next/router";
+import PropertyMenu from "@/Components/Homepage/HeroNavbar/PropertyMenu.jsx";
+import Rent from '@/Components/Homepage/HeroNavbar/Rent.jsx';
 
-
-
+import Sell from '@/Components/Homepage/HeroNavbar/Sell.jsx';
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -63,24 +64,23 @@ const HeroNavbar = () => {
                     {/* HOVER MODAL */}
                     <div
                         className="
-                                absolute left-1/2 -translate-x-1/2 top-[40px]
-                                w-[1025px]
-                                bg-white
-                                rounded-[12px]
-                                shadow-xl
-                                opacity-0 invisible
-                                group-hover:opacity-100 group-hover:visible
-                                transition-all duration-200
-                                z-50
-  "
-                    >
-                        <Image
-                            src="/buydropdown2.png"
-                            alt="Buy dropdown"
-                            width={1025}
-                            height={370}
-                            className="w-full h-auto rounded-[12px]"
-                        />
+    absolute left-1/2 -translate-x-1/2 top-[40px]
+    w-[1025px]
+    bg-white
+    rounded-[12px]
+    shadow-xl
+    opacity-0 
+    pointer-events-none
+    group-hover:opacity-100 
+    group-hover:visible
+    group-hover:pointer-events-auto
+    transition-all duration-200
+    z-50
+">
+                        <PropertyMenu className="w-full h-full" />
+
+
+
                     </div>
                 </div>
 
@@ -107,27 +107,26 @@ const HeroNavbar = () => {
                         </svg>
                     </div>
 
-                    {/* HOVER MODAL */}
+                    {/* HOVER  RENT MODAL */}
                     <div
                         className="
-                                absolute left-1/2 -translate-x-1/2 top-[40px]
-                                w-[990px]
-                                bg-white
-                                rounded-[12px]
-                                shadow-xl
-                                opacity-0 invisible
-                                group-hover:opacity-100 group-hover:visible
-                                transition-all duration-200
-                                z-50
-  "
-                    >
-                        <Image
-                            src="/rentdropdown2.png"
-                            alt="Buy dropdown"
-                            width={941}
-                            height={288}
-                            className="w-full h-auto rounded-[12px]"
-                        />
+    absolute left-1/2 -translate-x-1/2 top-[40px]
+    w-[900px]
+    bg-white
+    rounded-[12px]
+    shadow-xl
+    opacity-0 
+    pointer-events-none
+    group-hover:opacity-100 
+    group-hover:visible
+    group-hover:pointer-events-auto
+    transition-all duration-200
+    z-50
+">
+                        <Rent className="w-full h-full" />
+
+
+
                     </div>
                 </div>
 
@@ -150,39 +149,26 @@ const HeroNavbar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                     </div>
-
+                    {/* SELL */}
                     <div
                         className="
-                                absolute left-1/2 -translate-x-1/2 top-[40px]
-                                w-[641px]
-                                bg-white h-[272px]
-                                rounded-[12px]
-                                shadow-xl
-                                opacity-0 invisible
-                                group-hover:opacity-100 group-hover:visible
-                                transition-all duration-200
-                                z-50
-  "
-                    >
-                        <Image
-                            src="/selldropdown2.png"
-                            alt="Buy dropdown"
-                            width={1025}
-                            height={370}
-                            className="w-full h-auto rounded-[12px]"
-                        />
-                        <div className="flex mt-[10px] ml-[24px] flex-col sm:flex-row items-center gap-5">
+    absolute left-1/2 -translate-x-1/2 top-[40px]
+    w-[600px]
+    bg-white
+    rounded-[12px]
+    shadow-xl
+    opacity-0 
+    pointer-events-none
+    group-hover:opacity-100 
+    group-hover:visible
+    group-hover:pointer-events-auto
+    transition-all duration-200
+    z-50
+">
+                        <Sell className="w-full h-full" />
 
 
 
-                            <button
-                                className={`${poppins.className}  cursor-pointer w-[183px] h-[54px] bg-[#00873E] hover:bg-[#007034] text-white text-[16px] font-medium rounded-[12px] transition-all border border-white/10 shadow-lg`}
-                            >
-                                List Your Property
-                            </button>
-
-
-                        </div>
                     </div>
                 </div>
 

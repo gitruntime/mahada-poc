@@ -91,23 +91,23 @@ const ReviewCard = () => {
 
                                     <div className="flex gap-2">
                                         <span className="font-medium w-[70px]">Email:</span>
-                                        <span>dfsdf</span>
+                                        <span>arjunchatterjee@gmail.com</span>
                                     </div>
 
                                     <div className="flex gap-2">
                                         <span className="font-medium w-[70px]">Phone:</span>
-                                        <span>dsdfsd</span>
+                                        <span>9896261612</span>
                                     </div>
 
                                     <div className="flex gap-2">
                                         <span className="font-medium w-[70px]">DOB:</span>
-                                        <span>2005-05-04</span>
+                                        <span>2003-05-04</span>
                                     </div>
 
                                     <div className="flex gap-2">
                                         <span className="font-medium w-[70px]">Address:</span>
                                         <span className="flex-1">
-                                            453434, 4545, Punjab - 4545
+                                            123, Greenfield Apartments, MG Road, Ludhiana, Punjab - 141001
                                         </span>
                                     </div>
                                 </div>

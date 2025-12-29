@@ -55,23 +55,47 @@ const DocInfoCard = () => {
     }
   };
 
-  const handleFiles = (files, type) => {
-    const mappedFiles = Array.from(files).map((file) => ({
+const handleFiles = (files, type) => {
+  // Allowed file types
+  const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+  const validFiles = Array.from(files).filter((file) => allowedTypes.includes(file.type));
+
+  if (type === "aadhaar") {
+    const remainingSlots = 2 - aadhaarFiles.length;
+    const filesToAdd = validFiles.slice(0, remainingSlots);
+
+    if (filesToAdd.length < validFiles.length) {
+      alert("Aadhaar upload limit is 2 files. Extra files are ignored.");
+    }
+
+    const mappedFiles = filesToAdd.map((file) => ({
       name: file.name,
       type: file.type,
       preview: URL.createObjectURL(file),
     }));
 
-    if (type === "aadhaar") {
-      const updated = [...aadhaarFiles, ...mappedFiles];
-      setAadhaarFiles(updated);
-      localStorage.setItem("aadhaarFiles", JSON.stringify(updated));
-    } else {
-      const updated = [...panFiles, ...mappedFiles];
-      setPanFiles(updated);
-      localStorage.setItem("panFiles", JSON.stringify(updated));
+    const updated = [...aadhaarFiles, ...mappedFiles];
+    setAadhaarFiles(updated);
+    localStorage.setItem("aadhaarFiles", JSON.stringify(updated));
+
+  } else if (type === "pan") {
+    if (validFiles.length + panFiles.length > 1) {
+      alert("PAN upload limit is 1 file. Extra files are ignored.");
     }
-  };
+
+    const filesToAdd = validFiles.slice(0, 1 - panFiles.length); // Only 1 file allowed
+    const mappedFiles = filesToAdd.map((file) => ({
+      name: file.name,
+      type: file.type,
+      preview: URL.createObjectURL(file),
+    }));
+
+    const updated = [...panFiles, ...mappedFiles];
+    setPanFiles(updated);
+    localStorage.setItem("panFiles", JSON.stringify(updated));
+  }
+};
+
 
   const removeFile = (index, type) => {
     if (type === "aadhaar") {
