@@ -6,6 +6,7 @@ import Swiper from 'swiper';
 // import Swiper styles
 import 'swiper/css';
 
+import Link from "next/link";
 
 
 const poppins = Poppins({
@@ -50,7 +51,7 @@ const PropertyPage = () => {
 
           {/* Right Section */}
           <div className="w-[105px] h-[40px] flex items-center">
-            <button
+            <Link href="/allproperty"
               className={`flex items-center gap-1 text-gray-900 ${poppins.className}`}
             >
               <span className="text-[14px] font-medium ">
@@ -66,7 +67,7 @@ const PropertyPage = () => {
               >
                 <path d="M5 12h14M13 5l7 7-7 7" />
               </svg>
-            </button>
+            </Link>
           </div>
 
         </div>

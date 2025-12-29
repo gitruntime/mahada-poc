@@ -1,6 +1,6 @@
 import React from 'react'
 import { Poppins } from "next/font/google";
-
+import Link from 'next/link';
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -14,12 +14,12 @@ const BlankNavbar = () => {
                     px-[20px] sm:px-[40px] lg:px-[80px]
                     flex items-center bg-white">
 
-                <div className={`flex items-center gap-2 ${poppins.className}`}>
+                <Link href="/"  className={`flex items-center gap-2 ${poppins.className}`}>
                     <h1 className="relative text-[20px] sm:text-[24px] text-black font-semibold">
                         Mhada <span className="text-orange-500">Estate</span>
                         <span className="absolute left-0 -bottom-0.5 w-full h-[2px] bg-orange-500"></span>
                     </h1>
-                </div>
+                </Link>
             </nav>
       
     </div>
