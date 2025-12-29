@@ -3,8 +3,10 @@ import Image from 'next/image'
 import { Bell, MapPin } from 'lucide-react'
 import { Poppins } from "next/font/google";
 import { ChevronDown } from 'lucide-react';
+import PropertyMenu from "@/Components/Homepage/HeroNavbar/PropertyMenu.jsx";
+import Rent from '@/Components/Homepage/HeroNavbar/Rent.jsx';
 
-
+import Sell from '@/Components/Homepage/HeroNavbar/Sell.jsx';
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -54,25 +56,21 @@ const DashboardNavbar = () => {
 
                     {/* HOVER MODAL */}
                     <div
-                        className="
-                                absolute left-1/2 -translate-x-1/2 top-[40px]
-                                w-[1025px]
-                                bg-white
-                                rounded-[12px]
-                                shadow-xl
-                                opacity-0 invisible
-                                group-hover:opacity-100 group-hover:visible
-                                transition-all duration-200
-                                z-50
-  "
-                    >
-                        <Image
-                            src="/buydropdown2.png"
-                            alt="Buy dropdown"
-                            width={1025}
-                            height={370}
-                            className="w-full h-auto rounded-[12px]"
-                        />
+                       className="
+    absolute left-1/2 -translate-x-1/2 top-[40px]
+    w-[1025px]
+    bg-white
+    rounded-[12px]
+    shadow-xl
+    opacity-0 
+    pointer-events-none
+    group-hover:opacity-100 
+    group-hover:visible
+    group-hover:pointer-events-auto
+    transition-all duration-200
+    z-50
+">
+                        <PropertyMenu className="w-full h-full" />
                     </div>
                 </div>
 
@@ -100,26 +98,25 @@ const DashboardNavbar = () => {
                     </div>
 
                     {/* HOVER MODAL */}
-                    <div
+                   <div
                         className="
                                 absolute left-1/2 -translate-x-1/2 top-[40px]
-                                w-[990px]
+                                w-[900px]
                                 bg-white
                                 rounded-[12px]
                                 shadow-xl
-                                opacity-0 invisible
-                                group-hover:opacity-100 group-hover:visible
+                                opacity-0 
+                                pointer-events-none
+                                group-hover:opacity-100 
+                                group-hover:visible
+                                group-hover:pointer-events-auto
                                 transition-all duration-200
                                 z-50
-  "
-                    >
-                        <Image
-                            src="/rentdropdown2.png"
-                            alt="Buy dropdown"
-                            width={941}
-                            height={288}
-                            className="w-full h-auto rounded-[12px]"
-                        />
+                            ">
+                        <Rent className="w-full h-full" />
+
+
+
                     </div>
                 </div>
 
@@ -146,25 +143,21 @@ const DashboardNavbar = () => {
 
                     {/* HOVER MODAL */}
                     <div
-                        className="
-                                absolute left-1/2 -translate-x-1/2 top-[40px]
-                                w-[641px]
-                                bg-white h-[272px]
-                                rounded-[12px]
-                                shadow-xl
-                                opacity-0 invisible
-                                group-hover:opacity-100 group-hover:visible
-                                transition-all duration-200
-                                z-50
-  "
-                    >
-                        <Image
-                            src="/selldropdown2.png"
-                            alt="Buy dropdown"
-                            width={1025}
-                            height={370}
-                            className="w-full h-auto rounded-[12px]"
-                        />
+                         className="
+    absolute left-1/2 -translate-x-1/2 top-[40px]
+    w-[600px]
+    bg-white
+    rounded-[12px]
+    shadow-xl
+    opacity-0 
+    pointer-events-none
+    group-hover:opacity-100 
+    group-hover:visible
+    group-hover:pointer-events-auto
+    transition-all duration-200
+    z-50
+">
+                        <Sell className="w-full h-full" />
                         <div className="flex mt-[10px] ml-[24px] flex-col sm:flex-row items-center gap-5">
 
 

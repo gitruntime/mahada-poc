@@ -110,19 +110,19 @@ const HeroNavbar = () => {
                     {/* HOVER  RENT MODAL */}
                     <div
                         className="
-    absolute left-1/2 -translate-x-1/2 top-[40px]
-    w-[900px]
-    bg-white
-    rounded-[12px]
-    shadow-xl
-    opacity-0 
-    pointer-events-none
-    group-hover:opacity-100 
-    group-hover:visible
-    group-hover:pointer-events-auto
-    transition-all duration-200
-    z-50
-">
+                                absolute left-1/2 -translate-x-1/2 top-[40px]
+                                w-[900px]
+                                bg-white
+                                rounded-[12px]
+                                shadow-xl
+                                opacity-0 
+                                pointer-events-none
+                                group-hover:opacity-100 
+                                group-hover:visible
+                                group-hover:pointer-events-auto
+                                transition-all duration-200
+                                z-50
+                            ">
                         <Rent className="w-full h-full" />
 
 
