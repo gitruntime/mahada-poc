@@ -182,7 +182,7 @@ const Done = () => {
                 px-6 py-2
                 rounded-[8px]
                 font-semibold text-[14px] ${poppins.className}
-                hover:bg-orange-600
+                hover:bg-orange-700
                 transition
               `}
                     >
