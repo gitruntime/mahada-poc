@@ -552,7 +552,7 @@ const PropertyCard = ({ property }) => {
             </div>
 
             {/* Content */}
-            <div className="flex flex-col justify-between flex-1 p-5">
+            <div className={`flex flex-col ${poppins.className} justify-between flex-1 p-5`}>
                 <div>
                     <h3 className="text-[18px] font-bold text-gray-900">
                         {property.title}
@@ -590,7 +590,7 @@ const PropertyCard = ({ property }) => {
                     <div>
                         <p className="text-[#F97316] text-[20px] font-bold">
                             ₹{property.price}
-                            <span className="text-gray-500 text-[14px]">
+                            <span className={`text-gray-500 font-normal text-[14px]`}>
                                 {" "} /month
                             </span>
                         </p>
