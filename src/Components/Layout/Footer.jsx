@@ -58,18 +58,27 @@ const Footer = () => {
       {/* 4️⃣ COPYRIGHT  */}
       <div className="w-full h-[40px] bg-[#000000] py-4 text-center">
         <p className="text-[10px] text-white  ">
-         All trademarks, logos and names are properties of their respective owners. All Rights Reserved. © Copyright 2025 Mhada Estate.
+          All trademarks, logos and names are properties of their respective owners. All Rights Reserved. © Copyright 2025 Mhada Estate.
         </p>
       </div>
 
       {/* HELP BOT */}
-      <div className="fixed bottom-6 right-6 flex items-center bg-[#f17128] 
+      <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 
+                flex items-center bg-[#f17128] 
                 border-2 border-white text-white 
-                px-5 py-2.5 rounded-full shadow-lg 
-                cursor-pointer hover:scale-105 transition">
-  <img src="/chatbox.png" className="w-[24px] h-[24px] mr-2" />
-  <span className="font-bold text-sm">Help Bot</span>
+                p-2.5 md:px-5 md:py-2.5 
+                rounded-full shadow-lg 
+                cursor-pointer hover:scale-105 transition-transform">
+  
+  {/* The Icon: Stays visible but gets slightly smaller on mobile */}
+  <img src="/chatbox.png" className="w-[20px] h-[20px] md:w-[24px] md:h-[24px]" />
+
+  {/* The Text: Hidden on small screens (hidden), shown on medium+ (block) */}
+  <span className="hidden md:block font-bold text-sm ml-2">
+    Help Bot
+  </span>
 </div>
+
 
 
     </footer>

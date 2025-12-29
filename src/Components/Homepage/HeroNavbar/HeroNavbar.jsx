@@ -207,7 +207,7 @@ const HeroNavbar = () => {
 
                 {/* Dashboard */}
                 <Link href="/dashboard">
-                    <button className="group flex items-center w-[116px] h-[32px] gap-[4px] bg-[#FF7A00] hover:bg-[#E66E00] pt-[2px] pr-[14px] pb-[2px] pl-[2px] rounded-full cursor-pointer text-white transition-all shadow-sm">
+                    <button className="group flex items-center w-[116px] h-[32px] gap-[4px] bg-[#FF7A00] hover:bg-[#0ab432] pt-[2px] pr-[14px] pb-[2px] pl-[2px] rounded-full cursor-pointer text-white transition-all shadow-sm">
 
                         {/* Avatar & Badge */}
                         <div className="relative flex-shrink-0 w-[28px] h-[28px]">
