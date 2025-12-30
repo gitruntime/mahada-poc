@@ -12,7 +12,9 @@ const InfoCard = () => {
     firstName: "",
     lastName: "",
     email: "",
-    number: "",
+    emailOtp: "",
+    phone: "",
+    phoneOtp: "",
     dob: "",
     address: "",
     city: "",
@@ -28,22 +30,43 @@ const InfoCard = () => {
 
   const validate = () => {
     let tempErrors = {};
+
     if (!formData.firstName) tempErrors.firstName = "First Name is required";
     if (!formData.lastName) tempErrors.lastName = "Last Name is required";
+
     if (!formData.email) tempErrors.email = "Email is required";
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) tempErrors.email = "Email is invalid";
-    if (!formData.number) tempErrors.number = "Phone Number is required";
-    else if (!/^\d{10}$/.test(formData.number)) tempErrors.number = "Enter a valid 10-digit number";
+    else if (!/\S+@\S+\.\S+/.test(formData.email))
+      tempErrors.email = "Email is invalid";
+
+    if (!formData.emailOtp)
+      tempErrors.emailOtp = "Email OTP is required";
+    else if (!/^\d{6}$/.test(formData.emailOtp))
+      tempErrors.emailOtp = "Enter valid 6-digit OTP";
+
+    if (!formData.phone)
+      tempErrors.phone = "Phone Number is required";
+    else if (!/^\d{10}$/.test(formData.phone))
+      tempErrors.phone = "Enter valid 10-digit number";
+
+    if (!formData.phoneOtp)
+      tempErrors.phoneOtp = "Phone OTP is required";
+    else if (!/^\d{6}$/.test(formData.phoneOtp))
+      tempErrors.phoneOtp = "Enter valid 6-digit OTP";
+
     if (!formData.dob) tempErrors.dob = "Date of Birth is required";
     if (!formData.address) tempErrors.address = "Address is required";
     if (!formData.city) tempErrors.city = "City is required";
-    if (!formData.state || formData.state === "Select State") tempErrors.state = "State is required";
-    if (!formData.pin) tempErrors.pin = "PIN Code is required";
-    else if (!/^\d{6}$/.test(formData.pin)) tempErrors.pin = "Enter a valid 6-digit PIN";
+    if (!formData.state) tempErrors.state = "State is required";
+
+    if (!formData.pin)
+      tempErrors.pin = "PIN Code is required";
+    else if (!/^\d{6}$/.test(formData.pin))
+      tempErrors.pin = "Enter valid 6-digit PIN";
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
+
 
   const handleNext = (e) => {
     e.preventDefault();
@@ -52,6 +75,8 @@ const InfoCard = () => {
       window.location.href = "/document_info";
     }
   };
+  const [emailVerified, setEmailVerified] = useState(false);
+  const [phoneVerified, setPhoneVerified] = useState(false);
 
   return (
     <div className="relative mt-24 px-4 sm:px-6 lg:px-12 w-full flex justify-center">
@@ -132,42 +157,154 @@ const InfoCard = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 w-full">
+              {/* Email */}
               <div className="flex-1 flex flex-col">
-                <label htmlFor="email" className={`text-gray-900 text-sm mb-1 ${poppins.className}`}>Email Address *</label>
+                <label
+                  htmlFor="email"
+                  className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
+                >
+                  Email Address *
+                </label>
                 <input
                   id="email"
                   type="email"
                   placeholder="Enter your email"
-                  className={`w-full p-2 border border-gray-300 rounded-lg bg-gray-50 placeholder-gray-400 ${poppins.className} ${errors.email ? "border-red-500" : ""}`}
+                  className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.email ? "border-red-500" : "border-gray-300"
+                    }`}
                   value={formData.email}
                   onChange={handleChange}
                 />
                 {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
               </div>
+
+              {/* Email OTP (6 digits) */}
               <div className="flex-1 flex flex-col">
-                <label htmlFor="number" className={`text-gray-900 text-sm mb-1 ${poppins.className}`}>Phone Number *</label>
+                <label
+                  htmlFor="emailOtp"
+                  className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
+                >
+                  OTP sent to Email ID
+                </label>
+
+                <div className="relative">
+                  <input
+                    id="emailOtp"
+                    type="tel"
+                    placeholder="Enter 6-digit OTP"
+                    className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className}
+        ${errors.emailOtp ? "border-red-500" : "border-gray-300"}`}
+                    value={formData.emailOtp}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, "");
+                      if (value.length <= 6) {
+                        handleChange({
+                          target: { id: "emailOtp", value },
+                        });
+
+                        if (value.length === 6) {
+                          setEmailVerified(true); // OTP verified
+                        } else {
+                          setEmailVerified(false);
+                        }
+                      }
+                    }}
+                  />
+
+                  {emailVerified && (
+                    <img
+                      src="/check_icon.png"   // ✅ your verified image
+                      alt="verified"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
+                    />
+                  )}
+                </div>
+
+                {errors.emailOtp && (
+                  <span className="text-red-500 text-xs">{errors.emailOtp}</span>
+                )}
+              </div>
+
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 w-full">
+              {/* Phone Number (10 digits) */}
+              <div className="flex-1 flex flex-col">
+                <label
+                  htmlFor="phone"
+                  className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
+                >
+                  Phone Number *
+                </label>
                 <input
-                  id="number"
+                  id="phone"
                   type="tel"
                   placeholder="Enter 10-digit mobile number"
-                  className={`w-full p-2 border border-gray-300 rounded-lg bg-gray-50 placeholder-gray-400 ${poppins.className} ${errors.number ? "border-red-500" : ""}`}
-                  value={formData.number}
+                  className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.phone ? "border-red-500" : "border-gray-300"
+                    }`}
+                  value={formData.phone}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, ""); // remove non-numbers
+                    const value = e.target.value.replace(/\D/g, "");
                     if (value.length <= 10) {
                       handleChange({
-                        target: {
-                          id: "number",
-                          value: value,
-                        },
+                        target: { id: "phone", value },
                       });
                     }
                   }}
                 />
-
-                {errors.number && <span className="text-red-500 text-xs">{errors.number}</span>}
+                {errors.phone && (
+                  <span className="text-red-500 text-xs">{errors.phone}</span>
+                )}
               </div>
+
+              {/* Phone OTP (6 digits) */}
+              <div className="flex-1 flex flex-col">
+                <label
+                  htmlFor="phoneOtp"
+                  className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
+                >
+                  OTP sent to Phone Number
+                </label>
+
+                <div className="relative">
+                  <input
+                    id="phoneOtp"
+                    type="tel"
+                    placeholder="Enter 6-digit OTP"
+                    className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className}
+        ${errors.phoneOtp ? "border-red-500" : "border-gray-300"}`}
+                    value={formData.phoneOtp}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, "");
+                      if (value.length <= 6) {
+                        handleChange({
+                          target: { id: "phoneOtp", value },
+                        });
+
+                        if (value.length === 6) {
+                          setPhoneVerified(true);
+                        } else {
+                          setPhoneVerified(false);
+                        }
+                      }
+                    }}
+                  />
+
+                  {phoneVerified && (
+                    <img
+                       src="/check_icon.png"  
+                      alt="verified"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
+                    />
+                  )}
+                </div>
+
+                {errors.phoneOtp && (
+                  <span className="text-red-500 text-xs">{errors.phoneOtp}</span>
+                )}
+              </div>
+
             </div>
+
 
             <div className="flex flex-col w-full">
               <label htmlFor="dob" className={`text-gray-900 text-sm mb-1 ${poppins.className}`}>

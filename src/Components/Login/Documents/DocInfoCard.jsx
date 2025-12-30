@@ -14,11 +14,51 @@ const arimo = Arimo({
   weight: ["400", "700"],
 });
 
+
 const DocInfoCard = () => {
   const [aadhaarFiles, setAadhaarFiles] = useState([]);
   const [panFiles, setPanFiles] = useState([]);
   const [dragActiveAadhaar, setDragActiveAadhaar] = useState(false);
   const [dragActivePan, setDragActivePan] = useState(false);
+
+  const [formData, setFormData] = useState({
+
+    adhar: "",
+    adharOtp: "",
+    pan: "",
+    panOtp: "",
+
+  });
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    let tempErrors = {};
+
+    if (!formData.adhar) tempErrors.adhar = "Aadhaar is required";
+    else if (!/^\d{12}$/.test(formData.adhar))
+      tempErrors.adhar = "Enter valid 12-digit Aadhaar number";
+
+    if (!formData.adharOtp)
+      tempErrors.adharOtp = "Aadhaar OTP is required";
+    else if (!/^\d{6}$/.test(formData.adharOtp))
+      tempErrors.adharOtp = "Enter valid 6-digit OTP";
+
+    if (!formData.pan)
+      tempErrors.pan = "PAN is required";
+    else if (!/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(formData.pan.toUpperCase()))
+      tempErrors.pan = "Enter valid PAN number";
+
+    if (!formData.panOtp)
+      tempErrors.panOtp = "PAN OTP is required";
+    else if (!/^\d{6}$/.test(formData.panOtp))
+      tempErrors.panOtp = "Enter valid 6-digit OTP";
+
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+
+
 
   // Load files from localStorage on client-side only
   useEffect(() => {
@@ -29,7 +69,10 @@ const DocInfoCard = () => {
       setPanFiles(savedPan);
     }
   }, []);
-
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({ ...prev, [id]: value }));
+  };
   const handleDrag = (e, type) => {
     e.preventDefault();
     e.stopPropagation();
@@ -55,46 +98,46 @@ const DocInfoCard = () => {
     }
   };
 
-const handleFiles = (files, type) => {
-  // Allowed file types
-  const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
-  const validFiles = Array.from(files).filter((file) => allowedTypes.includes(file.type));
+  const handleFiles = (files, type) => {
+    // Allowed file types
+    const allowedTypes = ["application/pdf", "image/jpeg", "image/png"];
+    const validFiles = Array.from(files).filter((file) => allowedTypes.includes(file.type));
 
-  if (type === "aadhaar") {
-    const remainingSlots = 2 - aadhaarFiles.length;
-    const filesToAdd = validFiles.slice(0, remainingSlots);
+    if (type === "aadhaar") {
+      const remainingSlots = 2 - aadhaarFiles.length;
+      const filesToAdd = validFiles.slice(0, remainingSlots);
 
-    if (filesToAdd.length < validFiles.length) {
-      alert("Aadhaar upload limit is 2 files. Extra files are ignored.");
+      if (filesToAdd.length < validFiles.length) {
+        alert("Aadhaar upload limit is 2 files. Extra files are ignored.");
+      }
+
+      const mappedFiles = filesToAdd.map((file) => ({
+        name: file.name,
+        type: file.type,
+        preview: URL.createObjectURL(file),
+      }));
+
+      const updated = [...aadhaarFiles, ...mappedFiles];
+      setAadhaarFiles(updated);
+      localStorage.setItem("aadhaarFiles", JSON.stringify(updated));
+
+    } else if (type === "pan") {
+      if (validFiles.length + panFiles.length > 1) {
+        alert("PAN upload limit is 1 file. Extra files are ignored.");
+      }
+
+      const filesToAdd = validFiles.slice(0, 1 - panFiles.length); // Only 1 file allowed
+      const mappedFiles = filesToAdd.map((file) => ({
+        name: file.name,
+        type: file.type,
+        preview: URL.createObjectURL(file),
+      }));
+
+      const updated = [...panFiles, ...mappedFiles];
+      setPanFiles(updated);
+      localStorage.setItem("panFiles", JSON.stringify(updated));
     }
-
-    const mappedFiles = filesToAdd.map((file) => ({
-      name: file.name,
-      type: file.type,
-      preview: URL.createObjectURL(file),
-    }));
-
-    const updated = [...aadhaarFiles, ...mappedFiles];
-    setAadhaarFiles(updated);
-    localStorage.setItem("aadhaarFiles", JSON.stringify(updated));
-
-  } else if (type === "pan") {
-    if (validFiles.length + panFiles.length > 1) {
-      alert("PAN upload limit is 1 file. Extra files are ignored.");
-    }
-
-    const filesToAdd = validFiles.slice(0, 1 - panFiles.length); // Only 1 file allowed
-    const mappedFiles = filesToAdd.map((file) => ({
-      name: file.name,
-      type: file.type,
-      preview: URL.createObjectURL(file),
-    }));
-
-    const updated = [...panFiles, ...mappedFiles];
-    setPanFiles(updated);
-    localStorage.setItem("panFiles", JSON.stringify(updated));
-  }
-};
+  };
 
 
   const removeFile = (index, type) => {
@@ -108,103 +151,231 @@ const handleFiles = (files, type) => {
       localStorage.setItem("panFiles", JSON.stringify(updated));
     }
   };
+  const [adharVerified, setAdharVerified] = useState(false);
+  const [panVerified, setPanVerified] = useState(false);
 
   return (
     <div>
-        <BlankNavbar/>
-    <div className="relative mt-24 px-4 sm:px-6 lg:px-12 w-full flex justify-center">
-      <div className="w-full max-w-5xl flex flex-col gap-6">
+      <BlankNavbar />
+      <div className="relative mt-24 px-4 sm:px-6 lg:px-12 w-full flex justify-center">
+        <div className="w-full max-w-5xl flex flex-col gap-6">
 
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
-          <h2 className={`text-gray-500 text-lg sm:text-xl font-normal text-center sm:text-left ${poppins.className}`}>
-            Complete your Know Your Customer verification quickly and securely
-          </h2>
-          <Link
-            href="/"
-            className={`px-4 py-2 text-center border-2 border-orange-500 rounded-lg text-orange-500 font-medium hover:bg-orange-500 hover:text-white hover:shadow-md transition-all duration-300 ${poppins.className}`}
-          >
-            Skip for now
-          </Link>
-        </div>
-
-        {/* KYC Card */}
-        <div className="w-full bg-white border border-gray-300 rounded-2xl p-4 sm:p-6 flex flex-col gap-6">
-
-          {/* Progress */}
-          <div className="flex flex-col items-center w-full">
-            <h3 className="text-gray-800 font-semibold text-lg mb-4">KYC Verification</h3>
-            <div className="w-full relative h-2 mb-6 bg-gray-300 rounded-full">
-              <div className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full" style={{ width: "50%" }}></div>
-            </div>
-            <div className="flex justify-between w-full">
-              {[
-                { icon: "/personalinfo_icon.png", label: "Personal Info" },
-                { icon: "/document_icon.png", label: "Documents" },
-                { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
-              ].map((step, idx) => (
-                <div key={idx} className="flex flex-col items-center text-center">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step.inactive ? "bg-gray-100" : ""}`}>
-                    <img src={step.icon} alt={step.label} className="w-5 h-5" />
-                  </div>
-                  <span className={`text-[12px] mt-1 ${poppins.className} ${step.inactive ? "text-gray-400" : "text-black"}`}>
-                    {step.label}
-                  </span>
-                </div>
-              ))}
-            </div>
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
+            <h2 className={`text-gray-500 text-lg sm:text-xl font-normal text-center sm:text-left ${poppins.className}`}>
+              Complete your Know Your Customer verification quickly and securely
+            </h2>
+            <Link
+              href="/"
+              className={`px-4 py-2 text-center border-2 border-orange-500 rounded-lg text-orange-500 font-medium hover:bg-orange-500 hover:text-white hover:shadow-md transition-all duration-300 ${poppins.className}`}
+            >
+              Skip for now
+            </Link>
           </div>
 
-          {/* Document Upload */}
-          <div className="w-full flex flex-col gap-6 p-4">
-            <h4 className={`text-gray-900 ml-[30px] font-normal text-md ${poppins.className}`}>Document Upload</h4>
-            <div className={`w-full border text-[#717182] border-[#0000001A] h-[46px] flex justify-center ${arimo.className} mx-auto py-2 rounded-[10px] text-center`}>
-              <h1>Please upload clear, colored scans or photos of your documents. All documents are required.</h1>
-            </div>
+          {/* KYC Card */}
+          <div className="w-full bg-white border border-gray-300 rounded-2xl p-4 sm:p-6 flex flex-col gap-6">
 
-            <div className=" flex flex-col items-center justify-center py-10 px-4 sm:px-8">
-              <div className="flex flex-col sm:flex-row gap-5 w-full max-w-[940px]">
-                <FileUploadBox
-                  files={aadhaarFiles}
-                  dragActive={dragActiveAadhaar}
-                  handleDrag={handleDrag}
-                  handleDrop={handleDrop}
-                  handleChange={handleChange}
-                  removeFile={removeFile}
-                  type="aadhaar"
-                  title="Aadhaar Card"
-                  description="Upload front and back sides of your Aadhaar card"
-                  inputId="aadhaar-upload"
-                />
-                <FileUploadBox
-                  files={panFiles}
-                  dragActive={dragActivePan}
-                  handleDrag={handleDrag}
-                  handleDrop={handleDrop}
-                  handleChange={handleChange}
-                  removeFile={removeFile}
-                  type="pan"
-                  title="PAN Card"
-                  description="Upload a clear photo of your PAN card"
-                  inputId="pan-upload"
-                />
+            {/* Progress */}
+            <div className="flex flex-col items-center w-full">
+              <h3 className="text-gray-800 font-semibold text-lg mb-4">KYC Verification</h3>
+              <div className="w-full relative h-2 mb-6 bg-gray-300 rounded-full">
+                <div className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full" style={{ width: "50%" }}></div>
+              </div>
+              <div className="flex justify-between w-full">
+                {[
+                  { icon: "/personalinfo_icon.png", label: "Personal Info" },
+                  { icon: "/document_icon.png", label: "Documents" },
+                  { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
+                ].map((step, idx) => (
+                  <div key={idx} className="flex flex-col items-center text-center">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step.inactive ? "bg-gray-100" : ""}`}>
+                      <img src={step.icon} alt={step.label} className="w-5 h-5" />
+                    </div>
+                    <span className={`text-[12px] mt-1 ${poppins.className} ${step.inactive ? "text-gray-400" : "text-black"}`}>
+                      {step.label}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* Navigation */}
-            <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full">
-              <Link href="/personalinfo" className="px-6 py-2 bg-white border-2 border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-center w-full sm:w-auto">
-                Previous
-              </Link>
-              <Link href="/review" className={`bg-orange-500 text-white ${poppins.className} flex justify-center items-center gap-2 px-6 py-2.5 rounded-lg w-full sm:w-auto transition-all duration-300 hover:bg-orange-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]`}>
-                Next
-                <img src="/righticon.png" className="w-4 h-4 transition-transform duration-300" alt="" />
-              </Link>
+
+            <div>
+              <div className="flex flex-col sm:flex-row gap-4 w-full">
+                {/* Aadhaar Number */}
+                <div className="flex-1 flex flex-col">
+                  <label
+                    htmlFor="adhar"
+                    className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
+                  >
+                    Aadhaar number
+                  </label>
+                  <input
+                    id="adhar"
+                    type="tel"
+                    placeholder="Enter your Aadhaar number"
+                    value={formData.adhar}
+                    onChange={handleInputChange} // fixed handler
+                    className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.adhar ? "border-red-500" : "border-gray-300"
+                      }`}
+                  />
+                  {errors.adhar && (
+                    <span className="text-red-500 text-xs">{errors.adhar}</span>
+                  )}
+                </div>
+
+                {/* Aadhaar OTP */}
+                <div className="flex-1 flex flex-col">
+                  <label
+                    htmlFor="adharOtp"
+                    className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
+                  >
+                    OTP sent to registered mobile number  +91 *******789
+                  </label>
+                  <div className="relative">
+                    <input
+                      id="adharOtp"
+                      type="tel"
+                      placeholder="Enter 6-digit OTP"
+                      value={formData.adharOtp}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, "");
+                        if (value.length <= 6) {
+                          handleInputChange({ target: { id: "adharOtp", value } });
+                          setAdharVerified(value.length === 6);
+                        }
+                      }}
+                      className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className} ${errors.adharOtp ? "border-red-500" : "border-gray-300"
+                        }`}
+                    />
+                    {adharVerified && (
+                      <img
+                        src="/check_icon.png"
+                        alt="verified"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
+                      />
+                    )}
+                  </div>
+                  {errors.adharOtp && (
+                    <span className="text-red-500 text-xs">{errors.adharOtp}</span>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 w-full mt-4">
+                {/* PAN Number */}
+                <div className="flex-1 flex flex-col">
+                  <label
+                    htmlFor="pan"
+                    className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
+                  >
+                    Pancard number
+                  </label>
+                  <input
+                    id="pan"
+                    type="text"
+                    placeholder="Enter your PAN number"
+                    value={formData.pan}
+                    onChange={handleInputChange} // fixed handler
+                    className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.pan ? "border-red-500" : "border-gray-300"
+                      }`}
+                  />
+                  {errors.pan && <span className="text-red-500 text-xs">{errors.pan}</span>}
+                </div>
+
+                {/* PAN OTP */}
+                <div className="flex-1 flex flex-col">
+                  <label
+                    htmlFor="panOtp"
+                    className={`text-gray-900 rounded- text-sm mb-1 ${poppins.className}`}
+                  >
+                    OTP sent to registered mobile number  +91 *******789
+                  </label>
+                  <div className="relative">
+                    <input
+                      id="panOtp"
+                      type="tel"
+                      placeholder="Enter 6-digit OTP"
+                      value={formData.panOtp}
+                      onChange={(e) => {
+                        const value = e.target.value.replace(/\D/g, "");
+                        if (value.length <= 6) {
+                          handleInputChange({ target: { id: "panOtp", value } });
+                          setPanVerified(value.length === 6);
+                        }
+                      }}
+                      className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className} ${errors.panOtp ? "border-red-500" : "border-gray-300"
+                        }`}
+                    />
+                    {panVerified && (
+                      <img
+                        src="/check_icon.png"
+                        alt="verified"
+                        className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
+                      />
+                    )}
+                  </div>
+                  {errors.panOtp && (
+                    <span className="text-red-500 text-xs">{errors.panOtp}</span>
+                  )}
+                </div>
+              </div>
+
+
+
+            </div>
+
+            {/* Document Upload */}
+            <div className="w-full flex flex-col gap-6 p-4">
+              <h4 className={`text-gray-900 ml-[30px] font-normal text-md ${poppins.className}`}>Document Upload</h4>
+              <div className={`w-full border text-[#717182] border-[#0000001A] h-[46px] flex justify-center ${arimo.className} mx-auto py-2 rounded-[10px] text-center`}>
+                <h1>Please upload clear, colored scans or photos of your documents. All documents are required.</h1>
+              </div>
+
+              <div className=" flex flex-col items-center justify-center py-10 px-4 sm:px-8">
+                <div className="flex flex-col sm:flex-row gap-5 w-full max-w-[940px]">
+                  <FileUploadBox
+                    files={aadhaarFiles}
+                    dragActive={dragActiveAadhaar}
+                    handleDrag={handleDrag}
+                    handleDrop={handleDrop}
+                    handleChange={handleChange}
+                    removeFile={removeFile}
+                    type="aadhaar"
+                    title="Aadhaar Card"
+                    description="Upload front and back sides of your Aadhaar card"
+                    inputId="aadhaar-upload"
+                  />
+                  <FileUploadBox
+                    files={panFiles}
+                    dragActive={dragActivePan}
+                    handleDrag={handleDrag}
+                    handleDrop={handleDrop}
+                    handleChange={handleChange}
+                    removeFile={removeFile}
+                    type="pan"
+                    title="PAN Card"
+                    description="Upload a clear photo of your PAN card"
+                    inputId="pan-upload"
+                  />
+                </div>
+              </div>
+
+              {/* Navigation */}
+              <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full">
+                <Link href="/personalinfo" className="px-6 py-2 bg-white border-2 border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-center w-full sm:w-auto">
+                  Previous
+                </Link>
+                <Link href="/review" className={`bg-orange-500 text-white ${poppins.className} flex justify-center items-center gap-2 px-6 py-2.5 rounded-lg w-full sm:w-auto transition-all duration-300 hover:bg-orange-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]`}>
+                  Next
+                  <img src="/righticon.png" className="w-4 h-4 transition-transform duration-300" alt="" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };

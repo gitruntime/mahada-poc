@@ -202,8 +202,8 @@ const HeroNavbar = () => {
                                 <div className="flex items-start py-3 px-2 hover:bg-gray-50 rounded-md cursor-pointer">
                                     <div className="w-3 h-3 bg-blue-500 rounded-full mt-1 mr-3 flex-shrink-0"></div>
                                     <div className="flex-1">
-                                        <p className="text-gray-800 text-sm font-medium">New Message</p>
-                                        <p className="text-gray-600 text-xs">You have received a new message .</p>
+                                        <p className="text-gray-800 text-sm font-medium">Application Update</p>
+                                        <p className="text-gray-600 text-xs">Your Application has submitted successfully.</p>
                                         <span className="text-gray-400 text-[10px]">5 min ago</span>
                                     </div>
                                 </div>
@@ -211,8 +211,8 @@ const HeroNavbar = () => {
                                 <div className="flex items-start py-3 px-2 hover:bg-gray-50 rounded-md cursor-pointer">
                                     <div className="w-3 h-3 bg-green-500 rounded-full mt-1 mr-3 flex-shrink-0"></div>
                                     <div className="flex-1">
-                                        <p className="text-gray-800 text-sm font-medium">Log-In Update</p>
-                                        <p className="text-gray-600 text-xs">Logged in successfully.</p>
+                                        <p className="text-gray-800 text-sm font-medium">Document Verification Update</p>
+                                        <p className="text-gray-600 text-xs">Document has been verified successfully.</p>
                                         <span className="text-gray-400 text-[10px]">10 min ago</span>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@ const HeroNavbar = () => {
                                     <div className="w-3 h-3 bg-red-500 rounded-full mt-1 mr-3 flex-shrink-0"></div>
                                     <div className="flex-1">
                                         <p className="text-gray-800 text-sm font-medium">Alert</p>
-                                        <p className="text-gray-600 text-xs">Password will expire in 3 days.</p>
+                                        <p className="text-gray-600 text-xs">Complete your profile.</p>
                                         <span className="text-gray-400 text-[10px]">30 min ago</span>
                                     </div>
                                 </div>

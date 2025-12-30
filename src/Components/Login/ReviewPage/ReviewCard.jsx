@@ -119,23 +119,33 @@ const ReviewCard = () => {
                                     Documents Uploaded
                                 </h2>
 
-                               <ul className={`space-y-4 ${poppins.className} text-[14px] text-[#0A0A0A]`}>
-  {["Aadhar Card", "PAN Card", "Address Proof", "Selfie Photo"].map(
-    (doc, index) => {
-      const icon =
-        doc === "Selfie Photo" ? "/pending2.png" : "/check_icon.png";
+                                <ul className={`space-y-4 ${poppins.className} text-[14px]`}>
+                                    {[
+                                        "Aadhar Card",
+                                        "PAN Card",
+                                        "Address Proof",
+                                        "Selfie Photo",
+                                        "Bank Details",
+                                        "Police Verification",
+                                    ].map((doc, index) => {
+                                        // Pending docs
+                                        const pendingDocs = ["Selfie Photo", "Bank Details", "Police Verification"];
+                                        const isPending = pendingDocs.includes(doc);
 
-      return (
-        <li key={index} className="flex items-center gap-3">
-          <span className="w-5 h-5 flex items-center justify-center rounded-full text-white text-[12px]">
-            <Image src={icon} width={16} height={16} alt={doc} />
-          </span>
-          <span>{doc}</span>
-        </li>
-      );
-    }
-  )}
-</ul>
+                                        const icon = isPending ? "/pendinglogo.png" : "/check_icon.png";
+                                        const textColor = isPending ? "text-[#6B7280]" : "text-[#0A0A0A]";
+
+                                        return (
+                                            <li key={index} className="flex items-center gap-3">
+                                                <span className="w-5 h-5 flex items-center justify-center rounded-full text-white text-[12px]">
+                                                    <Image src={icon} width={16} height={16} alt={doc} />
+                                                </span>
+                                                <span className={textColor}>{doc}</span>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+
 
                             </div>
                         </div>
@@ -159,7 +169,7 @@ const ReviewCard = () => {
         transition-all duration-300 hover:bg-orange-600 hover:shadow-md
         hover:scale-[1.02] active:scale-[0.98]`}
                             >
-                                Next
+                                Submit your KYC
                                 <img src="/righticon.png" className="w-4 h-4" alt="Next" />
                             </Link>
                         </div>
