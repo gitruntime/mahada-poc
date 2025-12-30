@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import { Poppins } from "next/font/google";
-
+import Link from "next/link";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -80,9 +80,9 @@ const PropertyCard = ({ property }) => {
             <p className="text-gray-500 text-[13px]">Deposit: ₹{property.deposit}</p>
           </div>
 
-          <button className="bg-orange-500 hover:bg-orange-600 transition text-white text-[14px] font-medium px-5 py-3 rounded-[12px] shadow-lg">
+          <Link href="/propertydetails" className="bg-orange-500 hover:bg-orange-600 transition text-white text-[14px] font-medium px-5 py-3 rounded-[12px] shadow-lg">
             View Details
-          </button>
+          </Link>
         </div>
       </div>
     </div>
