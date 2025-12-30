@@ -9,6 +9,7 @@ import PropertyMenu from "@/Components/Homepage/HeroNavbar/PropertyMenu.jsx";
 import Rent from '@/Components/Homepage/HeroNavbar/Rent.jsx';
 
 import Sell from '@/Components/Homepage/HeroNavbar/Sell.jsx';
+import CityDropdownDiv from './CityDropdownDiv';
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -17,6 +18,9 @@ const poppins = Poppins({
 
 
 const HeroNavbar = () => {
+    const [showNotifications, setShowNotifications] = React.useState(false);
+
+
     const router = useRouter();
     const handleLogout = () => {
         sessionStorage.removeItem("isAuthenticated");
@@ -180,15 +184,54 @@ const HeroNavbar = () => {
             <div className="flex items-center just gap-4 ml-[40px]">
 
                 {/* Notification */}
-                <div className="relative flex items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-full border-[1px] bg-white/20">
+                <div className="relative flex flex-col items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-full border-[1px] bg-white/20"
+                    onClick={() => setShowNotifications(!showNotifications)}>
                     <Bell size={18} className="text-white" />
 
                     <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] px-[2px] 
-                            bg-red-500 text-white text-[12px] font-medium rounded-full 
-                            flex items-center justify-center leading-none">
+            bg-red-500 text-white text-[12px] font-medium rounded-full 
+            flex items-center justify-center leading-none">
                         3
                     </span>
+
+                    {/* Notification dropdown */}
+                    {showNotifications && (
+                        <div className="absolute top-[40px] right-3 w-80 bg-white shadow-xl rounded-lg p-3 z-50">
+                            <p className="text-gray-700 font-semibold text-sm mb-3">Notifications</p>
+                            <div className="divide-y divide-gray-200 max-h-64 overflow-y-auto">
+                                <div className="flex items-start py-3 px-2 hover:bg-gray-50 rounded-md cursor-pointer">
+                                    <div className="w-3 h-3 bg-blue-500 rounded-full mt-1 mr-3 flex-shrink-0"></div>
+                                    <div className="flex-1">
+                                        <p className="text-gray-800 text-sm font-medium">New Message</p>
+                                        <p className="text-gray-600 text-xs">You have received a new message .</p>
+                                        <span className="text-gray-400 text-[10px]">5 min ago</span>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start py-3 px-2 hover:bg-gray-50 rounded-md cursor-pointer">
+                                    <div className="w-3 h-3 bg-green-500 rounded-full mt-1 mr-3 flex-shrink-0"></div>
+                                    <div className="flex-1">
+                                        <p className="text-gray-800 text-sm font-medium">Log-In Update</p>
+                                        <p className="text-gray-600 text-xs">Logged in successfully.</p>
+                                        <span className="text-gray-400 text-[10px]">10 min ago</span>
+                                    </div>
+                                </div>
+
+                                <div className="flex items-start py-3 px-2 hover:bg-gray-50 rounded-md cursor-pointer">
+                                    <div className="w-3 h-3 bg-red-500 rounded-full mt-1 mr-3 flex-shrink-0"></div>
+                                    <div className="flex-1">
+                                        <p className="text-gray-800 text-sm font-medium">Alert</p>
+                                        <p className="text-gray-600 text-xs">Password will expire in 3 days.</p>
+                                        <span className="text-gray-400 text-[10px]">30 min ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    )}
                 </div>
+
 
 
                 {/* Dashboard */}
@@ -227,7 +270,7 @@ const HeroNavbar = () => {
                 </Link>
 
                 {/* Location */}
-                <div
+                {/* <div
                     className={`
                             flex items-center justify-center
                             w-[114px] h-[32px] 
@@ -238,17 +281,16 @@ const HeroNavbar = () => {
                             cursor-pointer text-white
                         `}
                 >
-                    {/* Left Icon */}
+                   
                     <MapPin size={16} strokeWidth={2} className="flex-shrink-0" />
 
-                    {/* Text - Added font-[600] to force weight if semibold is failing */}
                     <span className={`${poppins.className} text-[12px] font-[400] leading-none`}>
                         Mumbai
                     </span>
 
-                    {/* Right Chevron Icon from image */}
                     <ChevronDown size={16} strokeWidth={2} className="flex-shrink-0" />
-                </div>
+                </div> */}
+                <CityDropdownDiv />
                 <div
                     onClick={handleLogout}
                     className="

@@ -119,18 +119,24 @@ const ReviewCard = () => {
                                     Documents Uploaded
                                 </h2>
 
-                                <ul className={`space-y-4 ${poppins.className} text-[14px] text-[#0A0A0A]`} >
-                                    {["Aadhar Card", "PAN Card", "Address Proof", "Selfie Photo"].map(
-                                        (doc, index) => (
-                                            <li key={index} className="flex items-center gap-3">
-                                                <span className="w-5 h-5 flex items-center justify-center rounded-full text-white text-[12px]">
-                                                    <Image src="/check_icon.png" width={16} height={16} />
-                                                </span>
-                                                <span>{doc}</span>
-                                            </li>
-                                        )
-                                    )}
-                                </ul>
+                               <ul className={`space-y-4 ${poppins.className} text-[14px] text-[#0A0A0A]`}>
+  {["Aadhar Card", "PAN Card", "Address Proof", "Selfie Photo"].map(
+    (doc, index) => {
+      const icon =
+        doc === "Selfie Photo" ? "/pending2.png" : "/check_icon.png";
+
+      return (
+        <li key={index} className="flex items-center gap-3">
+          <span className="w-5 h-5 flex items-center justify-center rounded-full text-white text-[12px]">
+            <Image src={icon} width={16} height={16} alt={doc} />
+          </span>
+          <span>{doc}</span>
+        </li>
+      );
+    }
+  )}
+</ul>
+
                             </div>
                         </div>
                         <div className={`w-full border text-[#717182] border-[#0000001A] h-[46px] flex  px-[30px] ${arimo.className} mx-auto py-2 rounded-[10px] text-center`}>

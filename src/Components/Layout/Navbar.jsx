@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import FontSizeChanger from "../FontSizeChanger";
 
 const Navbar = () => {
   return (
@@ -26,15 +27,7 @@ const Navbar = () => {
 
             {/* Font size */}
             <div className="flex items-center gap-[3px]">
-              <button className="w-[22px] h-[22px] border border-[#212529] rounded-md text-[10px]">
-                A-
-              </button>
-              <button className="w-[30px] h-[22px] bg-[#198754] rounded-md text-[10px] text-white">
-                A
-              </button>
-              <button className="w-[22px] h-[22px] border border-[#212529] rounded-md text-[10px]">
-                A+
-              </button>
+             <FontSizeChanger />
             </div>
 
             {/* Language switch */}

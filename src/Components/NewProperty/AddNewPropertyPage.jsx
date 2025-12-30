@@ -146,6 +146,8 @@ const AddNewPropertyPage = () => {
                                 <option value="">Select property type</option>
                                 <option value="apartment">Apartment</option>
                                 <option value="villa">Villa</option>
+                                <option value="flat">Flat</option>
+                                <option value="office">Office</option>
                             </select>
 
                             <svg
@@ -268,10 +270,7 @@ const AddNewPropertyPage = () => {
                             >
                                 <option value="">Select State</option>
                                 <option value="Maharashtra">Maharashtra</option>
-                                <option value="Karnataka">Karnataka</option>
-                                <option value="Tamil Nadu">Tamil Nadu</option>
-                                <option value="Gujarat">Gujarat</option>
-                                <option value="West Bengal">West Bengal</option>
+
                             </select>
 
                             <svg
@@ -297,12 +296,25 @@ const AddNewPropertyPage = () => {
                             PIN Code *
                         </label>
                         <input
-                            type="number"
-                            name="pin"
+                            id="pin"
+                            type="text"
                             placeholder="6-digit PIN"
-                            className={inputBaseClass + (errors.pin ? " border-red-500" : "")}
+                            inputMode="numeric"
+                            maxLength={6}
+                            pattern="[0-9]{6}"
+                            className={`w-full p-2 border border-gray-300 rounded-lg bg-gray-50 placeholder-gray-400 ${poppins.className} ${errors.pin ? "border-red-500" : ""}`}
                             value={formData.pin}
-                            onChange={handleChange}
+                            onChange={(e) => {
+                                const value = e.target.value.replace(/\D/g, ""); // remove non-numbers
+                                if (value.length <= 6) {
+                                    handleChange({
+                                        target: {
+                                            id: "pin",
+                                            value: value,
+                                        },
+                                    });
+                                }
+                            }}
                         />
 
                         {errors.pin && <span className="text-red-500 text-xs">{errors.pin}</span>}

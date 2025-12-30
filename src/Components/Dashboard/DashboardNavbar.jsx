@@ -7,7 +7,7 @@ import PropertyMenu from "@/Components/Homepage/HeroNavbar/PropertyMenu.jsx";
 import Rent from '@/Components/Homepage/HeroNavbar/Rent.jsx';
 
 import Sell from '@/Components/Homepage/HeroNavbar/Sell.jsx';
-
+import Link from 'next/link';
 const poppins = Poppins({
     subsets: ["latin"],
     weight: ["400", "600", "700"],
@@ -19,14 +19,14 @@ const DashboardNavbar = () => {
         <nav className="w-full h-[64px] shadow-[0px_3px_14.4px_0px_rgba(0,0,0,0.25)]  px-[80px] flex items-center justify-between bg-white text-white">
 
             {/* Left: Logo */}
-            <div className={`flex w-full h-[36px] items-center px-[20px] gap-2 ${poppins.className}`}>
+            <Link href="/" className={`flex w-full h-[36px] items-center px-[20px] gap-2 ${poppins.className}`}>
                 <h1 className="relative text-[24px] text-black font-semibold">
                     Mhada <span className="text-orange-500">Estate</span>
 
                     {/* underline */}
                     <span className="absolute left-0 -bottom-0.5 w-full h-[2px] bg-orange-500"></span>
                 </h1>
-            </div>
+            </Link>
 
 
 
@@ -56,7 +56,7 @@ const DashboardNavbar = () => {
 
                     {/* HOVER MODAL */}
                     <div
-                       className="
+                        className="
     absolute left-1/2 -translate-x-1/2 top-[40px]
     w-[1025px]
     bg-white
@@ -79,7 +79,7 @@ const DashboardNavbar = () => {
                 <div className="relative group">
                     {/* RENT BUTTON */}
                     <div
-                         className={`flex text-[#00000099] items-center justify-center gap-1 
+                        className={`flex text-[#00000099] items-center justify-center gap-1 
       w-[71px] h-[40px] rounded-[12px] px-[10px]
       cursor-pointer text-[16px] leading-[20px] font-medium
       hover:text-[#F97415] hover:bg-gray-100
@@ -98,7 +98,7 @@ const DashboardNavbar = () => {
                     </div>
 
                     {/* HOVER MODAL */}
-                   <div
+                    <div
                         className="
                                 absolute left-1/2 -translate-x-1/2 top-[40px]
                                 w-[900px]
@@ -123,7 +123,7 @@ const DashboardNavbar = () => {
                 <div className="relative group">
                     {/* SELL BUTTON */}
                     <div
-                         className={`flex text-[#00000099] items-center justify-center gap-1 
+                        className={`flex text-[#00000099] items-center justify-center gap-1 
       w-[71px] h-[40px] rounded-[12px] px-[10px]
       cursor-pointer text-[16px] leading-[20px] font-medium
       hover:text-[#F97415] hover:bg-gray-100
@@ -143,7 +143,7 @@ const DashboardNavbar = () => {
 
                     {/* HOVER MODAL */}
                     <div
-                         className="
+                        className="
     absolute left-1/2 -translate-x-1/2 top-[40px]
     w-[600px]
     bg-white
@@ -158,18 +158,7 @@ const DashboardNavbar = () => {
     z-50
 ">
                         <Sell className="w-full h-full" />
-                        <div className="flex mt-[10px] ml-[24px] flex-col sm:flex-row items-center gap-5">
 
-
-
-                            <button
-                                className={`${poppins.className}  cursor-pointer w-[183px] h-[54px] bg-[#00873E] hover:bg-[#007034] text-white text-[16px] font-medium rounded-[12px] transition-all border border-white/10 shadow-lg`}
-                            >
-                                List Your Property
-                            </button>
-
-
-                        </div>
                     </div>
                 </div>
 

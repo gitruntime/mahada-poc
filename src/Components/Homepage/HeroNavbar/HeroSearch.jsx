@@ -12,7 +12,7 @@ const HeroSearch = () => {
   const [city, setCity] = useState("");
   const [propertyType, setPropertyType] = useState("");
 
-  const cities = ["Mumbai", "Delhi", "Bangalore", "Chennai"];
+  const cities = ["Mumbai", "Navi-Mumbai", "Thane", "Pune", "Nagpur", "Nashik"];
   const propertyTypes = ["Apartment", "Villa", "Studio", "Office"];
 
   const handleSearch = () => {

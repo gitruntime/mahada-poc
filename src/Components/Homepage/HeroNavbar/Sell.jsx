@@ -1,6 +1,6 @@
 import { Poppins } from 'next/font/google';
 import React from 'react';
-
+import Link from 'next/link';
 const poppins = Poppins({
     subsets: ["latin"],
     weight: ["400", "600", "700"],
@@ -56,16 +56,16 @@ const Sell = () => {
                         ))}
                     </div>
                     {index === 0 && (
-                        <button
+                        <Link href="/addproperty"
                             className={`
-    mt-auto w-[183px] h-[54px] bg-[#028541] text-white 
+    mt-auto w-[183px] h-[54px] bg-[#028541] text-white  justify-center flex items-center    
     ${poppins.className} font-medium px-4 py-2 rounded-[12px] 
     hover:bg-green-700 hover:scale-105 hover:shadow-lg 
     transition duration-300
   `}
                         >
                             List Your Property
-                        </button>
+                        </Link>
                     )}
                 </div>
             ))}

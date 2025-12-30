@@ -148,12 +148,23 @@ const InfoCard = () => {
                 <label htmlFor="number" className={`text-gray-900 text-sm mb-1 ${poppins.className}`}>Phone Number *</label>
                 <input
                   id="number"
-                  type="text"
+                  type="tel"
                   placeholder="Enter 10-digit mobile number"
                   className={`w-full p-2 border border-gray-300 rounded-lg bg-gray-50 placeholder-gray-400 ${poppins.className} ${errors.number ? "border-red-500" : ""}`}
                   value={formData.number}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, ""); // remove non-numbers
+                    if (value.length <= 10) {
+                      handleChange({
+                        target: {
+                          id: "number",
+                          value: value,
+                        },
+                      });
+                    }
+                  }}
                 />
+
                 {errors.number && <span className="text-red-500 text-xs">{errors.number}</span>}
               </div>
             </div>
@@ -238,10 +249,6 @@ const InfoCard = () => {
                 >
                   <option value="">Select State</option>
                   <option value="Maharashtra">Maharashtra</option>
-                  <option value="Karnataka">Karnataka</option>
-                  <option value="Tamil Nadu">Tamil Nadu</option>
-                  <option value="Gujarat">Gujarat</option>
-                  <option value="West Bengal">West Bengal</option>
                 </select>
                 {errors.state && <span className="text-red-500 text-xs">{errors.state}</span>}
               </div>
@@ -251,21 +258,35 @@ const InfoCard = () => {
                   id="pin"
                   type="text"
                   placeholder="6-digit PIN"
+                  inputMode="numeric"
+                  maxLength={6}
+                  pattern="[0-9]{6}"
                   className={`w-full p-2 border border-gray-300 rounded-lg bg-gray-50 placeholder-gray-400 ${poppins.className} ${errors.pin ? "border-red-500" : ""}`}
                   value={formData.pin}
-                  onChange={handleChange}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, ""); // remove non-numbers
+                    if (value.length <= 6) {
+                      handleChange({
+                        target: {
+                          id: "pin",
+                          value: value,
+                        },
+                      });
+                    }
+                  }}
                 />
+
                 {errors.pin && <span className="text-red-500 text-xs">{errors.pin}</span>}
               </div>
             </div>
 
             <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full">
-             <button
-  disabled
-  className="px-6 py-2 w-full sm:w-auto bg-gray-200 text-gray-500 border-2 border-gray-300 rounded-lg cursor-not-allowed text-center"
->
-  Previous
-</button>
+              <button
+                disabled
+                className="px-6 py-2 w-full sm:w-auto bg-gray-200 text-gray-500 border-2 border-gray-300 rounded-lg cursor-not-allowed text-center"
+              >
+                Previous
+              </button>
               <button
                 type="submit"
                 onClick={handleNext}
