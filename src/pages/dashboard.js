@@ -16,21 +16,21 @@ const Dashboard = () => {
   const [showProfile2, setShowProfile2] = useState(false)
 
   useEffect(() => {
-    const success = localStorage.getItem("agreementSuccess")
-
-    if (success === "true") {
-      setShowProfile2(true)
-      localStorage.removeItem("agreementSuccess") // remove if one-time
-    }
-  }, [])
+  const logindone2 = localStorage.getItem("logindone2")
+  if (logindone2 === "true") {
+    setShowProfile2(true)
+    localStorage.removeItem("logindone2") // optional, if one-time
+  }
+}, [])
 
   return (
     <div className="min-h-screen flex flex-col">
       <DashboardNavbar />
       <BreadCrumbs />
 
-      {/* 👇 Profile switch */}
+      {/* Profile switch */}
       {showProfile2 ? <Profile2 /> : <ProfileSection />}
+
 
       <ButtonSection activeTab={activeTab} setActiveTab={setActiveTab} />
 

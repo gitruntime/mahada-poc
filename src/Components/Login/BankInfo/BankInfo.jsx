@@ -176,7 +176,7 @@ const BankInfo = () => {
                                     <input
                                         id="ifscCode"
                                         type="text"
-                                        placeholder="Enter your IFSC code"
+                                        placeholder="AAAA0BBBBBB"
                                         className={`w-full p-2 border border-gray-300 rounded-lg bg-gray-50 placeholder-gray-400 ${poppins.className} ${errors.ifscCode ? "border-red-500" : ""}`}
                                         value={formData.ifscCode}
                                         onChange={handleChange}
