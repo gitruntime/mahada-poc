@@ -13,8 +13,6 @@ const InfoCard = () => {
     lastName: "",
     email: "",
     emailOtp: "",
-    phone: "",
-    phoneOtp: "",
     dob: "",
     address: "",
     city: "",
@@ -42,17 +40,6 @@ const InfoCard = () => {
       tempErrors.emailOtp = "Email OTP is required";
     else if (!/^\d{6}$/.test(formData.emailOtp))
       tempErrors.emailOtp = "Enter valid 6-digit OTP";
-
-    if (!formData.phone)
-      tempErrors.phone = "Phone Number is required";
-    else if (!/^\d{10}$/.test(formData.phone))
-      tempErrors.phone = "Enter valid 10-digit number";
-
-    if (!formData.phoneOtp)
-      tempErrors.phoneOtp = "Phone OTP is required";
-    else if (!/^\d{6}$/.test(formData.phoneOtp))
-      tempErrors.phoneOtp = "Enter valid 6-digit OTP";
-
     if (!formData.dob) tempErrors.dob = "Date of Birth is required";
     if (!formData.address) tempErrors.address = "Address is required";
     if (!formData.city) tempErrors.city = "City is required";
@@ -165,17 +152,31 @@ const InfoCard = () => {
                 >
                   Email Address *
                 </label>
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="Enter your email"
-                  className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.email ? "border-red-500" : "border-gray-300"
-                    }`}
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-                {errors.email && <span className="text-red-500 text-xs">{errors.email}</span>}
+
+                <div className="relative">
+                  <input
+                    id="email"
+                    type="email"
+                    placeholder="Enter your email"
+                    className={`w-full p-2 pr-24 border rounded-lg bg-gray-50 ${poppins.className} ${errors.email ? "border-red-500" : "border-gray-300"
+                      }`}
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
+
+                  <button
+                    type="button"
+                    className={`absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1  rounded-md text-[#F97415] text-[14px] ${poppins.className}  cursor-pointer`}
+                  >
+                    Send OTP
+                  </button>
+                </div>
+
+                {errors.email && (
+                  <span className="text-red-500 text-xs mt-1">{errors.email}</span>
+                )}
               </div>
+
 
               {/* Email OTP (6 digits) */}
               <div className="flex-1 flex flex-col">
@@ -191,8 +192,8 @@ const InfoCard = () => {
                     id="emailOtp"
                     type="tel"
                     placeholder="Enter 6-digit OTP"
-                    className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className}
-        ${errors.emailOtp ? "border-red-500" : "border-gray-300"}`}
+                    className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className} ${errors.emailOtp ? "border-red-500" : "border-gray-300"
+                      }`}
                     value={formData.emailOtp}
                     onChange={(e) => {
                       const value = e.target.value.replace(/\D/g, "");
@@ -201,18 +202,25 @@ const InfoCard = () => {
                           target: { id: "emailOtp", value },
                         });
 
-                        if (value.length === 6) {
-                          setEmailVerified(true); // OTP verified
-                        } else {
-                          setEmailVerified(false);
-                        }
+                        setEmailVerified(value.length === 6);
                       }
                     }}
                   />
 
+                  {/* Show Resend OTP ONLY when not verified */}
+                  {!emailVerified && (
+                    <button
+                      type="button"
+                      className={`absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 text-[#6B7280] text-[14px] ${poppins.className}`}
+                    >
+                      Resend OTP
+                    </button>
+                  )}
+
+                  {/* Show verified icon when OTP is complete */}
                   {emailVerified && (
                     <img
-                      src="/check_icon.png"   // ✅ your verified image
+                      src="/check_icon.png"
                       alt="verified"
                       className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
                     />
@@ -224,9 +232,10 @@ const InfoCard = () => {
                 )}
               </div>
 
+
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 w-full">
+            <div className="flex flex-col sm:flex-row gap-4 w-full ">
               {/* Phone Number (10 digits) */}
               <div className="flex-1 flex flex-col">
                 <label
@@ -235,24 +244,36 @@ const InfoCard = () => {
                 >
                   Phone Number *
                 </label>
-                <input
-                  id="phone"
-                  type="tel"
-                  placeholder="Enter 10-digit mobile number"
-                  className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.phone ? "border-red-500" : "border-gray-300"
-                    }`}
-                  value={formData.phone}
-                  onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, "");
-                    if (value.length <= 10) {
-                      handleChange({
-                        target: { id: "phone", value },
-                      });
-                    }
-                  }}
-                />
+
+                <div className="relative">
+                  <input
+                    disabled
+                    id="phone"
+                    type="tel"
+                    placeholder="+91 98989 98989"
+                    className={`w-full p-2 pr-24 border rounded-lg bg-gray-50 ${poppins.className} ${errors.phone ? "border-red-500" : "border-gray-300"
+                      }`}
+                    value={formData.phone}
+                    onChange={(e) => {
+                      const value = e.target.value.replace(/\D/g, "");
+                      if (value.length <= 10) {
+                        handleChange({
+                          target: { id: "phone", value },
+                        });
+                      }
+                    }}
+                  />
+
+                  <button
+                    type="button"
+                    className={`absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 text-[#028541] text-[14px] ${poppins.className} rounded-md text-xs `}
+                  >
+                    Verified
+                  </button>
+                </div>
+
                 {errors.phone && (
-                  <span className="text-red-500 text-xs">{errors.phone}</span>
+                  <span className="text-red-500 text-xs mt-1">{errors.phone}</span>
                 )}
               </div>
 
@@ -267,10 +288,11 @@ const InfoCard = () => {
 
                 <div className="relative">
                   <input
+                    disabled
                     id="phoneOtp"
                     type="tel"
-                    placeholder="Enter 6-digit OTP"
-                    className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className}
+                    placeholder="232215"
+                    className={`w-full p-2 pr-10 border rounded-lg bg-[#D9D9D9] ${poppins.className}
         ${errors.phoneOtp ? "border-red-500" : "border-gray-300"}`}
                     value={formData.phoneOtp}
                     onChange={(e) => {
@@ -291,7 +313,7 @@ const InfoCard = () => {
 
                   {phoneVerified && (
                     <img
-                       src="/check_icon.png"  
+                      src="/check_icon.png"
                       alt="verified"
                       className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
                     />

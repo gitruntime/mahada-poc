@@ -111,13 +111,13 @@ const MyTProperties = () => {
               Message
             </button>
             {property.sign && (
-              <button
+              <Link href="/rentalagreement1"
                 className="border-2 flex items-center gap-2 border-[#F97415] text-white bg-[#F97415] text-[14px] font-medium py-2 px-3 rounded-xl hover:bg-orange-50 hover:text-[#F97415] transition-colors"
                 style={{ boxShadow: '0px 2px 4px -2px #0000001A, 0px 4px 6px -1px #0000001A' }}
               >
                 Sign Agreement
                 <Image src="/righticon.png" width={20} height={16} alt="arrow icon" />
-              </button>
+              </Link>
             )}
           </div>
         </div>

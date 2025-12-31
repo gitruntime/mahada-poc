@@ -3,7 +3,8 @@ import { Poppins, Arimo } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
 import BlankNavbar from "@/Components/BlankNavbar";
-
+import AdharOtp from "./AdharOtp";
+import PanOtp from "./PanOtp";
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -152,7 +153,12 @@ const DocInfoCard = () => {
     }
   };
   const [adharVerified, setAdharVerified] = useState(false);
-  const [panVerified, setPanVerified] = useState(false);
+ 
+  const [showAadhaarOtp, setShowAadhaarOtp] = useState(false);
+  const [aadhaarVerified, setAadhaarVerified] = useState(false);
+
+const [showPanOtp, setShowPanOtp] = useState(false);      // controls PAN OTP modal visibility
+const [panVerified, setPanVerified] = useState(false); 
 
   return (
     <div>
@@ -203,6 +209,7 @@ const DocInfoCard = () => {
 
             <div>
               <div className="flex flex-col sm:flex-row gap-4 w-full">
+
                 {/* Aadhaar Number */}
                 <div className="flex-1 flex flex-col">
                   <label
@@ -211,116 +218,110 @@ const DocInfoCard = () => {
                   >
                     Aadhaar number
                   </label>
-                  <input
-                    id="adhar"
-                    type="tel"
-                    placeholder="Enter your Aadhaar number"
-                    value={formData.adhar}
-                    onChange={handleInputChange} // fixed handler
-                    className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.adhar ? "border-red-500" : "border-gray-300"
-                      }`}
-                  />
+
+                  <div className="relative">
+
+                    <input
+                      disabled={aadhaarVerified}
+                      id="adhar"
+                      type="tel"
+                      placeholder="Enter your Aadhaar number"
+                      value={formData.adhar}
+                      onChange={handleInputChange}
+                      className={`w-full p-2 pr-24 border rounded-lg ${poppins.className}
+      ${aadhaarVerified
+                          ? "bg-gray-200 text-gray-500 border-gray-300 cursor-not-allowed"
+                          : "bg-gray-50 border-gray-300"
+                        }
+      ${errors.adhar ? "border-red-500" : ""}
+    `}
+                    />
+
+                    <button
+                      type="button"
+                      disabled={aadhaarVerified}
+                      onClick={() => setShowAadhaarOtp(true)}
+                      className={`absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 text-[14px] ${poppins.className}
+      ${aadhaarVerified
+                          ? "text-green-600 font-semibold cursor-not-allowed"
+                          : "text-[#F97415]"
+                        }
+    `}
+                    >
+                      {aadhaarVerified ? "Verified" : "Send OTP"}
+                    </button>
+
+                    <AdharOtp
+                      open={showAadhaarOtp}
+                      onClose={() => setShowAadhaarOtp(false)}
+                      onSuccess={() => setAadhaarVerified(true)}
+                    />
+
+                  </div>
+
+
                   {errors.adhar && (
-                    <span className="text-red-500 text-xs">{errors.adhar}</span>
+                    <span className="text-red-500 text-xs mt-1">{errors.adhar}</span>
                   )}
                 </div>
 
-                {/* Aadhaar OTP */}
-                <div className="flex-1 flex flex-col">
-                  <label
-                    htmlFor="adharOtp"
-                    className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
-                  >
-                    OTP sent to registered mobile number  +91 *******789
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="adharOtp"
-                      type="tel"
-                      placeholder="Enter 6-digit OTP"
-                      value={formData.adharOtp}
-                      onChange={(e) => {
-                        const value = e.target.value.replace(/\D/g, "");
-                        if (value.length <= 6) {
-                          handleInputChange({ target: { id: "adharOtp", value } });
-                          setAdharVerified(value.length === 6);
-                        }
-                      }}
-                      className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className} ${errors.adharOtp ? "border-red-500" : "border-gray-300"
-                        }`}
-                    />
-                    {adharVerified && (
-                      <img
-                        src="/check_icon.png"
-                        alt="verified"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
-                      />
-                    )}
-                  </div>
-                  {errors.adharOtp && (
-                    <span className="text-red-500 text-xs">{errors.adharOtp}</span>
-                  )}
-                </div>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 w-full mt-4">
                 {/* PAN Number */}
-                <div className="flex-1 flex flex-col">
-                  <label
-                    htmlFor="pan"
-                    className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
-                  >
-                    Pancard number
-                  </label>
-                  <input
-                    id="pan"
-                    type="text"
-                    placeholder="Enter your PAN number"
-                    value={formData.pan}
-                    onChange={handleInputChange} // fixed handler
-                    className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.pan ? "border-red-500" : "border-gray-300"
-                      }`}
-                  />
-                  {errors.pan && <span className="text-red-500 text-xs">{errors.pan}</span>}
-                </div>
+                <div className="flex-1 flex flex-col relative">
 
-                {/* PAN OTP */}
-                <div className="flex-1 flex flex-col">
-                  <label
-                    htmlFor="panOtp"
-                    className={`text-gray-900 rounded- text-sm mb-1 ${poppins.className}`}
-                  >
-                    OTP sent to registered mobile number  +91 *******789
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="panOtp"
-                      type="tel"
-                      placeholder="Enter 6-digit OTP"
-                      value={formData.panOtp}
-                      onChange={(e) => {
-                        const value = e.target.value.replace(/\D/g, "");
-                        if (value.length <= 6) {
-                          handleInputChange({ target: { id: "panOtp", value } });
-                          setPanVerified(value.length === 6);
-                        }
-                      }}
-                      className={`w-full p-2 pr-10 border rounded-lg bg-gray-50 ${poppins.className} ${errors.panOtp ? "border-red-500" : "border-gray-300"
-                        }`}
-                    />
-                    {panVerified && (
-                      <img
-                        src="/check_icon.png"
-                        alt="verified"
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5"
-                      />
-                    )}
-                  </div>
-                  {errors.panOtp && (
-                    <span className="text-red-500 text-xs">{errors.panOtp}</span>
-                  )}
-                </div>
+  {/* PAN Card Input */}
+  <label
+    htmlFor="pan"
+    className={`text-gray-900 text-sm mb-1 ${poppins.className}`}
+  >
+    PAN Card Number
+  </label>
+
+  <div className="relative">
+    <input
+      disabled={panVerified}
+      id="pan"
+      type="text"
+      placeholder="Enter your PAN number"
+      value={formData.pan}
+      onChange={handleInputChange}
+      className={`w-full p-2 pr-24 border rounded-lg ${poppins.className} ${
+        panVerified
+          ? "bg-gray-200 text-gray-500 border-gray-300 cursor-not-allowed"
+          : "bg-gray-50 border-gray-300"
+      } ${errors.pan ? "border-red-500" : ""}`}
+    />
+
+    <button
+      type="button"
+      disabled={panVerified}
+      onClick={() => setShowPanOtp(true)}
+      className={`absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1 text-[14px] ${poppins.className} ${
+        panVerified
+          ? "text-green-600 font-semibold cursor-not-allowed"
+          : "text-[#F97415]"
+      }`}
+    >
+      {panVerified ? "Verified" : "Send OTP"}
+    </button>
+  </div>
+
+  {errors.pan && (
+    <span className="text-red-500 text-xs mt-1">{errors.pan}</span>
+  )}
+
+  {/* PAN OTP Modal */}
+  <PanOtp
+    open={showPanOtp}
+    onClose={() => setShowPanOtp(false)}
+    onSuccess={() => setPanVerified(true)}
+  />
+
+</div>
+
+
               </div>
+
+
 
 
 
