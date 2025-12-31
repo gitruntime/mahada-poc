@@ -296,26 +296,22 @@ const AddNewPropertyPage = () => {
                             PIN Code *
                         </label>
                         <input
-                            id="pin"
                             type="text"
+                            name="pin"
                             placeholder="6-digit PIN"
                             inputMode="numeric"
                             maxLength={6}
-                            pattern="[0-9]{6}"
-                            className={`w-full p-2 border border-gray-300 rounded-lg bg-gray-50 placeholder-gray-400 ${poppins.className} ${errors.pin ? "border-red-500" : ""}`}
+                            className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.pin ? "border-red-500" : "border-gray-300"
+                                }`}
                             value={formData.pin}
                             onChange={(e) => {
-                                const value = e.target.value.replace(/\D/g, ""); // remove non-numbers
+                                const value = e.target.value.replace(/\D/g, "");
                                 if (value.length <= 6) {
-                                    handleChange({
-                                        target: {
-                                            id: "pin",
-                                            value: value,
-                                        },
-                                    });
+                                    setFormData({ ...formData, pin: value });
                                 }
                             }}
                         />
+
 
                         {errors.pin && <span className="text-red-500 text-xs">{errors.pin}</span>}
                     </div>

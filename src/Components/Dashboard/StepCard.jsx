@@ -1,5 +1,5 @@
 import { Roboto } from "next/font/google";
-
+import Link from "next/link";
 const roboto = Roboto({
     subsets: ["latin"],
     weight: ["400", "500", "600", "700"],
@@ -59,12 +59,12 @@ const StepsCard = () => {
                     <div className={`text-[52px] font-semibold text-black ${roboto.className}`}>
                         {completedSteps}/{totalSteps}
                     </div>
-                    <div className={`text-[#00000066] text-[16px] ${roboto.className} font-medium mt-1`}>
+                    <div className={`text-[#00000066] text-[16px] ${roboto.className} font-medium`}>
                         Steps Completed
                     </div>
-                    <button className="mt-2 px-4 py-1 bg-[#F9741533] text-[#F97415] h-[32px] rounded-lg font-semibold text-[14px] leading-[14px] tracking-normal hover:bg-orange-200 transition-colors flex items-center gap-1">
+                    <Link href="/bankinfo" className="mt-2 px-4 py-1 bg-[#F9741533] text-[#F97415] h-[32px] rounded-lg font-semibold text-[14px] leading-[14px] tracking-normal hover:bg-orange-200 transition-colors flex items-center gap-1">
                         Verify Now <span>›</span>
-                    </button>
+                    </Link>
                 </div>
 
             </div>
