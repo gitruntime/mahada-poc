@@ -21,23 +21,21 @@ const ProfileCard = () => {
         {/* LEFT SECTION */}
         <div className="flex flex-col lg:flex-row items-center gap-[28px] w-full lg:w-[45%]">
 
-          {/* PROFILE IMAGE */}
-          <div className="relative w-[267px] h-[267px] flex items-center justify-center">
-            {/* Green Ring */}
-            <div className="absolute inset-0 rounded-full border-[4px] border-[#1DB954]" />
-
-            {/* Image */}
-            <div className="relative w-[267px] h-[267px] rounded-full overflow-hidden">
-              <Image
-                src="/personprofile.png"
-                alt="Profile"
-                fill
-                className="object-cover"
-              />
+          {/* PROFILE IMAGE WITH THICK GREEN BORDER */}
+          <div className="flex flex-col items-center relative">
+            <div className="w-[280px] h-[280px] rounded-full border-8 border-[#1DB954] flex items-center justify-center shadow-md">
+              <div className="w-[267px] h-[267px] rounded-full overflow-hidden relative">
+                <Image
+                  src="/personprofile.png"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
+              </div>
             </div>
 
             {/* Verified Badge */}
-            <div className="absolute bottom-[8px] left-1/2 -translate-x-1/2">
+            <div className="absolute bottom-[8px]">
               <div className="flex items-center gap-1 px-3 py-[4px] bg-[#1DB954] text-white text-[12px] rounded-full shadow">
                 <span className="w-[6px] h-[6px] bg-white rounded-full" />
                 Verified

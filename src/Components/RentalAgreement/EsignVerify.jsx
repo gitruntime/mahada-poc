@@ -17,11 +17,13 @@ const EsignVerify = () => {
         <label className="block text-[14px] text-gray-700 mb-2">
           Aadhaar number
         </label>
-        <input
-          type="text"
-          placeholder="XXXX XXXX XXXX 1234"
-          className="w-[320px] h-[44px] px-4 rounded-[8px] border border-gray-300 text-[14px] focus:outline-none focus:ring-1 focus:ring-orange-500"
-        />
+       <input
+  disabled
+  type="text"
+  placeholder="XXXX XXXX XXXX 1234"
+  className="w-[320px] h-[44px] px-4 rounded-[8px] border border-gray-300 bg-gray-100 text-gray-400 text-[14px] focus:outline-none focus:ring-1 focus:ring-orange-500"
+/>
+
 
         {/* Consent */}
         <div className="mt-6 flex items-center gap-3 bg-white border border-gray-200 rounded-[8px] px-4 py-3">
