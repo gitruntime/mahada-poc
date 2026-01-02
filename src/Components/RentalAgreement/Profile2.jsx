@@ -23,21 +23,22 @@ const ProfileCard = () => {
 
           {/* PROFILE IMAGE WITH THICK GREEN BORDER */}
           <div className="flex flex-col items-center relative">
-            <div className="w-[280px] h-[280px] rounded-full border-8 border-[#1DB954] flex items-center justify-center shadow-md">
+            <div className="w-[280px] h-[280px] rounded-full border-8 border-[#028541] flex items-center justify-center shadow-md">
               <div className="w-[267px] h-[267px] rounded-full overflow-hidden relative">
                 <Image
                   src="/personprofile.png"
                   alt="Profile"
-                  fill
-                  className="object-cover"
+                  
+                 fill
+                  className="object-cover "
                 />
               </div>
             </div>
 
             {/* Verified Badge */}
-            <div className="absolute bottom-[8px]">
-              <div className="flex items-center gap-1 px-3 py-[4px] bg-[#1DB954] text-white text-[12px] rounded-full shadow">
-                <span className="w-[6px] h-[6px] bg-white rounded-full" />
+            <div className="absolute border-2  border-white rounded-2xl bottom-[18px]">
+              <div className={`flex items-center gap-1 px-3 py-[4px] bg-[#028541] text-white text-[12px] font-bold rounded-full ${poppins.className} shadow`}>
+                <Image src="/whiteverified.png" height={12} width={12}/>
                 Verified
               </div>
             </div>
@@ -51,11 +52,11 @@ const ProfileCard = () => {
 
             {/* ACTION BUTTONS */}
             <div className="flex gap-6 mt-6 justify-center lg:justify-start">
-              <button className="flex items-center gap-2 text-[#F97316] text-[14px] font-medium">
+              <button className="flex border border-[#F97415] items-center bg-[#F974151A] rounded-full px-3 py-2 gap-2 text-[#F97316] text-[14px] cursor-pointer font-medium">
                 <Image src="/pencil.png" alt="edit" width={16} height={16} />
                 Edit
               </button>
-              <button className="flex items-center gap-2 text-red-500 text-[14px] font-medium">
+              <button className="flex border border-[#D8232A] rounded-full px-3 py-2 bg-[#D8232A1A] items-center gap-2 text-red-500 text-[14px] cursor-pointer font-medium">
                 <Image src="/logout.png" alt="logout" width={16} height={16} />
                 Logout
               </button>
