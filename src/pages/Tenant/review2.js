@@ -1,13 +1,13 @@
 import React from 'react';
 
 import BlankNavbar from '@/Components/BlankNavbar';
-import ReviewCard2 from '@/Components/Login/ReviewPage/ReviewCard2';
+import ReviewCardTenant from '@/Components/Login/ReviewPage/ReviewCardTenant';
 
 const Review2 = () => {
   return (
     <div className="">
         <BlankNavbar/>
-        <ReviewCard2/>
+        <ReviewCardTenant/>
       
     </div>
   );

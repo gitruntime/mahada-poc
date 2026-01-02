@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Poppins } from "next/font/google";
+import { Poppins, Roboto } from "next/font/google";
 import Image from "next/image";
-import { Roboto } from "next/font/google";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
 const roboto = Roboto({
     subsets: ["latin"],
     weight: ["400"],
@@ -14,26 +14,38 @@ const poppins = Poppins({
     weight: ["400", "600", "700"],
 });
 
-const Login = () => {
+const Signup = () => {
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [errors, setErrors] = useState({});
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if (email && password) {
+        const newErrors = {};
+        if (!email) newErrors.email = "Email is required";
+        if (!password) newErrors.password = "Password is required";
+        else if (password.length < 8)
+            newErrors.password = "Password must be at least 8 characters";
+        if (password !== confirmPassword)
+            newErrors.confirmPassword = "Passwords do not match";
+
+        setErrors(newErrors);
+
+        if (Object.keys(newErrors).length === 0) {
+            // Save session and navigate
             sessionStorage.setItem("isAuthenticated", "true");
-            router.push("/");
-        } else {
-            console.log("Invalid credentials");
+            router.push("/Tenant/passwordcreated");
         }
     };
 
     return (
         <div className="min-h-screen flex flex-col lg:flex-row w-full">
 
-            {/* LEFT SIDE – LOGIN */}
+            {/* LEFT SIDE – SIGNUP FORM */}
             <div className="w-full lg:w-1/2 flex items-center justify-center px-6">
                 <div className="w-full max-w-[388px] rounded-xl flex items-center justify-center mx-auto">
                     <div className="w-full min-h-[616px] px-6 sm:px-[32px] py-[40px] flex flex-col justify-center">
@@ -53,44 +65,58 @@ const Login = () => {
                             </div>
 
                             {/* Form */}
-                            <form onSubmit={handleSubmit} className="space-y-6">
-
+                            <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className="space-y-2">
                                     <label className={`text-[16px] font-normal text-[#0C1421] ${poppins.className}`}>
                                         Email
                                     </label>
                                     <input
                                         type="email"
-                                        required
                                         placeholder="Example@email.com"
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         className="h-[48px] w-full max-w-[388px] bg-[#F7FBFF] rounded-[12px] border border-[#D4D7E3] px-4"
                                     />
+                                    {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
                                 </div>
 
-                                <div className="space-y-2">
+                                <div className="space-y-2 relative">
                                     <label className={`text-[16px] font-normal text-[#0C1421] ${poppins.className}`}>
-                                        Password
+                                        Create password
                                     </label>
                                     <input
-                                        type="password"
+                                        type={showPassword ? "text" : "password"}
                                         minLength={8}
-                                        required
-                                        placeholder="at least 8 characters"
+                                        placeholder="At least 8 characters"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         className="h-[48px] w-full max-w-[388px] bg-[#F7FBFF] rounded-[12px] border border-[#D4D7E3] px-4"
                                     />
+                                    <span
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        className="absolute right-3 top-9 cursor-pointer text-gray-500 text-sm"
+                                    >
+                                        {showPassword ? "Hide" : "Show"}
+                                    </span>
+                                    {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
                                 </div>
 
-                                <div className="flex justify-end">
-                                    <a
-                                        className={`${poppins.className} text-[16px] text-[#028541] hover:underline cursor-pointer`}
-                                    >
-                                        Forgot Password?
-                                    </a>
+                                <div className="space-y-2">
+                                    <label className={`text-[16px] font-normal text-[#0C1421] ${poppins.className}`}>
+                                        Re-enter password
+                                    </label>
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        minLength={8}
+                                        placeholder="At least 8 characters"
+                                        value={confirmPassword}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
+                                        className="h-[48px] w-full max-w-[388px] bg-[#F7FBFF] rounded-[12px] border border-[#D4D7E3] px-4"
+                                    />
+                                    {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword}</p>}
                                 </div>
+
+
 
                                 <button
                                     type="submit"
@@ -99,7 +125,7 @@ const Login = () => {
                                     hover:shadow-[0px_4px_8px_-2px_rgba(0,0,0,0.15),_0px_6px_12px_-2px_rgba(0,0,0,0.15)]
                                     transition-shadow duration-200 ease-in-out ${roboto.className}`}
                                 >
-                                    Sign in
+                                    Continue
                                 </button>
                             </form>
 
@@ -110,24 +136,13 @@ const Login = () => {
                                 <div className="h-px flex-1 bg-[#CFDFE2]" />
                             </div>
 
-                            {/* Social Login */}
-                            <div className="space-y-3">
-  <button className="h-12 w-full text-[16px] font-normal flex text-[#313957] items-center justify-center gap-3 rounded-xl bg-[#F3F9FA] hover:bg-[#E2EEF1] transition-colors duration-200">
-    <Image src="/googleicon.png" width={28} height={28} alt="Google" />
-    <span>Sign in with Google</span>
-  </button>
 
-  <button className="h-12 w-full flex text-[16px] font-normal text-[#313957] items-center justify-center gap-3 rounded-xl bg-[#F3F9FA] hover:bg-[#E2EEF1] transition-colors duration-200">
-    <Image src="/facebooklogo.png" width={28} height={28} alt="Facebook" />
-    <span>Sign in with Facebook</span>
-  </button>
-</div>
 
-                            {/* Sign up */}
+                            {/* Login Link */}
                             <p className={`mt-8 font-normal text-center ${roboto.className} text-[16px] sm:text-[18px]`}>
-                                Don’t you have an account?{" "}
-                                <Link href="/signup" className={`font-normal ${roboto.className} text-[#028541] cursor-pointer hover:underline`}>
-                                    Sign up
+                               Don't you have an account? {" "}
+                                <Link href="/choose" className={`font-normal ${roboto.className} text-[#028541] cursor-pointer hover:underline`}>
+                                Sign up
                                 </Link>
                             </p>
 
@@ -148,4 +163,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Signup;

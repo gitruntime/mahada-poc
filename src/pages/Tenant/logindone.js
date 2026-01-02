@@ -1,16 +1,15 @@
 import BlankNavbar from '@/Components/BlankNavbar'
-import InfoCard from '@/Components/Login/PerosnalInfo/InfoCard'
+import Done2 from '@/Components/Login/ReviewPage/Done2'
 import React from 'react'
 
-const personalinfo = () => {
+const logindone = () => {
   return (
     <div>
         <BlankNavbar/>
-        <InfoCard/>
-     
+        <Done2/>
       
     </div>
   )
 }
 
-export default personalinfo
+export default logindone

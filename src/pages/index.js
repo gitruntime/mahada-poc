@@ -22,7 +22,7 @@ const index = () => {
     const auth = sessionStorage.getItem("isAuthenticated")
 
     if (!auth) {
-      router.replace("/login")
+      router.replace("/choose")
     } else {
       setIsAuthorized(true)
     }

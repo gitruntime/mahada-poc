@@ -214,4 +214,4 @@ const ReviewCard2 = () => {
     );
 };
 
-export default ReviewCard2;
+export default ReviewCard2 ;
