@@ -52,14 +52,13 @@ const ProfileSection = () => {
 
                     {/* EDIT & LOGOUT with space below */}
                     <div className="w-full lg:w-auto flex justify-center lg:justify-end items-start gap-[24px] mt-auto mb-6 lg:mb-0 pt-6 lg:pt-0 border-t lg:border-t-0">
-                        <button className="flex items-center gap-2 hover:opacity-70 transition-opacity">
-                            <Image src="/pencil.png" width={18} height={18} alt="edit" />
-                            <span className={`${inter.className} text-[14px] font-medium`}>Edit</span>
+                        <button className="flex border border-[#F97415] items-center bg-[#F974151A] rounded-full px-3 py-2 gap-2 text-[#F97316] text-[14px] cursor-pointer font-medium">
+                            <Image src="/pencil.png" alt="edit" width={16} height={16} />
+                            Edit
                         </button>
-
-                        <button className="flex items-center gap-2 text-red-500 hover:opacity-70 transition-opacity">
-                            <Image src="/logout.png" width={18} height={18} alt="logout" />
-                            <span className={`${inter.className} text-[14px] font-medium`}>Logout</span>
+                        <button className="flex border border-[#D8232A] rounded-full px-3 py-2 bg-[#D8232A1A] items-center gap-2 text-red-500 text-[14px] cursor-pointer font-medium">
+                            <Image src="/logout.png" alt="logout" width={16} height={16} />
+                            Logout
                         </button>
                     </div>
                 </div>
@@ -73,7 +72,7 @@ const ProfileSection = () => {
                             <span className="text-[#666666]">+91</span> 9898989898
                         </p>
                     </div>
-                     <div>
+                    <div>
                         <p className={`text-[12px] ${poppins.className} text-[#00000099]`}>Date of Birth</p>
                         <p className={`${inter.className} font-normal text-[18px]`}>
                             <span className="text-[#000000]">11/11/1987</span>
@@ -104,7 +103,7 @@ const ProfileSection = () => {
                 </div>
                 {/* EDIT & LOGOUT */}
                 <div>
-                    <StepsCard/>
+                    <StepsCard />
                 </div>
 
 
