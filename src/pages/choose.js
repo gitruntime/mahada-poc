@@ -23,13 +23,13 @@ const Signup = () => {
   const router = useRouter();
   const [role, setRole] = useState("");
 
-  const handleContinue = () => {
-    if (role === "tenant") {
-      router.push("/Tenant/personalinfo");
-    } else if (role === "landlord") {
-      router.push("/Landlord/personalinfo");
-    }
-  };
+  const handleContinue =  () => {
+  if (role === "tenant") {
+    router.push("/Tenant/personalinfo");
+  } else {
+    router.push("/Landlord/personalinfo");
+  }
+};
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row w-full">

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Poppins, Arimo } from "next/font/google";
 import Link from "next/link";
 import Image from 'next/image';
@@ -14,6 +14,7 @@ const arimo = Arimo({
 });
 
 const ReviewCardTenant = () => {
+    const [accepted, setAccepted] = useState(false);
     return (
         <div className="relative mt-24 mb-3 px-4 sm:px-6 lg:px-12 w-full flex justify-center">
             <div className="w-full max-w-5xl flex flex-col gap-6">
@@ -155,6 +156,50 @@ const ReviewCardTenant = () => {
                             <h1>Please review all information carefully before submitting. Once submitted, changes cannot be made.</h1>
                         </div>
 
+
+                        <div className="flex-1 min-w-[220px] rounded-[12px]   bg-[#F7FBFF] border-2 border-gray-200 p-5">
+                            <h2 className={`${poppins.className} text-[18px] font-normal text-[#0A0A0A] mb-2`}>
+                                Registration Fees
+                            </h2>
+
+                            <p className={`${poppins.className} text-[13.5px]  text-[#717182] leading-relaxed mb-4`}>
+                                As per applicable government regulations, a one-time registration fee is required for
+                                processing your tenant application. Registration fees are collected only for processing
+                                and verification, and do not guarantee approval.
+                            </p>
+
+                            <div className={`${poppins.className} text-[14px] text-[#0A0A0A] space-y-2 mb-4`}>
+                                <div className="flex items-center gap-2">
+                                    <span className="text-[#717182] w-[120px]">Payment Type</span>
+                                    <span className="font-medium">One-time</span>
+                                </div>
+
+                                <div className="flex items-center gap-2">
+                                    <span className="text-[#717182] w-[120px]">Refundable</span>
+                                    <span className="font-medium">No</span>
+                                </div>
+
+                                <div className="flex items-center gap-2">
+                                    <span className="text-[#717182] w-[120px]">Registration Fee</span>
+                                    <span className="font-semibold text-[16px]">₹ 299</span>
+                                </div>
+                            </div>
+
+
+                            <label className="flex items-center h-[46px] rounded-[10px] mt-2 px-4 space-x-3 text-gray-800 text-sm cursor-pointer border-[0.5px] border-[#0000001A]">
+                                <input
+                                    type="checkbox"
+                                    checked={accepted}
+                                    onChange={() => setAccepted(!accepted)}
+                                    className="appearance-none h-5 w-5 border bg-[#6B7280] border-gray-300 rounded checked:bg-[#F97415]"
+                                />
+                                <span className={`select-none text-[#717182] text-[14px] ${poppins.className}`}>
+                                   Payment of the registration fee does not guarantee approval of the application.
+                                </span>
+                            </label>
+                        </div>
+
+
                         {/* Navigation Buttons */}
                         <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full max-w-[900px] mx-auto">
                             <Link
@@ -165,13 +210,13 @@ const ReviewCardTenant = () => {
                             </Link>
 
                             <Link
-                                href="/Tenant/logindone"
+                                href="/Tenant/paymentgateway1"
                                 className={`bg-orange-500 text-white ${poppins.className}
         flex justify-center items-center gap-2 px-6 py-2.5 rounded-lg
         transition-all duration-300 hover:bg-orange-600 hover:shadow-md
         hover:scale-[1.02] active:scale-[0.98]`}
                             >
-                                Submit your Verification
+                                Pay registration fee
                                 <img src="/righticon.png" className="w-4 h-4" alt="Next" />
                             </Link>
                         </div>

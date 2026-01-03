@@ -15,7 +15,7 @@ const poppins = Poppins({
 const Done2 = () => {
   const router = useRouter();
   const [showPopup, setShowPopup] = useState(false);
-  const applicationNumber = "TNT -1234567891234";
+  const applicationNumber = "MHADA-TN-PAY-000123";
 
   const handleCopy = () => {
     navigator.clipboard.writeText(applicationNumber)
@@ -42,17 +42,17 @@ const Done2 = () => {
 
         {/* Title */}
         <h2 className={`text-[16px] font-normal ${arimo.className} text-[#0A0A0A] mb-1`}>
-          KYC Application Submitted Successfully!
+          Payment Completed & KYC Application Submitted Successfully!
         </h2>
 
         {/* Subtitle */}
-        <p className={`text-[13px] ${arimo.className} text-[#717182] mb-5`}>
-          Your application is under review. You'll receive an update within 2–3 business days.
+        <p className={`text-[16px] ${arimo.className} text-[#717182] mb-5`}>
+          Your application is under review. You'll receive an update within 2-3 business days via email and SMS
         </p>
 
         {/* Application Number */}
         <h2 className={`text-[16px] font-normal ${arimo.className} text-[#0A0A0A] mb-1`}>
-          Application Number
+          Receipt ID
         </h2>
         <div className="flex items-center gap-3 mb-8">
           <span className="text-[20px] font-normal text-[#717182] tracking-wide">
