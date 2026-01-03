@@ -416,7 +416,7 @@ hover:bg-[#4B5563]`}
                   </button>
 
 
-                  <Link href="/Tenant/profile" className={`bg-orange-500 text-white ${poppins.className} flex justify-center items-center gap-2 px-4  py-1 rounded-lg w-full sm:w-auto transition-all duration-300 hover:bg-orange-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]`}>
+                  <Link href="/Landlord/propertyownership" className={`bg-orange-500 text-white ${poppins.className} flex justify-center items-center gap-2 px-4  py-1 rounded-lg w-full sm:w-auto transition-all duration-300 hover:bg-orange-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]`}>
                     Next
                     <img src="/righticon.png" className="w-4 h-4 transition-transform duration-300" alt="" />
                   </Link>
