@@ -40,13 +40,17 @@ const admindashboard = () => {
 
 
                         <div className='flex gap-3'>
-                            <Link href="/addproperty" className="h-[48px] px-[20px] border-2 border-[#F97415] rounded-[12px] text-[#F97415]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
+                            <Link href="#" className="h-[48px] px-[20px] border-2 border-[#F97415] rounded-[12px] text-[#F97415]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
                                 <Image src="/export.png" width={16} height={16} alt="plus" />
                                 Export Report
                             </Link>
-                            <Link href="/addproperty" className="h-[48px] px-[20px] border-2 border-[#F97415] rounded-[12px] text-[#F97415]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
+                            <Link href="#" className="h-[48px] px-[20px] border-2 border-[#F97415] rounded-[12px] text-[#F97415]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
                                 <Image src="/filtericon.png" width={16} height={16} alt="plus" />
                                 Filters
+                            </Link>
+                             <Link href="/admincrud" className="h-[48px] px-[20px] border-2 border-[#F97415] rounded-[12px] text-[#F97415]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
+                              
+                                Admin Actions
                             </Link>
                             <Link href="/" className="h-[48px] px-[20px] border-2 border-[#ff1313] rounded-[12px] text-[#dc0b0b]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
 
