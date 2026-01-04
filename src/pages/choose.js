@@ -111,7 +111,7 @@ const Signup = () => {
             {/* Footer */}
             <p className={`text-center ${roboto.className}`}>
            Are you an admin ?{" "}
-              <Link href="/adminlogin" className="text-[#028541] hover:underline">
+              <Link href="/adminlogin" className="text-[#028f46] hover:underline">
                 Login
               </Link>
             </p>
@@ -124,7 +124,7 @@ const Signup = () => {
         <img
           src="/Art.png"
           alt="Mhada Estate"
-          className="max-h-[720px] max-w-[640px] object-contain"
+          className="max-h-[730px] max-w-[640px] object-contain"
         />
       </div>
     </div>
