@@ -153,6 +153,53 @@ const Pcc2 = () => {
                             </div>
 
                         </div>
+                         <div className="w-full mx-auto mt-6 border border-gray-200 rounded-xl p-5 bg-white shadow-sm">
+
+                            {/* Heading */}
+                            <h3 className="text-lg font-semibold text-gray-900 text-center">
+                                Verify through PCC
+                            </h3>
+
+                            {/* PCC Button */}
+                            <Link
+                                href="https://pcs.mahaonline.gov.in/Forms/Home.aspx"
+                                target="_blank"
+                                type="button"
+                                className="
+      mt-4 w-full flex items-center justify-center gap-3
+      border border-blue-600 text-blue-950
+      rounded-lg font-medium
+      transition-all duration-300 ease-in-out
+      hover:bg-blue-950 hover:text-white
+      hover:shadow-lg hover:-translate-y-[2px]
+      active:translate-y-0
+    "
+                            >
+                                <img
+                                    src="/pcc.png"   // 👉 keep your PCC logo here
+                                    alt="Police Clearance Certificate"
+                                    className="
+        h-[40px] w-auto
+        transition-transform duration-300
+        group-hover:scale-110
+      "
+                                />
+                                <span className="transition-all duration-300">
+                                    Verify via Police Clearance Services
+                                    Maharashtra Police
+                                </span>
+                            </Link>
+
+                            {/* Helper Text */}
+                         
+                            <p className={`mt-3 text-[14px] text-gray-600 ${poppins.className} text-center`}>
+                               Dont have a account ? Upload PCC Certificate Manually below
+                            </p>
+
+                        </div>
+
+                       
+
                         <div>
                             <PdfUploader onUploadSuccess={setIsPccUploaded} />
                             {errors.pccFile && (

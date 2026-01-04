@@ -349,6 +349,69 @@ const DocInfoCard3 = () => {
 
 
             </div>
+            <div className="w-full  mx-auto mt-6 border border-gray-200 rounded-xl p-5 bg-white shadow-sm">
+
+              {/* Heading */}
+              <h3 className="text-lg font-semibold text-gray-900 text-center">
+                Verify through DigiLocker
+              </h3>
+
+              {/* DigiLocker Button */}
+              <Link
+                href="https://accounts.digilocker.gov.in/v3/4621c59a6ad0255c2ef65877756585af9e8fe2093a22285b275ec5536249ec76--en"
+                target="_blank"
+                type="button"
+                className="
+    mt-4 w-full flex items-center justify-center gap-3
+    border border-blue-600 text-blue-600
+    rounded-lg font-medium
+    transition-all duration-300 ease-in-out
+    hover:bg-blue-600 hover:text-white
+    hover:shadow-lg hover:-translate-y-[2px]
+    active:translate-y-0
+  "
+              >
+                <img
+                  src="/digi3.webp"
+                  alt="DigiLocker"
+                  className="
+      h-[50px] w-auto
+      transition-transform duration-300
+      group-hover:scale-110
+    "
+                />
+                <span className="transition-all duration-300">
+                  Verify via DigiLocker
+                </span>
+              </Link>
+
+              {/* Divider */}
+              <div className="flex items-center gap-3 my-4">
+                <div className="flex-1 h-px bg-gray-200"></div>
+                <span className="text-sm text-gray-500">OR</span>
+                <div className="flex-1 h-px bg-gray-200"></div>
+              </div>
+
+              {/* Manual Upload */}
+              <p className={`text-[14px] text-gray-600 ${poppins.className} text-center`}>
+                Don’t have an account on DigiLocker?
+              </p>
+
+              <button
+                type="button"
+                className={`mt-2 w-full text-[14px] text-gray-700  ${poppins.className} hover:text-gray-900`}
+              >
+                Upload documents manually below 
+              </button>
+
+            </div>
+
+
+
+
+
+
+
 
             {/* Document Upload */}
             <div className="w-full flex flex-col gap-6 p-4">
@@ -391,13 +454,13 @@ const DocInfoCard3 = () => {
                 <Link href="/Landlord/personalinfo" className="px-6 py-2 bg-white border-2 border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-center w-full sm:w-auto">
                   Previous
                 </Link>
-                
-                  {/* Popup */}
-{showPopup && (
-  <div className="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50 animate-fadeIn">
-    Draft saved successfully!
-  </div>
-)}
+
+                {/* Popup */}
+                {showPopup && (
+                  <div className="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded shadow-lg z-50 animate-fadeIn">
+                    Draft saved successfully!
+                  </div>
+                )}
                 <div className="flex  gap-2 justify-center items-center">
                   <button
                     type="button"
