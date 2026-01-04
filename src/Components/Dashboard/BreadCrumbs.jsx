@@ -14,7 +14,7 @@ const BreadCrumbs = () => {
             <nav className={`flex items-center gap-2 text-[16px]  ${poppins.className}`}>
                 <span className="text-gray-400 font-medium"> <Link href="/">Home</Link></span>
                 <span className="text-black font-semibold">{`>`} My Dashboard</span>
-            </nav>
+            </nav>  
         </div>
     );
 };
