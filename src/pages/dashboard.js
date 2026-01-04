@@ -10,6 +10,8 @@ import Footer from "@/Components/Layout/Footer"
 import MyProperties from "@/Components/Dashboard/MyProperties"
 import MyTProperties from "@/Components/Dashboard/MyTProperties"
 import Tenant from "@/Components/Homepage/Properties/Tenant"
+import ProperPageL from "@/Components/Homepage/Properties/ProperPageL"
+
 
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("landlord")
@@ -32,10 +34,11 @@ const Dashboard = () => {
       {showProfile2 ? <Profile2 /> : <ProfileSection />}
 
 
-      <ButtonSection activeTab={activeTab} setActiveTab={setActiveTab} />
+    
 
       {activeTab === "landlord" && <LandlordDash />}
-      {activeTab === "tenant" && <TenantDash />}
+      <ProperPageL />
+   
 
       <div className="flex-1 p-8">
         <div className="max-w-[1240px] mx-auto flex flex-col lg:flex-row gap-8">
@@ -52,7 +55,7 @@ const Dashboard = () => {
             </>
           )}
 
-          {activeTab === "tenant" && <MyTProperties />}
+         
         </div>
       </div>
 

@@ -21,24 +21,32 @@ const ProfileCard = () => {
         {/* LEFT SECTION */}
         <div className="flex flex-col lg:flex-row items-center gap-[28px] w-full lg:w-[45%]">
 
+
           {/* PROFILE IMAGE WITH THICK GREEN BORDER */}
           <div className="flex flex-col items-center relative">
             <div className="w-[280px] h-[280px] rounded-full border-8 border-[#028541] flex items-center justify-center shadow-md">
-              <div className="w-[267px] h-[267px] rounded-full overflow-hidden relative">
-                <Image
-                  src="/personprofile.png"
-                  alt="Profile"
-                  
-                 fill
-                  className="object-cover "
-                />
+
+              {/* WHITE RING (LESS GAP) */}
+              <div className="w-[260px] h-[260px] rounded-full border-6 border-white flex items-center justify-center bg-white">
+
+                {/* IMAGE */}
+                <div className="w-[245px] h-[245px] rounded-full overflow-hidden relative">
+                  <Image
+                    src="/personprofile.png"
+                    alt="Profile"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
               </div>
             </div>
+
 
             {/* Verified Badge */}
             <div className="absolute border-2  border-white rounded-2xl bottom-[18px]">
               <div className={`flex items-center gap-1 px-3 py-[4px] bg-[#028541] text-white text-[12px] font-bold rounded-full ${poppins.className} shadow`}>
-                <Image src="/whiteverified.png" height={12} width={12}/>
+                <Image src="/whiteverified.png" height={12} width={12} />
                 Verified
               </div>
             </div>

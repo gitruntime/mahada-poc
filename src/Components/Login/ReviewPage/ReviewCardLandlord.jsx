@@ -92,39 +92,39 @@ const ReviewCardLandlord = () => {
 
                                 {/* Profile Info Card */}
                                 <div className="flex-1 min-w-[300px] h-[280px] rounded-[12px] bg-[#F7FBFF] border-2 border-gray-200 p-5">
-  <h2 className={`${poppins.className} text-[16px] font-normal text-[#0A0A0A] mb-4`}>
-    Property Info
-  </h2>
+                                    <h2 className={`${poppins.className} text-[16px] font-normal text-[#0A0A0A] mb-4`}>
+                                        Property Info
+                                    </h2>
 
-  <div className={`space-y-2 ${poppins.className} font-normal text-[14px] text-[#0A0A0A]`}>
-    <div className="flex">
-      <span className="font-medium w-[140px]">Property:</span>
-      <span>Property 1</span>
-    </div>
+                                    <div className={`space-y-2 ${poppins.className} font-normal text-[14px] text-[#0A0A0A]`}>
+                                        <div className="flex">
+                                            <span className="font-medium w-[140px]">Property:</span>
+                                            <span>Property 1</span>
+                                        </div>
 
-    <div className="flex">
-      <span className="font-medium w-[140px]">Title:</span>
-      <span className="font-semibold">2BHK in Andheri West</span>
-    </div>
+                                        <div className="flex">
+                                            <span className="font-medium w-[140px]">Title:</span>
+                                            <span className="font-semibold">2BHK in Andheri West</span>
+                                        </div>
 
-    <div className="flex">
-      <span className="font-medium w-[140px]">Property Type:</span>
-      <span>2BHK</span>
-    </div>
+                                        <div className="flex">
+                                            <span className="font-medium w-[140px]">Property Type:</span>
+                                            <span>2BHK</span>
+                                        </div>
 
-    <div className="flex">
-      <span className="font-medium w-[140px]">Property Status:</span>
-      <span>Open for rent</span>
-    </div>
+                                        <div className="flex">
+                                            <span className="font-medium w-[140px]">Property Status:</span>
+                                            <span>Open for rent</span>
+                                        </div>
 
-    <div className="flex">
-      <span className="font-medium w-[140px]">Address:</span>
-      <span className="font-semibold">
-        Andheri West, Near DN Nagar Metro
-      </span>
-    </div>
-  </div>
-</div>
+                                        <div className="flex">
+                                            <span className="font-medium w-[140px]">Address:</span>
+                                            <span className="font-semibold">
+                                                Andheri West, Near DN Nagar Metro
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
 
@@ -217,7 +217,7 @@ const ReviewCardLandlord = () => {
                                     className="appearance-none h-5 w-5 border bg-[#6B7280] border-gray-300 rounded checked:bg-[#F97415]"
                                 />
                                 <span className={`select-none text-[#717182] text-[14px] ${poppins.className}`}>
-                                   Payment of the registration fee does not guarantee approval of the application.
+                                    Payment of the registration fee does not guarantee approval of the application.
                                 </span>
                             </label>
                         </div>

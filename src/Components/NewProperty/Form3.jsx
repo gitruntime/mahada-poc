@@ -21,6 +21,7 @@ const arimo = Arimo({
 
 
 const Form3 = () => {
+    const [accepted, setAccepted] = useState(false);
     const [images, setImages] = useState([]);
     const [docs, setDocs] = useState([]);
 
@@ -73,6 +74,56 @@ const Form3 = () => {
                         <PropDoc docs={docs} />
                     </div>
 
+                    <div className="flex-1 min-w-[220px] rounded-[12px]   bg-[#F7FBFF] border-2 border-gray-200 p-5">
+                        <h2 className={`${poppins.className} text-[18px] font-normal text-[#0A0A0A] mb-2`}>
+                            Property Verification and Listing fees
+                        </h2>
+
+                        <p className={`${poppins.className} text-[13.5px]  text-[#717182] leading-relaxed mb-4`}>
+                            As per applicable government regulations, a one-time registration fee is required for processing your tenant application. Registration fees are collected only for processing and verification, and do not guarantee approval.
+                        </p>
+
+                        <div className={`${poppins.className} text-[14px] text-[#0A0A0A] space-y-2 mb-4`}>
+                            <div className="flex items-center gap-2">
+                                <span className="text-[#717182] w-[120px]">Payment Type</span>
+                                <span className="font-medium">One-time</span>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                                <span className="text-[#717182] w-[120px]">Refundable</span>
+                                <span className="font-medium">No</span>
+                            </div>
+
+                            <div className="flex items-center gap-2">
+                                <span className="text-[#717182] w-[120px]">Registration Fee</span>
+                                <span className="font-semibold text-[16px]">₹ 299</span>
+                            </div>
+                        </div>
+                        <div className="mx-auto w-full  border border-[#0000001A] rounded-[10px] p-4 flex flex-col  ">
+                            <p className={`${poppins.className} text-[13.5px] text-[#717182] leading-relaxed mb-2 `}>
+                                Payment of the listing fee does not guarantee approval or tenant allocation.
+                            </p>
+                            <p className={`${poppins.className} text-[13.5px] text-[#717182] leading-relaxed `}>
+                                Final activation of the listing is subject to verification and approval by the competent authority as per applicable government regulations.
+                            </p>
+                        </div>
+
+
+
+
+                        <label className="flex items-center h-[46px] rounded-[10px] mt-2 px-4 space-x-3 text-gray-800 text-sm cursor-pointer border-[0.5px] border-[#0000001A]">
+                            <input
+                                type="checkbox"
+                                checked={accepted}
+                                onChange={() => setAccepted(!accepted)}
+                                className="appearance-none h-5 w-5 border bg-[#6B7280] border-gray-300 rounded checked:bg-[#F97415]"
+                            />
+                            <span className={`select-none text-[#717182] text-[13.5px] ${poppins.className}`}>
+                                I confirm that the property details provided by me are accurate and that I agree to pay the applicable listing fee for processing and verification purposes.
+                            </span>
+                        </label>
+                    </div>
+
 
                     {/* Navigation Buttons */}
                     <div className="flex flex-col sm:flex-row justify-between gap-4 mb-[20px] mx-5 sm:gap-0 mt-6">
@@ -84,7 +135,7 @@ const Form3 = () => {
                         </Link>
 
                         <Link
-                            href="/done"
+                            href="/Landlord/paymentgatewayprop"
                             className={`w-full sm:w-auto bg-orange-500 text-white ${poppins.className} 
           flex justify-center items-center gap-2 px-6 py-2.5 rounded-lg
           cursor-pointer transition-all duration-300 ease-in-out
