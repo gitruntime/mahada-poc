@@ -297,10 +297,7 @@ const HeroNavbar = () => {
                         Tenant
                     </Link>
 
-                    <Link href="/dashboard" className="px-6 py-2 rounded-lg border border-gray-400 text-gray-600 font-semibold 
-                     hover:bg-gray-600 hover:text-white transition-all duration-200">
-                        Landlord
-                    </Link>
+                   
                 </div>
 
                 <div
