@@ -235,7 +235,7 @@ const HeroNavbar = () => {
 
 
                 {/* Dashboard */}
-                <Link href="/dashboard">
+                <Link href="/Tenant/dashboard">
                     <button className="group flex items-center w-[116px] h-[32px] gap-[4px] bg-[#FF7A00] hover:bg-[#0ab432] pt-[2px] pr-[14px] pb-[2px] pl-[2px] rounded-full cursor-pointer text-white transition-all shadow-sm">
 
                         {/* Avatar & Badge */}
@@ -291,7 +291,7 @@ const HeroNavbar = () => {
                     <ChevronDown size={16} strokeWidth={2} className="flex-shrink-0" />
                 </div> */}
                 <CityDropdownDiv />
-               
+                
 
                 <div
                     onClick={handleLogout}

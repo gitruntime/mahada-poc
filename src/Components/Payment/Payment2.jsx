@@ -182,7 +182,7 @@ const CardPaymentForm = () => {
             </div>
 
             {/* Pay Button */}
-            <Link href="/Tenant/logindone"
+            <Link href="/Landlord/logindone"
                 disabled={!isValid}
                 className={`w-full py-3 rounded-lg flex items-center justify-center gap-2 font-medium transition
           ${isValid

@@ -35,10 +35,10 @@ const PassCreated = () => {
 
         {/* Login Button */}
         <Link
-          href="/login"
+          href="/Tenant"
           className={`bg-[#F97415] ${poppins.className} hover:bg-orange-600 text-white text-[14px] font-semibold px-6 py-2 rounded-md transition`}
         >
-          Login
+          Welcome
         </Link>
 
       </div>
