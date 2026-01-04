@@ -26,7 +26,7 @@ const Signup = () => {
         e.preventDefault();
 
         const newErrors = {};
-        if (!email) newErrors.email = "Email is required";
+      
         if (!password) newErrors.password = "Password is required";
         else if (password.length < 8)
             newErrors.password = "Password must be at least 8 characters";
@@ -67,18 +67,30 @@ const Signup = () => {
                             {/* Form */}
                             <form onSubmit={handleSubmit} className="space-y-4">
                                 <div className="space-y-2">
-                                    <label className={`text-[16px] font-normal text-[#0C1421] ${poppins.className}`}>
-                                        Email
-                                    </label>
-                                    <input
-                                        type="email"
-                                        placeholder="Example@email.com"
-                                        value={email}
-                                        onChange={(e) => setEmail(e.target.value)}
-                                        className="h-[48px] w-full max-w-[388px] bg-[#F7FBFF] rounded-[12px] border border-[#D4D7E3] px-4"
-                                    />
-                                    {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
-                                </div>
+  <label
+    className={`text-[16px] font-normal text-gray-400 ${poppins.className}`}
+  >
+    Email
+  </label>
+
+  <input
+    type="email"
+    value={email}
+    placeholder="test@gmail.com"
+    disabled
+    className="
+      h-[48px] w-full max-w-[388px]
+      bg-gray-100
+      rounded-[12px]
+      border border-gray-300
+      px-4
+      text-gray-400
+      cursor-not-allowed
+      focus:outline-none
+    "
+  />
+</div>
+
 
                                 <div className="space-y-2 relative">
                                     <label className={`text-[16px] font-normal text-[#0C1421] ${poppins.className}`}>
@@ -140,9 +152,9 @@ const Signup = () => {
 
                             {/* Login Link */}
                             <p className={`mt-8 font-normal text-center ${roboto.className} text-[16px] sm:text-[18px]`}>
-                               Don't you have an account? {" "}
+                                Don't you have an account? {" "}
                                 <Link href="/choose" className={`font-normal ${roboto.className} text-[#028541] cursor-pointer hover:underline`}>
-                                Sign up
+                                    Sign up
                                 </Link>
                             </p>
 
