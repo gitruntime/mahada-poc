@@ -2,6 +2,7 @@ import React from 'react'
 import PropertyLeft from './PropertyLeft'
 import PropertyRight from './PropertyRight'
 import { Poppins } from "next/font/google";
+import Image from 'next/image';
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -10,19 +11,19 @@ const poppins = Poppins({
 
 const PropertyDetails = () => {
   return (
-    <div>
-       <div className='max-w-[1368px] mb-[30px] h-auto mx-auto flex  gap-[40px]'>
-        <div className='w-[901px] h-[auto]'>
-           <PropertyLeft/>
-
-        </div>
-        <div className='w-[435px] h-[auto]'>
-            <PropertyRight/>
-
-        </div>
-
-       </div>
+    <div className="max-w-[1368px] mb-[30px] mt-[30px] mx-auto flex gap-[40px] relative h-auto">
       
+      {/* Left Side */}
+      <div className="w-full h-auto">
+        <PropertyLeft />
+      </div>
+
+      {/* Right Side */}
+      <div className="w-full h-auto">
+        <PropertyRight />
+      </div>
+
+     
     </div>
   )
 }
