@@ -191,7 +191,7 @@ const CardPaymentForm = () => {
                     }
         `}
             >
-                <Lock size={16} /> Pay ₹699.00
+                <Lock size={16} /> Pay ₹299.00
             </Link>
         </div>
     );
@@ -297,7 +297,7 @@ const PaymentSummary = () => {
 
             <div className="flex justify-between">
                 <span className="text-[#717182]">Registration Fee</span>
-                <span className="font-semibold text-[16px]">₹ 699</span>
+                <span className="font-semibold text-[16px]">₹ 299</span>
             </div>
 
             <hr className="border-gray-200" />
@@ -305,7 +305,7 @@ const PaymentSummary = () => {
             {/* Total */}
             <div className="flex justify-between">
                 <span className="font-semibold text-[#0A0A0A]">Total Amount</span>
-                <span className="font-semibold text-[16px]">₹ 699.00</span>
+                <span className="font-semibold text-[16px]">₹ 299.00</span>
             </div>
         </div>
 
