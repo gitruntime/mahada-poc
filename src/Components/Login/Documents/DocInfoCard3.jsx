@@ -215,7 +215,9 @@ const DocInfoCard3 = () => {
                   { icon: "/personalinfo_icon.png", label: "Personal Info" },
                   { icon: "/document_icon.png", label: "Documents" },
                   { icon: "/personalinfo_icon.png", label: "Profile Info", inactive: true },
+                  
                   { icon: "/document_icon.png", label: "Bank Details", inactive: true },
+                    { icon: "/document_icon.png", label: "Bank Details", inactive: true },
                   { icon: "/document_icon.png", label: "Police verification", inactive: true },
                   { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
                 ].map((step, idx) => (
@@ -353,7 +355,7 @@ const DocInfoCard3 = () => {
 
               {/* Heading */}
               <h3 className="text-lg font-semibold text-gray-900 text-center">
-                Verify through DigiLocker
+                Upload through DigiLocker
               </h3>
 
               {/* DigiLocker Button */}
@@ -381,7 +383,7 @@ const DocInfoCard3 = () => {
     "
                 />
                 <span className="transition-all duration-300">
-                  Verify via DigiLocker
+                  Upload documents via DigiLocker
                 </span>
               </Link>
 
@@ -401,7 +403,7 @@ const DocInfoCard3 = () => {
                 type="button"
                 className={`mt-2 w-full text-[14px] text-gray-700  ${poppins.className} hover:text-gray-900`}
               >
-                Upload documents manually below 
+                Upload documents manually below
               </button>
 
             </div>

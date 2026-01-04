@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
-import Image from 'next/image'
 import { Poppins, Arimo } from "next/font/google";
-import Link from 'next/link';
-import BlankNavbar from '../BlankNavbar';
+
 const arimo = Arimo({
     subsets: ["latin"],
     weight: ["400", "700"],
@@ -35,16 +33,16 @@ const AddNewPropertyPage = () => {
         city: '',
         state: '',
         pin: '',
+        latitude: '',
+        longitude: '',
     });
 
     const [errors, setErrors] = useState({});
 
-    // Handle input change
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    // Validation
     const validateForm = () => {
         const newErrors = {};
 
@@ -58,11 +56,19 @@ const AddNewPropertyPage = () => {
         if (!formData.pin.trim()) newErrors.pin = "PIN is required";
         else if (!/^\d{6}$/.test(formData.pin)) newErrors.pin = "Enter a valid 6-digit PIN";
 
+        // Validate geo fields
+        if (!formData.latitude.trim()) newErrors.latitude = "Latitude is required";
+        else if (isNaN(formData.latitude) || Number(formData.latitude) < -90 || Number(formData.latitude) > 90)
+            newErrors.latitude = "Latitude must be between -90 and 90";
+
+        if (!formData.longitude.trim()) newErrors.longitude = "Longitude is required";
+        else if (isNaN(formData.longitude) || Number(formData.longitude) < -180 || Number(formData.longitude) > 180)
+            newErrors.longitude = "Longitude must be between -180 and 180";
+
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
-    // Handle Next
     const handleNext = (e) => {
         e.preventDefault();
         if (validateForm()) {
@@ -72,17 +78,9 @@ const AddNewPropertyPage = () => {
 
     return (
         <div className="w-full h-auto mb-[30px]">
-            {/* MAIN CARD */}
-            <section
-                className="
-        w-full 
-        mx-auto
-        rounded-[14px]
-        px-[10px] sm:px-[40px]
-        py-[10px]
-      "
-            >
-                {/* FORM */}
+            <section className="w-full mx-auto rounded-[14px] px-[10px] sm:px-[40px] py-[10px]">
+
+                {/* FORM GRID */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                     {/* Title */}
                     <div>
@@ -105,7 +103,6 @@ const AddNewPropertyPage = () => {
                         <label className={`block text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>
                             Property Type *
                         </label>
-
                         <div className="relative">
                             <select
                                 name="propertyType"
@@ -155,12 +152,9 @@ const AddNewPropertyPage = () => {
                 </div>
 
                 {/* City / State / PIN */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-                    {/* City */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                     <div>
-                        <label className={`text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>
-                            City *
-                        </label>
+                        <label className={`text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>City *</label>
                         <input
                             type="text"
                             name="city"
@@ -172,11 +166,8 @@ const AddNewPropertyPage = () => {
                         {errors.city && <span className="text-red-500 text-xs">{errors.city}</span>}
                     </div>
 
-                    {/* State */}
                     <div>
-                        <label className={`text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>
-                            State *
-                        </label>
+                        <label className={`text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>State *</label>
                         <select
                             name="state"
                             className={`${inputBaseClass}${errors.state ? " border-red-500" : ""}`}
@@ -189,11 +180,8 @@ const AddNewPropertyPage = () => {
                         {errors.state && <span className="text-red-500 text-xs">{errors.state}</span>}
                     </div>
 
-                    {/* PIN */}
                     <div>
-                        <label className={`text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>
-                            PIN Code *
-                        </label>
+                        <label className={`text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>PIN Code *</label>
                         <input
                             type="text"
                             placeholder="6-digit PIN"
@@ -209,17 +197,59 @@ const AddNewPropertyPage = () => {
                     </div>
                 </div>
 
+                {/* Geo Tag: Latitude / Longitude */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    <div>
+                        <label className={`text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>Latitude *</label>
+                        <input
+                            type="text"
+                            name="latitude"
+                            placeholder="19.120112"
+                            className={`${inputBaseClass}${errors.latitude ? " border-red-500" : ""}`}
+                            value={formData.latitude}
+                            onChange={handleChange}
+                        />
+                        {errors.latitude && <span className="text-red-500 text-xs">{errors.latitude}</span>}
+                    </div>
+
+                    <div>
+                        <label className={`text-[14px] text-[#0A0A0A] ${poppins.className} font-medium mb-1`}>Longitude *</label>
+                        <input
+                            type="text"
+                            name="longitude"
+                            placeholder="72.848229"
+                            className={`${inputBaseClass}${errors.longitude ? " border-red-500" : ""}`}
+                            value={formData.longitude}
+                            onChange={handleChange}
+                        />
+                        {errors.longitude && <span className="text-red-500 text-xs">{errors.longitude}</span>}
+                    </div>
+                </div>
+
+                {/* Map Preview */}
+                {formData.latitude && formData.longitude && (
+                    <div className="w-full h-[300px] mb-6">
+                        <iframe
+                            width="100%"
+                            height="100%"
+                            className="rounded-lg border"
+                            loading="lazy"
+                            src={`https://maps.google.com/maps?q=${formData.latitude},${formData.longitude}&z=15&output=embed`}
+                        ></iframe>
+                    </div>
+                )}
+
                 {/* NEXT BUTTON */}
                 <div className="flex justify-end w-full">
                     <button
                         onClick={handleNext}
                         className={`group bg-orange-500 text-white ${poppins.className}
-            flex items-center gap-2 text-[14px]
-            px-6 py-2.5 rounded-lg
-            transition-all duration-300
-            hover:bg-orange-600 hover:shadow-md`}
+                        flex items-center gap-2 text-[14px]
+                        px-6 py-2.5 rounded-lg
+                        transition-all duration-300
+                        hover:bg-orange-600 hover:shadow-md`}
                     >
-                        Next
+                        Verify
                         <img
                             src="/righticon.png"
                             className="w-[16px] h-[16px] transition-transform duration-300 group-hover:translate-x-1"
@@ -230,7 +260,6 @@ const AddNewPropertyPage = () => {
             </section>
         </div>
     );
-
-}
+};
 
 export default AddNewPropertyPage;
