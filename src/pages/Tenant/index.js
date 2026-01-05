@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Layout from '@/Components/Layout'
 import HeroT from '@/Components/Homepage/HeroT'
-import PropertyPage from '@/Components/Homepage/Properties/ProperPage'
+import ProperPageTenant from '@/Components/Homepage/Properties/ProperPageTenant'
 import PlotsPage from '@/pages/api/VerifiedPlots/PlotsPage'
 import Banner from '@/Components/Homepage/Banner'
 import AdvicePage from '@/Components/Advice/AdvicePage'
@@ -21,7 +21,7 @@ const index = () => {
   return (
     <Layout >
       <HeroT />
-      <PropertyPage />
+      <ProperPageTenant />
       <PlotsPage />
       <Banner />
       <AdvicePage />
