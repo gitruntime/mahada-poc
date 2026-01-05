@@ -5,7 +5,7 @@ import { Poppins } from "next/font/google";
 import { Search } from "lucide-react";
 import Image from "next/image";
 import Footer from "@/Components/Layout/Footer";
-
+import Link from "next/link";
 /* ================= FONT ================= */
 const poppins = Poppins({
     subsets: ["latin"],
@@ -233,9 +233,9 @@ const PropertyCard = ({ property }) => {
                         </p>
                         <p className="text-gray-500 text-xs">Deposit: ₹{property.deposit}</p>
                     </div>
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold">
+                    <Link href="/Tenant/propertydetails" className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-semibold">
                         View Details
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -395,7 +395,7 @@ const AllPropertiesTenant = () => {
 
             <Pagination totalItems={filteredProperties.length} itemsPerPage={ITEMS_PER_PAGE} currentPage={currentPage} setCurrentPage={setCurrentPage} />
 
-           
+
         </div>
     );
 };

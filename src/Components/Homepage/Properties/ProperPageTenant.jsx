@@ -1,5 +1,5 @@
 import React from "react";
-import PropertyCard from "./PropertyCard";
+import PropertyCardTenant from "./PropertyCardTenant";
 import { Poppins } from "next/font/google";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
@@ -68,7 +68,7 @@ const ProperPageTenant = () => {
         >
           {properties.map((property) => (
             <SwiperSlide key={property.id}>
-              <PropertyCard property={property} className="hover:scale-105 transition-transform duration-300" />
+              <PropertyCardTenant property={property} className="hover:scale-105 transition-transform duration-300" />
             </SwiperSlide>
           ))}
 
