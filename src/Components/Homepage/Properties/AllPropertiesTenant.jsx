@@ -736,27 +736,103 @@ const HeroSearch = ({ setFilteredProperties, setCurrentPage }) => {
 };
 
 /* ================= PROPERTY CARD ================= */
-const PropertyCard = ({ property }) => (
-    <div className="w-[440px] h-[430px] bg-white rounded-[12px] shadow overflow-hidden">
-        <div className="relative h-[192px]">
-            <Image src={property.image} alt={property.title} fill className="object-cover" />
-        </div>
+const PropertyCard = ({ property }) => {
+    return (
+        <div
+            className={`
+                w-[440px] h-[430px] border border-t-0 border-[#E5E7EB]
+                bg-white rounded-[12px]
+                shadow-[0px_4px_20px_-2px_rgba(229,231,235,0.8)]
+                overflow-hidden flex flex-col
+            `}
+        >
+            {/* Image */}
+            <div className="relative w-full h-[192px]">
+                <Image
+                    src={property.image}
+                    alt="Property"
+                    fill
+                    className="object-cover"
+                />
 
-        <div className={`p-5 flex flex-col justify-between ${poppins.className}`}>
-            <div>
-                <h3 className="font-bold">{property.title}</h3>
-                <p className="text-gray-500">{property.location}</p>
+                {property.verified && (
+                    <div className="absolute top-3 left-3 flex items-center bg-[#028541] rounded-full px-2 h-6">
+                        <img src="/verified_logo.png" className="w-3 h-3" />
+                        <span className="ml-1 text-white text-[12px] font-bold">
+                            Verified
+                        </span>
+                    </div>
+                )}
+
+                <div className="absolute top-3 right-3 bg-[#1E3A8A] text-white text-[12px] font-bold px-3 py-1 rounded-full">
+                    {property.bhkTag}
+                </div>
+
+                <div className="absolute bottom-0 left-0 w-full flex items-center gap-1 px-3 py-1 text-white bg-[linear-gradient(0deg,rgba(0,0,0,0.8),transparent)]">
+                    <img src="/start_rating.png" className="w-4 h-4" />
+                    <span>{property.rating}</span>
+                    <span className="text-white/80">
+                        ({property.reviews} reviews)
+                    </span>
+                </div>
             </div>
 
-            <div className="flex justify-between items-center mt-4">
-                <p className="text-orange-500 font-bold">₹{property.price}/month</p>
-                <button className="bg-orange-500 text-white px-4 py-2 rounded">
-                    View Details
-                </button>
+            {/* Content */}
+            <div className={`flex flex-col ${poppins.className} justify-between flex-1 p-5`}>
+                <div>
+                    <h3 className="text-[18px] font-bold text-gray-900">
+                        {property.title}
+                    </h3>
+
+                    <p className="flex items-center gap-2 text-gray-500 text-[14px] mt-1">
+                        <img src="/location.png" className="w-4 h-4" />
+                        {property.location}
+                    </p>
+
+                    <div className="flex gap-6 text-gray-500 text-[14px] mt-3">
+                        <div className="flex gap-2">
+                            <img src="/bed.png" className="w-4 h-4" />
+                            {property.bhk}
+                        </div>
+                        <div className="flex gap-2">
+                            <img src="/scale.png" className="w-4 h-4" />
+                            {property.floor}
+                        </div>
+                    </div>
+
+                    <div className="flex flex-wrap gap-2 mt-4 mb-[10px]">
+                        {property.amenities.map((item) => (
+                            <span
+                                key={item}
+                                className="px-3 py-1 border border-[#E5E7EB] rounded-full text-[12px] font-bold"
+                            >
+                                {item}
+                            </span>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="pt-4 border-t border-[#E5E7EB] flex justify-between items-center">
+                    <div>
+                        <p className="text-[#F97316] text-[20px] font-bold">
+                            ₹{property.price}
+                            <span className={`text-gray-500 font-normal text-[14px]`}>
+                                {" "} /month
+                            </span>
+                        </p>
+                        <p className="text-gray-500 text-[13px]">
+                            Deposit: ₹{property.deposit}
+                        </p>
+                    </div>
+
+                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-[12px]">
+                        View Details
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-);
+    );
+};
 
 /* ================= PAGINATION ================= */
 const Pagination = ({ totalItems, itemsPerPage, currentPage, setCurrentPage }) => {
