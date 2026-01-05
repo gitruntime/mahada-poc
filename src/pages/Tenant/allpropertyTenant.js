@@ -3,6 +3,8 @@ import AllPropertiesTenant from '@/Components/Homepage/Properties/AllPropertiesT
 import React from 'react'
 import { Poppins } from "next/font/google";
 import Link from 'next/link';
+import Footer from "@/Components/Layout/Footer"
+
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -22,6 +24,7 @@ const allpropertyTenant = () => {
                 </nav>
             </div>
         <AllPropertiesTenant/>
+      <Footer/>
 
       
     </div>
