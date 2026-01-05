@@ -678,20 +678,20 @@ const AllProperties = () => {
                     </button>
 
                     {/* Page Numbers */}
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={`w-[28px] h-[28px] flex items-center justify-center rounded-full 
-                        text-sm font-medium transition leading-none
-                ${currentPage === page
-                                    ? "border-2 border-orange-500 text-orange-500"
-                                    : "text-gray-800 hover:bg-gray-100"
-                                }`}
-                        >
-                            {page}
-                        </button>
-                    ))}
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                            <button
+                                key={page}
+                                onClick={() => setCurrentPage(page)}
+                                className={`w-[28px] h-[28px] flex items-center justify-center rounded-full 
+                            text-sm font-medium transition leading-none
+                    ${currentPage === page
+                                        ? "border-2 border-orange-500 text-orange-500"
+                                        : "text-gray-800 hover:bg-gray-100"
+                                    }`}
+                            >
+                                {page}
+                            </button>
+                        ))}
 
                     {/* Next Arrow */}
                     <button
