@@ -52,7 +52,7 @@ const Done2 = () => {
 
         {/* Application Number */}
         <h2 className={`text-[16px] font-normal ${arimo.className} text-[#0A0A0A] mb-1`}>
-          Receipt ID
+          Application Reference Number
         </h2>
         <div className="flex items-center gap-3 mb-8">
           <span className="text-[20px] font-normal text-[#717182] tracking-wide">

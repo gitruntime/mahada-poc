@@ -10,9 +10,10 @@ const poppins = Poppins({
 const BankInfo2 = () => {
     const [formData, setFormData] = useState({
         bankName: "",
-        accountNumber: "",
-        ifscCode: "",
-        firstName: "",
+        accountNumber: "987654321098",
+        ifscCode: "SBIN0000456",
+        firstName: "Rahul",
+
     });
 
     const [errors, setErrors] = useState({});
@@ -81,7 +82,7 @@ const BankInfo2 = () => {
         e.preventDefault();
         if (validate()) {
             // Navigate to next step
-            window.location.href = "/Tenant/pcc";
+            window.location.href = "/Tenant/review2";
         }
     };
 

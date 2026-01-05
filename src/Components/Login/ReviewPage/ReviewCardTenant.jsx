@@ -30,7 +30,7 @@ const ReviewCardTenant = () => {
                 {/* Header: Complete your KYC and Skip button */}
                 <div className="flex flex-col sm:flex-row justify-between items-center gap-4 sm:gap-0">
                     <h2 className={`text-gray-500 text-lg sm:text-xl font-normal text-center sm:text-left ${poppins.className}`}>
-                        Complete your Know Your Cuswwwwwtomer verification quickly and securely
+                        Complete your Know Your Customer verification quickly and securely
                     </h2>
 
                 </div>
@@ -51,7 +51,6 @@ const ReviewCardTenant = () => {
                                 { icon: "/document_icon.png", label: "Documents" },
                                 { icon: "/personalinfo_icon.png", label: "Profile Info" },
                                 { icon: "/document_icon.png", label: "Bank Details" },
-                                { icon: "/document_icon.png", label: "Police verification" },
                                 { icon: "/review_icon.png", label: "Review & Submit" },
                             ].map((step, idx) => (
                                 <div key={idx} className="flex flex-col items-center text-center">
@@ -111,7 +110,7 @@ const ReviewCardTenant = () => {
                                 <div className="flex-1 min-w-[220px] rounded-[12px] bg-[#F7FBFF] border-2 border-gray-200 p-5">
                                     <h2 className={`${poppins.className} text-[16px] font-semibold text-[#0A0A0A] mb-4`}>Documents Uploaded</h2>
                                     <ul className={`space-y-3 ${poppins.className} text-[14px]`}>
-                                        {["Aadhar Card", "PAN Card", "Address Proof", "Bank Details", "Police Verification"].map((doc, i) => (
+                                        {["Aadhar Card", "PAN Card", "Address Proof", "Bank Details"].map((doc, i) => (
                                             <li key={i} className="flex items-center gap-3">
                                                 <span className="w-5 h-5 flex items-center justify-center rounded-full text-white text-[12px]">
                                                     <Image src="/check_icon.png" width={16} height={16} alt={doc} />
@@ -139,7 +138,7 @@ const ReviewCardTenant = () => {
                                 <div className="flex-1 min-w-[220px] rounded-[12px] bg-[#F7FBFF] border-2 border-gray-200 p-5">
                                     <h2 className={`${poppins.className} text-[16px] font-semibold text-[#0A0A0A] mb-4`}>Documents Uploaded</h2>
                                     <ul className={`space-y-3 ${poppins.className} text-[14px]`}>
-                                        {["Aadhar Card", "PAN Card", "Address Proof", "Selfie Photo", "Bank Details", "PCC Certificate"].map((doc, i) => (
+                                        {["Aadhar Card", "PAN Card", "Address Proof", "Selfie Photo", "Bank Details", ].map((doc, i) => (
                                             <li key={i} className="flex items-center gap-3">
                                                 <span className="w-5 h-5 flex items-center justify-center rounded-full text-white text-[12px]">
                                                     <Image src="/check_icon.png" width={16} height={16} alt={doc} />
@@ -203,7 +202,7 @@ const ReviewCardTenant = () => {
                         {/* Navigation Buttons */}
                         <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full max-w-[900px] mx-auto">
                             <Link
-                                href="/Tenant/pcc"
+                                href="/Tenant/bankinfo"
                                 className="px-6 py-2 bg-white border-2 border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-center"
                             >
                                 Previous

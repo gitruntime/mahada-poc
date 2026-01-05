@@ -12,21 +12,12 @@ const arimo = Arimo({
 });
 
 const TenantProfileinfo = () => {
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        emailOtp: "",
-        dob: "",
-        address: "",
-        city: "",
-        state: "",
-        pin: "",
-        occupation: "",
-        employerName: "",
-        incomeRange: "",
-        preferredCity: "",
-        durationOfStay: "",
+   const [formData, setFormData] = useState({
+        occupation: "Software Developer",
+        employerName: "Rahul Yadav",
+        incomeRange: "50001-100000",
+        preferredCity: "Mumbai",
+        durationOfStay: "12 Months",
     });
     const handleSave = (e) => {
         e.preventDefault();
