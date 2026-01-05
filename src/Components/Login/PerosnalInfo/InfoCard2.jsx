@@ -8,17 +8,18 @@ const poppins = Poppins({
 });
 
 const InfoCard = () => {
-    const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        emailOtp: "",
-        dob: "",
-        address: "",
-        city: "",
-        state: "",
-        pin: "",
-    });
+   const [formData, setFormData] = useState({
+    firstName: "Testfirstname",
+    lastName: "Testlastname",
+    email: "testaddress@gmail.com",
+    emailOtp: "12345",
+    dob: "2000-01-01",
+    address: "123, MG Road, Andheri East",
+    city: "Mumbai",
+    state: "Maharashtra",
+    pin: "400001",
+});
+
 
     const [errors, setErrors] = useState({});
     const [accepted, setAccepted] = useState(false);

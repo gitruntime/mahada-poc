@@ -6,11 +6,16 @@ const PanOtp = ({ open, onClose, onSuccess }) => {
   const inputRef = useRef(null);
 
   // Auto-focus input when modal opens
+  // Prefill OTP when modal opens
   useEffect(() => {
-    if (open && inputRef.current) {
-      inputRef.current.focus();
-      setOtp("");
-      setVerified(false);
+    if (open) {
+      setOtp("123456");        // ✅ prefilled OTP
+      setVerified(true);       // ✅ auto verified
+
+      // auto-focus (optional)
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
     }
   }, [open]);
 
@@ -21,16 +26,10 @@ const PanOtp = ({ open, onClose, onSuccess }) => {
 
   const handleSubmit = () => {
     if (otp.length === 6) {
-      setVerified(true);
-
-      // simulate verification
-      setTimeout(() => {
-        onSuccess(); // lock PAN input
-        onClose();   // close modal
-      }, 800);
+      onSuccess(); // lock Aadhaar field
+      onClose();   // close modal
     }
   };
-
   if (!open) return null;
 
   return (

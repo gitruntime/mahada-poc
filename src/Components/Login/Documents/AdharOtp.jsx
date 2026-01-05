@@ -1,33 +1,36 @@
 import React, { useEffect, useRef, useState } from "react";
 
 const AdharOtp = ({ open, onClose, onSuccess }) => {
-  const [otp, setOtp] = useState("");
-  const [verified, setVerified] = useState(false);
   const inputRef = useRef(null);
 
-  // Auto-focus OTP input when modal opens
+  const [otp, setOtp] = useState("");
+  const [verified, setVerified] = useState(false);
+
+  // Prefill OTP when modal opens
   useEffect(() => {
-    if (open && inputRef.current) {
-      inputRef.current.focus();
+    if (open) {
+      setOtp("123456");        // ✅ prefilled OTP
+      setVerified(true);       // ✅ auto verified
+
+      // auto-focus (optional)
+      setTimeout(() => {
+        inputRef.current?.focus();
+      }, 100);
     }
   }, [open]);
 
   const handleChange = (e) => {
-    const value = e.target.value.replace(/\D/g, ""); // numeric only
+    const value = e.target.value.replace(/\D/g, "");
     if (value.length <= 6) {
       setOtp(value);
+      setVerified(value.length === 6);
     }
   };
 
   const handleSubmit = () => {
     if (otp.length === 6) {
-      setVerified(true);
-
-      // simulate verification success
-      setTimeout(() => {
-        onSuccess(); // lock Aadhaar field
-        onClose();   // close modal
-      }, 800);
+      onSuccess(); // lock Aadhaar field
+      onClose();   // close modal
     }
   };
 
@@ -42,7 +45,7 @@ const AdharOtp = ({ open, onClose, onSuccess }) => {
         </h2>
 
         <div className="bg-green-100 text-green-800 text-sm p-3 rounded mb-4">
-         UIDAI has sent a temporary OTP to your mobile number ending in ******7898 
+          UIDAI has sent a temporary OTP to your mobile number ending in ******7898
           <span className="font-semibold"> ******9293 </span>
           (valid for 10 mins).
         </div>

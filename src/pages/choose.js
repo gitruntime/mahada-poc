@@ -110,7 +110,7 @@ const Signup = () => {
 
             {/* Footer */}
             <p className={`text-center ${roboto.className}`}>
-           Are you an admin ?{" "}
+           Are you a Staff ?{" "}
               <Link href="/adminlogin" className="text-[#028f46] hover:underline">
                 Login
               </Link>

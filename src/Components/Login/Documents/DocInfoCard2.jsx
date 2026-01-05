@@ -24,7 +24,7 @@ const DocInfoCard2 = () => {
 
   const [formData, setFormData] = useState({
 
-    adhar: "",
+    adhar: "1234 5678 9012",
     adharOtp: "",
     pan: "",
     panOtp: "",
@@ -355,7 +355,7 @@ const DocInfoCard2 = () => {
 
               {/* Heading */}
               <h3 className="text-lg font-semibold text-gray-900 text-center">
-                Verify through DigiLocker
+               Upload documents through DigiLocker
               </h3>
 
               {/* DigiLocker Button */}
