@@ -102,7 +102,7 @@ const HeroSearch = ({ setFilteredProperties, setCurrentPage }) => {
 
     return (
         <div className="w-full flex justify-center px-4 mt-6 relative z-20">
-            <div className="w-full max-w-[1340px] bg-white rounded-xl p-4 lg:p-6 flex flex-col lg:flex-row gap-3 shadow-lg">
+            <div className="w-full max-w-[1340px] border border-[#E5E7EB] bg-white rounded-xl p-4 lg:p-6 flex flex-col lg:flex-row gap-3 shadow-lg">
                 {/* SEARCH INPUT */}
                 <div className="relative w-full lg:flex-1">
                     <div className="flex items-center gap-3 bg-gray-100 rounded-lg px-4 h-[52px]">
@@ -345,10 +345,15 @@ const AllPropertiesTenant = () => {
             </div>
 
             {/* Layout */}
-            <div className="max-w-[1400px] mx-auto px-6 flex gap-8 items-start">
+            <div className="max-w-[1400px] mx-auto  px-6 flex gap-8 items-start">
                 {/* STICKY FILTER */}
-                <div className="w-[280px] shrink-0 sticky top-24 rounded-xl border bg-gray-50 p-5">
-                    <h3 className="text-lg font-semibold mb-4">Filter</h3>
+                <div className="w-[280px]  shrink-0 sticky top-24 rounded-xl border border-[#D1D5DC] bg-[#F7FBFF] p-5">
+                    <div className="flex items-center justify-between gap-2 mb-4">
+                        <h3 className="text-lg font-semibold">Filter</h3>
+                        <Image src="/filterblackicon.png" width={21} height={16} alt="Filter Icon" />
+                    </div>
+
+
 
                     <select value={district} onChange={(e) => setDistrict(e.target.value)} className="w-full mb-3 p-2 border rounded-md text-sm">
                         <option value="">Select District</option>
