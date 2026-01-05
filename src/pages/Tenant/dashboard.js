@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react"
-import BreadCrumbs from "@/Components/Dashboard/BreadCrumbs"
 import DashboardNavbar from "@/Components/Dashboard/DashboardNavbar"
 import TenantDash from "@/Components/Dashboard/TenantDash"
 
 import Profile2 from "@/Components/RentalAgreement/Profile2"
 import Footer from "@/Components/Layout/Footer"
 import MyTProperties from "@/Components/Dashboard/MyTProperties"
+import BreadDashTenant from "@/Components/Dashboard/BreadDashTenant"
 
 const Dashboard = () => {
   const [showProfile2, setShowProfile2] = useState(false)
@@ -21,7 +21,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <DashboardNavbar />
-      <BreadCrumbs />
+      <BreadDashTenant />
 
       {/* Profile */}
       <Profile2 /> 
