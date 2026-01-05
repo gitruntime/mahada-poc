@@ -4,7 +4,7 @@ import React from 'react'
 import { Poppins } from "next/font/google";
 import { useRouter } from "next/router"; // <-- import useRouter
 import Footer from '@/Components/Layout/Footer';
-import PropertyDetails from '@/Components/Homepage/Properties/PropertyDetails';
+import PropertyDetailsTenant from '@/Components/Homepage/Properties/PropertyDetailsTenant';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,7 +30,7 @@ const PropertyDetailsPage = () => {
           <span className="text-black font-semibold">{`>`} Rental property</span>
         </nav>
       </div>
-      <PropertyDetails />
+      <PropertyDetailsTenant />
       <Footer />
     </div>
   )

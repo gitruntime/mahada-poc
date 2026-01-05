@@ -9,7 +9,7 @@ const poppins = Poppins({
 
 const PropertyLeft = () => {
   return (
-    <div className="w-[600px] h-auto">
+    <div className="w-[full] h-auto">
 
       {/* IMAGE SECTION */}
       <div className="relative h-[500px] rounded-xl overflow-hidden">

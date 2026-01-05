@@ -71,7 +71,7 @@ const EsignOtp = () => {
       {/* Verify Button */}
       <div className="flex justify-end mt-6">
         <Link
-          href={otp.includes("") ? "#" : "/sucessagreement"}
+          href={otp.includes("") ? "#" : "/Tenant/pcc"}
           onClick={(e) => {
             if (otp.includes("")) e.preventDefault();
           }}
