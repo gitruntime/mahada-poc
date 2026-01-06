@@ -11,7 +11,7 @@ const AdminOverview = () => {
         <div>
             <>
                 {/* HEADER */}
-                <div className="max-w-[1440px] mt-[30px] mx-auto h-auto sm:h-[80px] px-4 sm:px-8 md:px-[100px] py-4 sm:py-0 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+                <div className="max-w-[1440px]  mx-auto h-auto sm:h-[80px] px-4 sm:px-8 md:px-[100px] py-4 sm:py-0 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
                     <div>
                         <h1 className={`text-[24px] sm:text-[30px] font-bold ${poppins.className}`}>
                             Admin Dashboard
