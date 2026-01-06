@@ -44,12 +44,12 @@ const TenantReg = () => {
             </div>
 
 
-            <div className={`flex bg-[#F2F2F2] ml-[40px] rounded-2xl items-center gap-2 cursor-pointer ${poppins.className} px-4 py-2 w-max`}>
+            <Link href="/Admin/admindashboard" className={`flex bg-[#F2F2F2] ml-[40px] rounded-2xl items-center gap-2 cursor-pointer ${poppins.className} px-4 py-2 w-max`}>
                 <Image src="/lefticon2.png" width={16} height={16} alt="Back Icon" />
                 <h1 className="text-[14px] font-normal text-[#404040]">
                     Back to Tenant Registration Requests
                 </h1>
-            </div>
+            </Link>
 
             <div className="w-full bg-white p-4 rounded-md shadow-sm mt-[30px] ">
                 {/* Header */}
