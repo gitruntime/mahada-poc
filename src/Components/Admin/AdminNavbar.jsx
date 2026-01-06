@@ -11,17 +11,18 @@ const poppins = Poppins({
 const AdminNavbar = ({ activeTab, setActiveTab }) => {
   return (
     <nav
-      className="w-full h-[64px] shadow px-4 sm:px-8 lg:px-20 flex justify-between items-center bg-white"
+      className="w-full h-[64px] shadow px-4 sm:px-8 lg:px-20 flex justify-between items-center "
     >
       {/* Logo */}
       <Link href="/" className={`flex items-center gap-2 ${poppins.className}`}>
-        <h1 className="text-[20px] sm:text-[24px] font-semibold">
+        <h1 className="relative text-[20px] sm:text-[24px] text-white font-semibold">
           Mhada <span className="text-orange-500">Estate</span>
+          <span className="absolute left-0 -bottom-0.5 w-full h-[2px] bg-orange-500"></span>
         </h1>
       </Link>
 
       {/* Tabs */}
-      <div className="bg-[#F4F2EE] rounded-2xl p-1 flex gap-1 h-[40px] items-center">
+      <div className="bg-[#191C2D] rounded-2xl p-1 flex gap-1 h-[40px] items-center">
         <Tab
           label="Overview"
           tab="overview"
@@ -61,7 +62,7 @@ const Tab = ({ label, tab, icon, activeTab, setActiveTab }) => (
     className={`flex items-center gap-2 px-4 py-2 rounded-xl cursor-pointer transition-all duration-200
       ${activeTab === tab
         ? "bg-white shadow text-[#0C1421] font-semibold"
-        : "text-[#6B7280] hover:bg-white/60 font-medium"
+        : "text-[#FFFFFFB2] hover:bg-white/60 font-medium"
       }`}
     style={{ minWidth: "120px", justifyContent: "center" }}
   >
