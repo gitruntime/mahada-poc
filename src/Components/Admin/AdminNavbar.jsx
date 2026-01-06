@@ -8,9 +8,9 @@ const poppins = Poppins({
   weight: ["400", "600", "700"],
 });
 
-const AdminNavbar = ({ activeTab, setActiveTab }) => {
+const  AdminNavbar = ({ activeTab, setActiveTab }) => {
   return (
-   <nav className="w-full h-[64px] bg-gradient-to-r from-[#2A3152] to-[#1F2540] shadow px-4 sm:px-8 lg:px-20 flex items-center justify-between">
+   <nav className="w-full h-[64px] bg-gradient-to-r rounded-2xl from-[#2A3152] to-[#1F2540] shadow px-4 sm:px-8 lg:px-20 flex items-center justify-between">
 
   {/* LEFT: Logo */}
   <Link href="/" className={`flex items-center gap-2 ${poppins.className}`}>

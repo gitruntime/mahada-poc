@@ -52,9 +52,12 @@ const AdminOverview = () => {
                             </div>
                         </div>
 
-                        <button className="mt-4 w-full cursor-pointer py-2 text-sm font-medium text-[#F97415] bg-white rounded-full border border-[#E2E2E2]">
-                            View Requests
-                        </button>
+                        <Link href="/Admin/TenantReg">
+                            <p className="mt-4 w-full cursor-pointer py-2 text-sm font-medium text-[#F97415] bg-white rounded-full border border-[#E2E2E2] text-center block">
+                                View Requests
+                            </p>
+                        </Link>
+
                     </div>
 
                     {/* Landlord Registration */}
@@ -266,10 +269,10 @@ const AdminOverview = () => {
                         </div>
 
                         <div className="flex justify-between items-center py-3">
-                              <p className={`text-[14px] ${poppins.className} text-[#364153]`}>
+                            <p className={`text-[14px] ${poppins.className} text-[#364153]`}>
                                 Grievance ID #1289 escalated to District Level
                             </p>
-                          <span className={`text-[12px] ${poppins.className} text-[#6A7282] whitespace-nowrap`}>
+                            <span className={`text-[12px] ${poppins.className} text-[#6A7282] whitespace-nowrap`}>
                                 22 minutes ago
                             </span>
                         </div>
@@ -287,7 +290,7 @@ const AdminOverview = () => {
                             <p className={`text-[14px] ${poppins.className} text-[#364153]`}>
                                 156 new tenant registrations received
                             </p>
-                             <span className={`text-[12px] ${poppins.className} text-[#6A7282] whitespace-nowrap`}>
+                            <span className={`text-[12px] ${poppins.className} text-[#6A7282] whitespace-nowrap`}>
                                 Last 2 hours
                             </span>
                         </div>
