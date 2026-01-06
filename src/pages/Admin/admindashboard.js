@@ -284,49 +284,7 @@ const admindashboard = () => {
                         )}
 
                     </div>
-                    <div class={`p-5 bg-white ${poppins.className} rounded-lg shadow-md w-full `}>
-
-                        <div class="flex items-center gap-2 mb-4">
-                            <img class="w-6 h-6" src="/main.png" alt="icon" />
-                            <h3 class="text-lg font-semibold text-gray-900">Recent Activity</h3>
-                        </div>
-
-                        <div class="flex flex-col gap-2">
-
-                            <div class="flex items-center gap-3 bg-green-100 rounded-md p-3">
-                                <img class="w-6 h-6" src="/img11.png" alt="icon" />
-                                <div class="flex flex-col">
-                                    <span class="text-gray-900 font-medium">Property #45892 verified in Mumbai</span>
-                                    <span class="text-gray-500 text-sm">2 min ago</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-3 bg-red-100 rounded-md p-3">
-                                <img class="w-6 h-6" src="/img22.png" alt="icon" />
-                                <div class="flex flex-col">
-                                    <span class="text-gray-900 font-medium">Grievance #1289 escalated to district level</span>
-                                    <span class="text-gray-500 text-sm">15 min ago</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-3 bg-orange-100 rounded-md p-3">
-                                <img class="w-6 h-6" src="/img33.png" alt="icon" />
-                                <div class="flex flex-col">
-                                    <span class="text-gray-900 font-medium">24 new agreements signed today</span>
-                                    <span class="text-gray-500 text-sm">1 hour ago</span>
-                                </div>
-                            </div>
-
-                            <div class="flex items-center gap-3 bg-blue-100 rounded-md p-3">
-                                <img class="w-6 h-6" src="/img44.png" alt="icon" />
-                                <div class="flex flex-col">
-                                    <span class="text-gray-900 font-medium">156 new tenant registrations</span>
-                                    <span class="text-gray-500 text-sm">2 hours ago</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+                   
 
 
 
