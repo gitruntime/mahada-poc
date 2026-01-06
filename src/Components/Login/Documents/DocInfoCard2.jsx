@@ -216,7 +216,6 @@ const DocInfoCard2 = () => {
                   { icon: "/document_icon.png", label: "Documents" },
                   { icon: "/personalinfo_icon.png", label: "Profile Info", inactive: true },
                   { icon: "/document_icon.png", label: "Bank Details", inactive: true },
-                  { icon: "/document_icon.png", label: "Police verification", inactive: true },
                   { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
                 ].map((step, idx) => (
                   <div key={idx} className="flex flex-col items-center text-center">
