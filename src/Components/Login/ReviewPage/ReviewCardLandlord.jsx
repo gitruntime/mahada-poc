@@ -51,7 +51,6 @@ const ReviewCardLandlord = () => {
                                 { icon: "/document_icon.png", label: "Documents" },
                                 { icon: "/personalinfo_icon.png", label: "Profile Info" },
                                 { icon: "/document_icon.png", label: "Bank Details" },
-                                { icon: "/document_icon.png", label: "Police verification" },
                                 { icon: "/review_icon.png", label: "Review & Submit" },
                             ].map((step, idx) => (
                                 <div key={idx} className="flex flex-col items-center text-center">
@@ -226,14 +225,14 @@ const ReviewCardLandlord = () => {
                         {/* Navigation Buttons */}
                         <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full max-w-[900px] mx-auto">
                             <Link
-                                href="/Landlord/pcc"
+                                href="/Landlord/bankinfo"
                                 className="px-6 py-2 bg-white border-2 border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-center"
                             >
                                 Previous
                             </Link>
 
                             <Link
-                                href="/Landlord/paymentgateway1"
+                                href="/Landlord/paymentgateway2"
                                 className={`bg-orange-500 text-white ${poppins.className}
         flex justify-center items-center gap-2 px-6 py-2.5 rounded-lg
         transition-all duration-300 hover:bg-orange-600 hover:shadow-md

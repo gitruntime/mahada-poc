@@ -17,13 +17,13 @@ const inputClass =
 
 const RightForm = () => {
     const [form, setForm] = useState({
-        rent: "",
-        deposit: "",
-        availableFrom: "",
-        tenure: "",
-        tenantType: "",
-        description: "",
-    });
+    rent: "25000",
+    deposit: "100000",
+    availableFrom: "2026-01-10",
+    tenure: "11 Months",
+    tenantType: "Family",
+    description: "Spacious 2 BHK flat near DN Nagar Metro with parking and lift.",
+});
 
     const [errors, setErrors] = useState({});
 

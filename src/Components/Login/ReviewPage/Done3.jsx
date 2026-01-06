@@ -49,7 +49,7 @@ const Done3 = () => {
 
         {/* Subtitle */}
         <p className={`text-[16px] ${arimo.className} text-[#717182] mb-5`}>
-          Your Property is under review. You'll be updated with the status soon.
+          Your application is under review. You'll receive an update within 2-3 business days via email and SMS
         </p>
 
         {/* Application Number */}
@@ -74,7 +74,7 @@ const Done3 = () => {
           href="/dashboard"
           className={` bg-orange-500 w-1/2 text-white px-6 py-2 rounded-[8px] font-semibold text-[14px] ${poppins.className} hover:bg-orange-700 transition`}
         >
-          Back to Dashboard
+          Go to Dashboard
         </Link>
       </div>
 

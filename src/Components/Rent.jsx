@@ -92,8 +92,8 @@ const RentPropertyForm = () => {
 
             {/* RIGHT FORM */}
             <div className="w-full lg:flex-1">
-                <RightForm />
-            </div>
+    <RightForm property={property} />
+</div>
 
         </div>
     )

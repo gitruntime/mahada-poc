@@ -24,10 +24,10 @@ const DocInfoCard3 = () => {
 
   const [formData, setFormData] = useState({
 
-    adhar: "",
-    adharOtp: "",
-    pan: "",
-    panOtp: "",
+    adhar: "123412341234",
+    adharOtp: "123456",
+    pan: "ABCDE1234F",
+    panOtp: "654321"
 
   });
   const [errors, setErrors] = useState({});
@@ -215,10 +215,10 @@ const DocInfoCard3 = () => {
                   { icon: "/personalinfo_icon.png", label: "Personal Info" },
                   { icon: "/document_icon.png", label: "Documents" },
                   { icon: "/personalinfo_icon.png", label: "Profile Info", inactive: true },
-                  
+
                   { icon: "/document_icon.png", label: "Bank Details", inactive: true },
-                    { icon: "/document_icon.png", label: "Bank Details", inactive: true },
-                  { icon: "/document_icon.png", label: "Police verification", inactive: true },
+                  { icon: "/document_icon.png", label: "Bank Details", inactive: true },
+
                   { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
                 ].map((step, idx) => (
                   <div key={idx} className="flex flex-col items-center text-center">

@@ -9,11 +9,12 @@ const poppins = Poppins({
 
 const BankInfo3 = () => {
     const [formData, setFormData] = useState({
-        bankName: "",
-        accountNumber: "",
-        ifscCode: "",
-        firstName: "",
+        bankName: "State Bank of India",
+        accountNumber: "12345678901",
+        ifscCode: "SBIN0000456",
+        firstName: "Rohit",
     });
+
 
     const [errors, setErrors] = useState({});
 
@@ -81,7 +82,7 @@ const BankInfo3 = () => {
         e.preventDefault();
         if (validate()) {
             // Navigate to next step
-            window.location.href = "/Landlord/pcc";
+            window.location.href = "/Landlord/review2";
         }
     };
 
@@ -114,7 +115,7 @@ const BankInfo3 = () => {
                         <div className="w-full relative h-2 mb-6 bg-gray-300 rounded-full">
                             <div
                                 className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full"
-                                style={{ width: "56%" }}
+                                style={{ width: "70%" }}
                             ></div>
                         </div>
                         <div className="flex justify-between w-full">
@@ -123,7 +124,7 @@ const BankInfo3 = () => {
                                 { icon: "/document_icon.png", label: "Documents" },
                                 { icon: "/personalinfo_icon.png", label: "Profile Info" },
                                 { icon: "/document_icon.png", label: "Bank Details" },
-                                { icon: "/document_icon.png", label: "Police verification", inactive: true },
+
                                 { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
                             ].map((step, idx) => (
                                 <div key={idx} className="flex flex-col items-center text-center">

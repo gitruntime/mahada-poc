@@ -9,15 +9,15 @@ const poppins = Poppins({
 
 const InfoCard3 = () => {
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        emailOtp: "",
-        dob: "",
-        address: "",
-        city: "",
-        state: "",
-        pin: "",
+        firstName: "TestLandlordfirstname",
+        lastName: "TestLandlordlastname",
+        email: "testlandlordaddress@gmail.com",
+        emailOtp: "12345",
+        dob: "2000-01-01",
+        address: "123, MG Road, Andheri East",
+        city: "Mumbai",
+        state: "Maharashtra",
+        pin: "400001",
     });
 
     const [errors, setErrors] = useState({});
@@ -27,7 +27,7 @@ const InfoCard3 = () => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
 
     };
-   
+
 
 
     const validate = () => {
@@ -67,7 +67,7 @@ const InfoCard3 = () => {
         }
     };
 
-     const [showPopup, setShowPopup] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
 
     const handleSave = (e) => {
         e.preventDefault();
@@ -130,7 +130,7 @@ const InfoCard3 = () => {
                                 { icon: "/document_icon.png", label: "Documents", inactive: true },
                                 { icon: "/personalinfo_icon.png", label: "Profile Info", inactive: true },
                                 { icon: "/document_icon.png", label: "Bank Details", inactive: true },
-                                { icon: "/document_icon.png", label: "Police verification", inactive: true },
+                               
                                 { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
                             ].map((step, idx) => (
                                 <div key={idx} className="flex flex-col items-center text-center">

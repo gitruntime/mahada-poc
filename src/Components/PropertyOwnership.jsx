@@ -102,7 +102,7 @@ const PropertyOwnership = () => {
                                 { icon: "/document_icon.png", label: "Documents" },
                                 { icon: "/personalinfo_icon.png", label: "Profile Info", inactive: true },
                                 { icon: "/document_icon.png", label: "Bank Details", inactive: true },
-                                { icon: "/document_icon.png", label: "Police verification", inactive: true },
+
                                 { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
                             ].map((step, idx) => (
                                 <div key={idx} className="flex flex-col items-center text-center">
@@ -118,7 +118,7 @@ const PropertyOwnership = () => {
                     </div>
                     <div className={`w-full border text-[#717182] border-[#0000001A] h-[46px] flex items-center justify-between px-4 rounded-[10px] ${arimo.className}`}>
                         <h4 className={`text-gray-900 font-normal text-md ${poppins.className}`}>
-                            Property 1 (Optional)
+                            Enlist a property
                         </h4>
                         <Image src="/downarrow.png" width={16} height={16} alt="Dropdown Arrow" />
                     </div>
@@ -132,8 +132,8 @@ const PropertyOwnership = () => {
 
 
 
-                        <div className=" flex flex-col items-center justify-center py-10 px-4 sm:px-8">
-                            <div className="flex flex-col sm:flex-row gap-5 w-full max-w-[940px]">
+                        <div className="flex flex-col items-center justify-center py-10 px-4 sm:px-8">
+                            <div className="flex flex-col gap-5 w-full max-w-[940px]">
                                 <FileUploadBox
                                     files={propertyImages}
                                     dragActive={dragActivePropertyImg}
@@ -146,6 +146,7 @@ const PropertyOwnership = () => {
                                     description="Upload clear images of your property"
                                     inputId="property-image-upload"
                                 />
+
                                 <FileUploadBox
                                     files={propertyDocs}
                                     dragActive={dragActivePropertyDoc}
@@ -160,6 +161,13 @@ const PropertyOwnership = () => {
                                 />
                             </div>
                         </div>
+                        <div className={`w-full border text-[#717182] border-[#0000001A] h-[46px] flex items-center justify-between px-4 rounded-[10px] ${arimo.className}`}>
+                            <h4 className={`text-gray-900 font-normal text-md ${poppins.className}`}>
+                                Add more property (Optional)
+                            </h4>
+                            <Image src="/managelogo.png" className='cursor-pointer' width={16} height={16} alt="Dropdown Arrow" />
+                        </div>
+
 
 
                         {/* Navigation */}
