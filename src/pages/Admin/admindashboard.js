@@ -48,8 +48,8 @@ const admindashboard = () => {
                                 <Image src="/filtericon.png" width={16} height={16} alt="plus" />
                                 Filters
                             </Link>
-                             <Link href="/admincrud" className="h-[48px] px-[20px] border-2 border-[#F97415] rounded-[12px] text-[#F97415]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
-                              
+                            <Link href="/admincrud" className="h-[48px] px-[20px] border-2 border-[#F97415] rounded-[12px] text-[#F97415]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
+
                                 Admin Actions
                             </Link>
                             <Link href="/" className="h-[48px] px-[20px] border-2 border-[#ff1313] rounded-[12px] text-[#dc0b0b]   text-[14px] font-medium flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
@@ -67,18 +67,18 @@ const admindashboard = () => {
                         {/* CARD 1 */}
                         <div className="w-full h-[136px] bg-white border border-[#E5E7EB] rounded-[12px] p-4 flex flex-col justify-between shadow-sm">
                             <div className="flex justify-between items-start">
-                                <div className="w-[40px] h-[40px] bg-[#F0EEEA] rounded-[10px] flex items-center justify-center">
+                                <div className="w-[40px] h-[40px] bg-[#F974151A] rounded-[10px] flex items-center justify-center">
                                     <img src="/1img.png" className="w-5 h-5" />
                                 </div>
-                                <div className="px-2 py-0.5 text-[12px] font-bold text-green-600 border border-green-200 rounded-full">
-                                    +2.5%
+                                <div className="px-4 bg-[#F9741533] py-1 text-[12px] font-bold text-[#F97415] border border-[#00000000] rounded-full">
+                                    View Request
                                 </div>
                             </div>
 
                             <div>
                                 <p className={`text-[24px] font-bold ${poppins.className}`}>52,847</p>
                                 <p className={`text-[14px] text-[#6B7280] ${poppins.className}`}>
-                                    Total Properties
+                                    Pending Registrations
                                 </p>
                             </div>
                         </div>
@@ -86,18 +86,18 @@ const admindashboard = () => {
                         {/* CARD 2 */}
                         <div className="w-full h-[136px] bg-white border border-[#E5E7EB] rounded-[12px] p-4 flex flex-col justify-between shadow-sm">
                             <div className="flex justify-between items-start">
-                                <div className="w-[40px] h-[40px] bg-[#F0EEEA] rounded-[10px] flex items-center justify-center">
-                                    <img src="/2img.png" className="w-5 h-5" />
+                                <div className="w-[40px] h-[40px] bg-[#21C45D1A] rounded-[10px] flex items-center justify-center">
+                                    <img src="/adminimg2.png" className="w-5 h-5" />
                                 </div>
-                                <div className="px-2 py-0.5 text-[12px] font-bold text-green-600 border border-green-200 rounded-full">
+                                <div className={`px-2 py-0.5 bg-[#21C45D1A] text-[12px] font-bold ${poppins.className} text-[#21C45D] border border-green-200 rounded-full`}>
                                     +5.2%
                                 </div>
                             </div>
 
                             <div>
-                                <p className={`text-[24px] font-bold ${poppins.className}`}>1,28,392</p>
+                                <p className={`text-[24px] font-bold ${poppins.className}`}>28,392</p>
                                 <p className={`text-[14px] text-[#6B7280] ${poppins.className}`}>
-                                    Registered Tenants
+                                    Pending Property Listings
                                 </p>
                             </div>
                         </div>
@@ -105,11 +105,11 @@ const admindashboard = () => {
                         {/* CARD 3 */}
                         <div className="w-full h-[136px] bg-white border border-[#E5E7EB] rounded-[12px] p-4 flex flex-col justify-between shadow-sm">
                             <div className="flex justify-between items-start">
-                                <div className="w-[40px] h-[40px] bg-[#F0EEEA] rounded-[10px] flex items-center justify-center">
-                                    <img src="/3img.png" className="w-5 h-5" />
+                                <div className="w-[40px] h-[40px] bg-[#1A4A991A] rounded-[10px] flex items-center justify-center">
+                                    <img src="/bluedoclogo.png" className="w-5 h-5" />
                                 </div>
-                                <div className="px-2 py-0.5 text-[12px] font-bold text-green-600 border border-green-200 rounded-full">
-                                    +3.1%
+                                <div className={`px-2 py-0.5 bg-[#21C45D1A] text-[12px] font-bold ${poppins.className} text-[#21C45D] border border-green-200 rounded-full`}>
+                                   +3.1%
                                 </div>
                             </div>
 
@@ -124,11 +124,11 @@ const admindashboard = () => {
                         {/* CARD 4 */}
                         <div className="w-full h-[136px] bg-white border border-[#F0EEEA] rounded-[12px] p-4 flex flex-col justify-between shadow-sm">
                             <div className="flex justify-between items-start">
-                                <div className="w-[40px] h-[40px] bg-[#F0EEEA] rounded-[10px] flex items-center justify-center">
+                                <div className="w-[40px] h-[40px] bg-[#EF43431A] rounded-[10px] flex items-center justify-center">
                                     <img src="/gr.png" className="w-5 h-5" />
                                 </div>
-                                <div className="px-2 py-0.5 text-[12px] font-bold text-green-600 border border-green-200 rounded-full">
-                                    -12%
+                                <div className={`px-3 py-0.5 bg-[#EF4343] text-[12px] font-bold ${poppins.className} text-white border border-green-200 rounded-full`}>
+                                  -12%
                                 </div>
                             </div>
 
@@ -526,42 +526,42 @@ const admindashboard = () => {
                         <div class={`p-5 bg-white ${poppins.className} rounded-lg shadow-md w-full `}>
 
                             <div class="flex items-center gap-2 mb-4">
-                                <img class="w-6 h-6" src="/main.png" alt="icon"/>
-                                    <h3 class="text-lg font-semibold text-gray-900">Recent Activity</h3>
+                                <img class="w-6 h-6" src="/main.png" alt="icon" />
+                                <h3 class="text-lg font-semibold text-gray-900">Recent Activity</h3>
                             </div>
 
                             <div class="flex flex-col gap-2">
 
                                 <div class="flex items-center gap-3 bg-green-100 rounded-md p-3">
-                                    <img class="w-6 h-6" src="/img11.png" alt="icon"/>
-                                        <div class="flex flex-col">
-                                            <span class="text-gray-900 font-medium">Property #45892 verified in Mumbai</span>
-                                            <span class="text-gray-500 text-sm">2 min ago</span>
-                                        </div>
+                                    <img class="w-6 h-6" src="/img11.png" alt="icon" />
+                                    <div class="flex flex-col">
+                                        <span class="text-gray-900 font-medium">Property #45892 verified in Mumbai</span>
+                                        <span class="text-gray-500 text-sm">2 min ago</span>
+                                    </div>
                                 </div>
 
                                 <div class="flex items-center gap-3 bg-red-100 rounded-md p-3">
-                                    <img class="w-6 h-6" src="/img22.png" alt="icon"/>
-                                        <div class="flex flex-col">
-                                            <span class="text-gray-900 font-medium">Grievance #1289 escalated to district level</span>
-                                            <span class="text-gray-500 text-sm">15 min ago</span>
-                                        </div>
+                                    <img class="w-6 h-6" src="/img22.png" alt="icon" />
+                                    <div class="flex flex-col">
+                                        <span class="text-gray-900 font-medium">Grievance #1289 escalated to district level</span>
+                                        <span class="text-gray-500 text-sm">15 min ago</span>
+                                    </div>
                                 </div>
 
                                 <div class="flex items-center gap-3 bg-orange-100 rounded-md p-3">
-                                    <img class="w-6 h-6" src="/img33.png" alt="icon"/>
-                                        <div class="flex flex-col">
-                                            <span class="text-gray-900 font-medium">24 new agreements signed today</span>
-                                            <span class="text-gray-500 text-sm">1 hour ago</span>
-                                        </div>
+                                    <img class="w-6 h-6" src="/img33.png" alt="icon" />
+                                    <div class="flex flex-col">
+                                        <span class="text-gray-900 font-medium">24 new agreements signed today</span>
+                                        <span class="text-gray-500 text-sm">1 hour ago</span>
+                                    </div>
                                 </div>
 
                                 <div class="flex items-center gap-3 bg-blue-100 rounded-md p-3">
-                                    <img class="w-6 h-6" src="/img44.png"alt="icon"/>
-                                        <div class="flex flex-col">
-                                            <span class="text-gray-900 font-medium">156 new tenant registrations</span>
-                                            <span class="text-gray-500 text-sm">2 hours ago</span>
-                                        </div>
+                                    <img class="w-6 h-6" src="/img44.png" alt="icon" />
+                                    <div class="flex flex-col">
+                                        <span class="text-gray-900 font-medium">156 new tenant registrations</span>
+                                        <span class="text-gray-500 text-sm">2 hours ago</span>
+                                    </div>
                                 </div>
 
                             </div>
