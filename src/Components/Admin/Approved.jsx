@@ -1,28 +1,32 @@
-import React from 'react';
-import { Poppins } from 'next/font/google';
-import { CheckCircle } from 'lucide-react'; // Using lucide-react for the check icon
+import React from "react";
+import { Poppins } from "next/font/google";
+import Image from "next/image";
+import Link from "next/link";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
 });
 
-const Approved = () => {
+const Approved = ({ tenantId, onApprove }) => {
   return (
-    <div className={`w-full lg:w-[398px] h-[355px] bg-white rounded-2xl border border-[#E6E6E6] ${poppins.className} p-6 flex flex-col items-center justify-center gap-4`}>
-      
+    <div
+      className={`w-full max-w-[398px] h-auto bg-white rounded-2xl border border-[#E6E6E6] ${poppins.className} p-6 flex flex-col items-center justify-center gap-4`}
+    >
       {/* Icon */}
-      <CheckCircle className="text-green-600 w-16 h-16" />
+      <Image src="/check_icon.png" width={64} height={64} alt="Approved Icon" />
 
       {/* Title */}
-      <h2 className="text-[20px] font-semibold text-[#1C1C1C]">Registration Approved</h2>
+      <h2 className="text-[20px] font-semibold text-[#1C1C1C] text-center">
+        Registration Approved
+      </h2>
 
       {/* Remark */}
-      <p className="text-[14px] text-[#1C1C1C] font-normal">
+      <p className="text-[14px] text-[#1C1C1C] font-normal text-center">
         Remark: All submitted documents are verified.
       </p>
 
-      <hr className="w-full border-[#E6E6E6] my-2" />
+      <hr className="w-full border-t border-[#E6E6E6] my-2" />
 
       {/* Description */}
       <p className="text-[14px] text-[#6B6B6B] text-center">
@@ -33,9 +37,14 @@ const Approved = () => {
       </p>
 
       {/* Button */}
-      <button className="mt-4 w-full bg-[#FF5C00] text-white text-[14px] font-medium py-3 rounded-xl hover:bg-[#e65500] transition">
-        Return to Tenant Registration Queue
-      </button>
+      <Link href="/Admin/TenantReg">
+        <div
+          onClick={() => onApprove(tenantId)}
+          className="mt-4 w-full max-w-full bg-[#FF5C00] text-white text-[14px] px-3 font-normal py-3 rounded-xl hover:bg-[#e65500] transition-colors flex items-center justify-center cursor-pointer"
+        >
+          Return to Tenant Registration Queue
+        </div>
+      </Link>
     </div>
   );
 };
