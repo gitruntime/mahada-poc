@@ -424,6 +424,24 @@ const TenantRegApplication = () => {
                                     <span class="mx-2">–</span>
                                     <span className='text-[#404040] '>Forwarded for approval</span>
                                 </div>
+                                {isApproved && (
+                                    <div className="px-4 py-3 text-gray-700 text-[15px] border-t border-gray-200">
+                                        <span className="text-gray-500">14 Feb 2025</span>
+                                        <span className="mx-2">–</span>
+                                        <span className="text-[#404040]">
+                                            Registration approved by AA-Mumbai
+                                        </span>
+                                    </div>
+                                )}
+                                 {isRejected && (
+                                    <div className="px-4 py-3 text-gray-700 text-[15px] border-t border-gray-200">
+                                        <span className="text-gray-500">14 Feb 2025</span>
+                                        <span className="mx-2">–</span>
+                                        <span className="text-[#404040]">
+                                            Registration rejected by AA-Mumbai
+                                        </span>
+                                    </div>
+                                )}
                             </div>
 
                         </div>
