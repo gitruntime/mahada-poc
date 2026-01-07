@@ -5,7 +5,7 @@ import { Poppins } from 'next/font/google';
 import AdminNavbar from '@/Components/Admin/AdminNavbar';
 import RightSection from '@/Components/Admin/RightSection';
 import Approved from '@/Components/Admin/Approved';
-
+import Rejected from '@/Components/Admin/Rejected';
 const poppins = Poppins({
     subsets: ['latin'],
     weight: ['400', '600', '700'],
@@ -16,15 +16,31 @@ const TenantRegApplication = () => {
     const [activeTab, setActiveTab] = useState('overview');
     const [isApproved, setIsApproved] = useState(false);
     const [remark, setRemark] = useState("");
+    const [isRejected, setIsRejected] = useState(false); // NEW
 
 
     const handleApproveClick = () => {
         setIsApproved(true);
-        // Save the approval status of this specific ID to localStorage
+        setIsRejected(false); // ensure rejected state is cleared
+
         const approvedIds = JSON.parse(localStorage.getItem('approvedTenants') || '[]');
         const APPLICATION_ID = "TNT-REG-2025-009872";
-        approvedIds.push(APPLICATION_ID);// Use the actual ID here
+        if (!approvedIds.includes(APPLICATION_ID)) approvedIds.push(APPLICATION_ID);
         localStorage.setItem('approvedTenants', JSON.stringify(approvedIds));
+    };
+
+    const handleRejectClick = () => {
+        setIsRejected(true);
+        setIsApproved(false); // safety
+
+        const rejectedIds = JSON.parse(localStorage.getItem('rejectedTenants') || '[]');
+        const APPLICATION_ID = "TNT-REG-2025-009872";
+
+        if (!rejectedIds.includes(APPLICATION_ID)) {
+            rejectedIds.push(APPLICATION_ID);
+        }
+
+        localStorage.setItem('rejectedTenants', JSON.stringify(rejectedIds));
     };
 
     return (
@@ -70,12 +86,19 @@ const TenantRegApplication = () => {
                             <div className="flex items-center gap-3">
                                 {/* Dynamic Status Badge */}
                                 <span
-                                    className={`flex items-center gap-2 px-3 py-1 rounded-[8px] border text-[12px] ${poppins.className} font-medium transition-all duration-300 ${isApproved
-                                        ? "bg-[#DFF3EA] text-[#1E8E5A] border-[#9FD9C2]"
-                                        : "bg-white text-[#F97415] border-[#FEE685]"
+                                    className={`flex items-center gap-2 px-3 py-1 rounded-[8px] border text-[12px] ${poppins.className} font-medium transition-all duration-300
+    ${isApproved
+                                            ? "bg-[#DFF3EA] text-[#1E8E5A] border-[#9FD9C2]"
+                                            : isRejected
+                                                ? "bg-[#FEEAEA] text-[#C53030] border-[#F5B5B5]"
+                                                : "bg-white text-[#F97415] border-[#FEE685]"
                                         }`}
                                 >
-                                    {isApproved ? "Approved" : "Pending Verification"}
+                                    {isApproved
+                                        ? "Approved"
+                                        : isRejected
+                                            ? "Rejected"
+                                            : "Pending Verification"}
                                 </span>
 
                                 {/* Hide SLA when approved */}
@@ -147,13 +170,19 @@ const TenantRegApplication = () => {
                 <div className="w-full lg:w-[400px]">
                     {isApproved ? (
                         <Approved remark={remark} />
+                    ) : isRejected ? (
+                        <Rejected remark={remark} />
                     ) : (
                         <RightSection
                             onApprove={handleApproveClick}
+                            onReject={handleRejectClick}
                             remark={remark}
                             setRemark={setRemark}
                         />
                     )}
+
+
+
                 </div>
             </div>
             <div className="flex mt-[30px] bg-[#f8f9fa]  font-sans">
@@ -387,13 +416,13 @@ const TenantRegApplication = () => {
                                 <div class="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
                                     <span class="text-gray-500">13 Feb 2025</span>
                                     <span class="mx-2">–</span>
-                                     <span className='text-[#404040] '>Aadhaar verified by MH-VO-021</span>
+                                    <span className='text-[#404040] '>Aadhaar verified by MH-VO-021</span>
                                 </div>
 
                                 <div class="px-4 py-3 text-gray-700 text-[15px]">
                                     <span class="text-gray-500">14 Feb 2025</span>
                                     <span class="mx-2">–</span>
-                                     <span className='text-[#404040] '>Forwarded for approval</span>
+                                    <span className='text-[#404040] '>Forwarded for approval</span>
                                 </div>
                             </div>
 
