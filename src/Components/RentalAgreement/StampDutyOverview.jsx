@@ -187,7 +187,7 @@ const StampDutyOverview = () => {
                     Previous
                 </Link>
                 <Link
-                    href={accepted ? "/payment" : "#"}
+                    href={accepted ? "/Tenant/paymentgateway2" : "#"}
                     className={`flex justify-center items-center gap-2 text-[14px] px-6 py-2.5 rounded-lg transition-all duration-300 ease-in-out
                     ${poppins.className} 
                     ${accepted

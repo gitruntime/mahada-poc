@@ -135,7 +135,7 @@ const Form3 = () => {
                         </Link>
 
                         <Link
-                            href="/Landlord/paymentgatewayprop"
+                            href="/Landlord/paymentgateway2"
                             className={`w-full sm:w-auto bg-orange-500 text-white ${poppins.className} 
           flex justify-center items-center gap-2 px-6 py-2.5 rounded-lg
           cursor-pointer transition-all duration-300 ease-in-out

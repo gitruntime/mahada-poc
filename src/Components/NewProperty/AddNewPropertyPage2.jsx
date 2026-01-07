@@ -26,17 +26,18 @@ const inputBaseClass = `
 `;
 
 const AddNewPropertyPage2 = () => {
-  const [formData, setFormData] = useState({
-    title: "",
-    propertyType: "",
-    address: "",
-    city: "",
-    state: "",
-    pin: "",
-    ownershipDate: "",
-    latitude: "",
-    longitude: "",
-  });
+ const [formData, setFormData] = useState({
+  title: "Green Valley Residency",
+  propertyType: "Residential Apartment",
+  address: "Flat No. 302, Green Valley Society, MG Road",
+  city: "Mumbai",
+  state: "Maharashtra",
+  pin: "400001",
+  ownershipDate: "2023-06-15",
+  latitude: "19.0760",
+  longitude: "72.8777",
+});
+
 
   const [errors, setErrors] = useState({});
 

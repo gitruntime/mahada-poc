@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useState } from 'react';
 
 const Footer = () => {
@@ -71,16 +70,16 @@ const Footer = () => {
           {/* App + Social */}
           <div className="flex flex-wrap justify-center items-center gap-8">
             <div className="flex gap-3">
-              <Image src="/googleplay.png" alt="Google Play" width={130} height={32}/>
-              <Image src="/appstore1.png" alt="App Store" width={130}  height={32} />
+              <img src="googleplay.png" alt="Google Play" className="h-[32px]" />
+              <img src="appstore1.png" alt="App Store" className="h-[32px]" />
             </div>
 
             <div className="flex gap-2">
-              <Image src="/facebook_logo.png" alt="Facebook" height={32} width={32} className="w-[32px] h-[32px]" />
-              <Image src="/x-icon.png" alt="X" height={32} width={32} />
-              <Image src="/linkedin-icon.png" alt="LinkedIn" height={32} width={32} />
-              <Image src="/youtube-icon.png" alt="YouTube" height={32} width={32} />
-              <Image src="/instagram-icon.png" alt="Instagram"height={32} width={32} />
+              <img src="facebook_logo.png" alt="Facebook" className="w-[32px] h-[32px]" />
+              <img src="x-icon.png" alt="X" className="w-[32px] h-[32px]" />
+              <img src="linkedin-icon.png" alt="LinkedIn" className="w-[32px] h-[32px]" />
+              <img src="youtube-icon.png" alt="YouTube" className="w-[32px] h-[32px]" />
+              <img src="instagram-icon.png" alt="Instagram" className="w-[32px] h-[32px]" />
             </div>
           </div>
         </div>
