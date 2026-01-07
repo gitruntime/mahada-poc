@@ -19,7 +19,14 @@ import AdminNavbar from '@/Components/Admin/AdminNavbar';
 import Footer from '@/Components/Layout/Footer';
 
 const TenantReg = () => {
+    const [page, setPage] = useState(1)
+    const pageSize = 6
+    const totalItems = 2145
+    const totalPages = Math.ceil(totalItems / pageSize)
+
     const [activeTab, setActiveTab] = useState("overview");
+
+
     return (
         <div>
             <div class="flex justify-center   items-center gap-2 px-3 py-1.5 border border-[#D1D5DC] rounded-md bg-[#F3F4F6] text-[13px] text-gray-700">
@@ -152,17 +159,7 @@ const TenantReg = () => {
 
                     {/* ROWS */}
                     {[
-                        {
-                            id: "TNT-REG-2025-009933",
-                            name: "Suresh Patil",
-                            mobile: "+91 9XXXXXX782",
-                            city: "Nagpur",
-                            date: "10 Feb 2025",
-                            status: "Rejected",
-                            statusStyle: "bg-[#FFF1E8] text-[#F97316] border-[#FFD6BA]",
-                            sla: "2 days remaining",
-                            officer: "MH-VO-019",
-                        },
+
                         {
                             id: "TNT-REG-2025-009872",
                             name: "Rahul Mehta",
@@ -185,6 +182,17 @@ const TenantReg = () => {
                             sla: "Overdue",
                             officer: "MH-VO-014",
                             overdue: true,
+                        },
+                        {
+                            id: "TNT-REG-2025-009933",
+                            name: "Suresh Patil",
+                            mobile: "+91 9XXXXXX782",
+                            city: "Nagpur",
+                            date: "10 Feb 2025",
+                            status: "Rejected",
+                            statusStyle: "bg-[#FFF1E8] text-[#F97316] border-[#FFD6BA]",
+                            sla: "2 days remaining",
+                            officer: "MH-VO-019",
                         },
                         {
                             id: "TNT-REG-2025-009872",
@@ -219,29 +227,9 @@ const TenantReg = () => {
                             sla: "4 days remaining",
                             officer: "MH-VO-021",
                         },
-                        {
-                            id: "TNT-REG-2025-009901",
-                            name: "Ayesha Khan",
-                            mobile: "+91 9XXXXXX118",
-                            city: "Pune – Hinjewadi",
-                            date: "11 Feb 2025",
-                            status: "Pending Verification",
-                            statusStyle: "bg-gray-100 text-gray-600 border-gray-200",
-                            sla: "Overdue",
-                            officer: "MH-VO-014",
-                            overdue: true,
-                        },
-                        {
-                            id: "TNT-REG-2025-009872",
-                            name: "Rahul Mehta",
-                            mobile: "+91 9XXXXXX342",
-                            city: "Mumbai – Andheri East",
-                            date: "12 Feb 2025",
-                            status: "Approved",
-                            statusStyle: "bg-[#DFF3EA] text-[#1E8E5A] border-[#9FD9C2]",
-                            sla: "4 days remaining",
-                            officer: "MH-VO-021",
-                        },
+
+
+
                     ].map((row, i) => (
                         <div
                             key={i}
@@ -249,11 +237,11 @@ const TenantReg = () => {
                  px-6 py-4 text-sm items-center ${inter.className} border-b border-[#E5E7EB] last:border-none
                  hover:bg-gray-50 transition`}
                         >
-                           {/* Checkbox */}
-<div className="flex items-center justify-center">
-  <input
-    type="checkbox"
-    className="
+                            {/* Checkbox */}
+                            <div className="flex items-center justify-center">
+                                <input
+                                    type="checkbox"
+                                    className="
       w-4 h-4
       rounded
       border-gray-300
@@ -261,8 +249,8 @@ const TenantReg = () => {
       focus:ring-[#F97316]
       cursor-pointer
     "
-  />
-</div>
+                                />
+                            </div>
 
 
                             <div className="text-gray-800 font-medium">{row.id}</div>
@@ -278,7 +266,7 @@ const TenantReg = () => {
                 w-[160px] h-[52px]
                 text-xs font-medium
                 rounded-[4px] border
-                ${row.statusStyle}`}    
+                ${row.statusStyle}`}
                                 >
                                     {row.status}
                                 </span>
@@ -294,30 +282,82 @@ const TenantReg = () => {
 
                             {/* Action */}
                             <div>
-                                <span className="text-[#F97316] font-medium cursor-pointer hover:underline">
-                                    View Details
-                                </span>
+                                {row.status === "Pending Verification" ? (
+                                    <Link
+                                        href="/Admin/TenantRegApplication"
+                                        className="text-[#F97316] font-medium cursor-pointer hover:underline"
+                                    >
+                                        View Details
+                                    </Link>
+                                ) : (
+                                    <span className="text-[#F97316] font-medium cursor-pointer ">
+                                        View Details
+                                    </span>
+                                )}
                             </div>
+
                         </div>
                     ))}
                 </div>
 
 
                 {/* FOOTER */}
+                {/* FOOTER */}
                 <div className="flex items-center justify-between mt-4 text-sm text-gray-500">
-                    <div>Showing 1–25 of 2,145 requests</div>
+                    {/* Showing text */}
+                    <div>
+                        Showing {(page - 1) * pageSize + 1}–
+                        {Math.min(page * pageSize, totalItems)} of {totalItems} requests
+                    </div>
 
+                    {/* Pagination */}
                     <div className="flex items-center gap-2">
-                        <button className="px-3 py-1 border rounded">Previous</button>
-                        <button className="px-3 py-1 bg-[#F97316] text-white rounded">1</button>
-                        <button className="px-3 py-1 border rounded">2</button>
-                        <button className="px-3 py-1 border rounded">3</button>
-                        <button className="px-3 py-1 border rounded">Next</button>
+                        {/* Previous */}
+                        <button
+                            disabled={page === 1}
+                            onClick={() => setPage(page - 1)}
+                            className={`px-3 py-1 border rounded 
+                ${page === 1
+                                    ? "cursor-not-allowed opacity-50"
+                                    : "hover:bg-gray-100"}`}
+                        >
+                            Previous
+                        </button>
+
+                        {/* Page numbers */}
+                        {[...Array(totalPages)].slice(0, 3).map((_, i) => {
+                            const pageNumber = i + 1
+                            return (
+                                <button
+                                    key={pageNumber}
+                                    onClick={() => setPage(pageNumber)}
+                                    className={`px-3 py-1 rounded border 
+                        ${page === pageNumber
+                                            ? "bg-[#F97316] text-white border-[#F97316]"
+                                            : "hover:bg-gray-100"}`}
+                                >
+                                    {pageNumber}
+                                </button>
+                            )
+                        })}
+
+                        {/* Next */}
+                        <button
+                            disabled={page === totalPages}
+                            onClick={() => setPage(page + 1)}
+                            className={`px-3 py-1 border rounded 
+                ${page === totalPages
+                                    ? "cursor-not-allowed opacity-50"
+                                    : "hover:bg-gray-100"}`}
+                        >
+                            Next
+                        </button>
                     </div>
                 </div>
+
             </div>
 
-            <Footer/>
+            <Footer />
 
 
 
