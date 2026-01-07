@@ -106,21 +106,9 @@ const adminlogin = () => {
                                 </button>
                             </form>
 
-                            {/* Divider */}
-                            <div className="my-8 flex items-center gap-4">
-                                <div className="h-px flex-1 bg-[#CFDFE2]" />
-                                <span className={`text-[16px] ${roboto.className} text-[#294957]`}>Or</span>
-                                <div className="h-px flex-1 bg-[#CFDFE2]" />
-                            </div>
+                           
 
-
-                            {/* Sign up */}
-                            <p className={`mt-8 font-normal text-center ${roboto.className} text-[16px] sm:text-[18px]`}>
-                                Don’t you have an account?{" "}
-                                <Link href="/signup" className={`font-normal ${roboto.className} text-[#028541] cursor-pointer hover:underline`}>
-                                    Sign up
-                                </Link>
-                            </p>
+                           
 
                         </div>
                     </div>
