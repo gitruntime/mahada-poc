@@ -23,13 +23,13 @@ const Signup = () => {
   const router = useRouter();
   const [role, setRole] = useState("");
 
-  const handleContinue =  () => {
-  if (role === "tenant") {
-    router.push("/Tenant/personalinfo");
-  } else {
-    router.push("/Landlord/personalinfo");
-  }
-};
+  const handleContinue = () => {
+    if (role === "tenant") {
+      router.push("/Tenant/personalinfo");
+    } else {
+      router.push("/Landlord/personalinfo");
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col lg:flex-row w-full">
@@ -68,22 +68,20 @@ const Signup = () => {
             <div className="flex gap-4 mb-10">
               <button
                 onClick={() => setRole("tenant")}
-                className={`px-6 py-3 rounded-xl border-2 ${
-                  role === "tenant"
-                    ? "border-[#FF7A18] text-[#F97415] bg-orange-50"
-                    : "border-[#00000066] text-[#00000066]"
-                }`}
+                className={`px-6 py-3 rounded-xl border-2 ${role === "tenant"
+                  ? "border-[#FF7A18] text-[#F97415] bg-orange-50"
+                  : "border-[#00000066] text-[#00000066]"
+                  }`}
               >
                 I am a Tenant
               </button>
 
               <button
                 onClick={() => setRole("landlord")}
-                className={`px-6 py-3 rounded-xl border-2 ${
-                  role === "landlord"
-                    ? "border-[#FF7A18] text-[#F97415] bg-orange-50"
-                    : "border-[#00000066] text-[#00000066]"
-                }`}
+                className={`px-6 py-3 rounded-xl border-2 ${role === "landlord"
+                  ? "border-[#FF7A18] text-[#F97415] bg-orange-50"
+                  : "border-[#00000066] text-[#00000066]"
+                  }`}
               >
                 I am a Landlord
               </button>
@@ -109,12 +107,21 @@ const Signup = () => {
             </div>
 
             {/* Footer */}
-            <p className={`text-center ${roboto.className}`}>
-           Are you a Staff ?{" "}
-              <Link href="/adminlogin" className="text-[#028f46] hover:underline">
-                Login
-              </Link>
-            </p>
+            <div className=" space-y-2">
+              <p className={`text-center ${roboto.className}`}>
+                Already have an account? {" "}
+                <Link href="/login" className="text-[#028541] font-semibold text-[18px] hover:underline">
+                  Login
+                </Link>
+              </p>
+              <p className={`text-center ${roboto.className}`}>
+                Login As a Staff{" -"} {" "}
+                <Link href="/adminlogin" className="text-[#F97415] font-semibold text-[16px] hover:underline">
+                  Click here
+                </Link>
+              </p>
+            </div>
+
           </div>
         </div>
       </div>

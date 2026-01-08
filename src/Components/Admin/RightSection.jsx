@@ -14,7 +14,7 @@ const RightSection = ({ onApprove, onReject, remark, setRemark }) => {
     <div className={`w-full lg:w-[398px] bg-white rounded-2xl border border-[#E6E6E6] ${poppins.className} p-6 flex flex-col`}>
       
       <h2 className="text-[20px] font-bold text-[#171717] mb-4">
-        Approval Actions
+        File Noting
       </h2>
 
       <label className="text-[12px] text-[#737373] mb-2">
