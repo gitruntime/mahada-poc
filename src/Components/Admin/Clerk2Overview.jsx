@@ -240,9 +240,9 @@ const Clerk2Overview = () => {
 
 
                                                     <td className="px-4">
-                                                        <button className="text-[#F54900] font-medium hover:underline cursor-pointer">
+                                                        <Link  href="/Admin/Details2" className="text-[#F54900] font-medium hover:underline cursor-pointer">
                                                             View Details
-                                                        </button>
+                                                        </Link>
                                                     </td>
                                                 </tr>
                                             ))}
@@ -486,7 +486,7 @@ const Clerk2Overview = () => {
 
             <div className="flex flex-col lg:flex-row mx-3 gap-6">
                 {/* LEFT CARD */}
-                <div className="w-full lg:max-w-[720px] bg-white rounded-xl border border-gray-200 px-6 py-5">
+                <div className="w-full  bg-white rounded-xl border border-gray-200 px-6 py-5">
                     <div className="flex items-center justify-between mb-4">
                         <h2 className={`text-[20px] font-semibold ${poppins.className} text-[#1B0914]`}>
                             System &amp; Approval Activity Log
