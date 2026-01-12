@@ -1,7 +1,12 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Inter, Montserrat } from "next/font/google";
+import { Inter, Montserrat, Poppins } from "next/font/google";
+
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["400", "600", "700"],
+});
 
 
 const montserrat = Montserrat({
@@ -99,9 +104,7 @@ const Contentclerk2 = () => {
                     .map((card, i) => (
                         <div
                             key={i}
-                            className="w-[320px] h-[173px] rounded-[14px] 
-             bg-white/5 backdrop-blur-[93.4px]
-             p-5 flex flex-col justify-between"
+                            className="w-[320px] h-[173px] rounded-[14px] bg-white/5 backdrop-blur-[93.4px] p-5 flex flex-col justify-between relative overflow-hidden group"
                         >
                             {/* Top title */}
                             <p className={`text-[14px] font-semibold ${montserrat.className} text-[#FFFFFF]`}>
@@ -109,36 +112,38 @@ const Contentclerk2 = () => {
                             </p>
 
                             {/* Bottom section */}
-                            <div className="flex items-end justify-between">
+                            <div className="flex items-end justify-between mt-3">
                                 {/* Left content */}
-                                <div>
+                                <div className="flex flex-col justify-end transition-transform duration-600 transform group-hover:-translate-y-11">
                                     <p
-                                        className={`text-[30px] ${inter.className} font-semibold leading-none ${card.label === "Overdue Verifications"
-                                                ? "text-[#FF777C]"
-                                                : "text-white"
+                                        className={`text-[30px] ${inter.className} font-semibold leading-none ${card.label === "Overdue Verifications" ? "text-[#FF777C]" : "text-white"
                                             }`}
                                     >
                                         {card.value}
                                     </p>
-
                                     <p className={`text-[12px] font-semibold ${montserrat.className} text-[#FFFFFF99] mt-1`}>
                                         {card.badgeText}
                                     </p>
                                 </div>
 
                                 {/* Icon */}
-                                <div
-                                    className={`w-[40px] h-[40px] rounded-[10px] 
-                  flex items-center justify-center ${card.iconBg}`}
-                                >
-                                    <img
-                                        src={card.icon}
-                                        alt=""
-                                        className="w-[40px] h-[40px]"
-                                    />
+                                <div className={`w-[40px] h-[40px] rounded-[10px] flex items-center justify-center ${card.iconBg}`}>
+                                    <img src={card.icon} alt="" className="w-[40px] h-[40px]" />
                                 </div>
                             </div>
+
+                            {/* Button - slides in from bottom */}
+                            {/* Button - slides in from bottom */}
+                            <button
+                                className={`absolute cursor-pointer left-5 bottom-5 w-[119px] h-[34px] bg-[#6B7280] text-white px-[14px] py-[8px] rounded-[10px] text-[12px] leading-[16px] font-semibold ${poppins.className} transition-all duration-300 opacity-0 translate-y-4 group-hover:translate-y-0 group-hover:opacity-100 hover:bg-[#F97415]`}
+                            >
+                                View Requests
+                            </button>
+
                         </div>
+
+
+
 
                     ))}
             </div>
