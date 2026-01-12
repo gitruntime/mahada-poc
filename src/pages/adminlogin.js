@@ -16,15 +16,16 @@ const poppins = Poppins({
 
 /* ===== STAFF CREDENTIALS ===== */
 const USERS = [
-    { email: "clerk1@mhada.com", password: "password123", role: "clerk1" },
-    { email: "clerk2@mhada.com", password: "password123", role: "clerk2" },
-    { email: "senior@mhada.com", password: "password123", role: "admin" },
+  
+    { email: "mh-vo-21@mhada.com", password: "password123", role: "clerk2" },
+    { email: "mum-authority@mhada.com", password: "password123", role: "admin" },
 ];
 
 const adminlogin = () => {
     const router = useRouter();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+   const [email, setEmail] = useState("mh-vo-21@mhada.com");
+const [password, setPassword] = useState("password123");
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -91,7 +92,8 @@ const adminlogin = () => {
                                 <input
                                     type="email"
                                     required
-                                    placeholder="Example@email.com"
+                                   placeholder="mum-authority@mhada.com"
+
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="h-[48px] w-full bg-[#F7FBFF] rounded-[12px] border border-[#D4D7E3] px-4"
@@ -106,7 +108,8 @@ const adminlogin = () => {
                                     type="password"
                                     minLength={8}
                                     required
-                                    placeholder="at least 8 characters"
+                                   placeholder="password123"
+
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                     className="h-[48px] w-full bg-[#F7FBFF] rounded-[12px] border border-[#D4D7E3] px-4"

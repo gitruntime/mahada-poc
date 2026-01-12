@@ -157,8 +157,7 @@ const RentalDetailsForm = () => {
         </div>
       </div>
 
-      {/* SUBMIT */}
-      
+
 
     </div>
   );
