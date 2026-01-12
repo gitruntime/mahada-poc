@@ -3,6 +3,7 @@ import { Poppins, Arimo } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
 import AddNewPropertyPage from './NewProperty/AddNewPropertyPage';
+import RentalDetails from './NewProperty/RentalDetails';
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -127,6 +128,7 @@ const PropertyOwnership = () => {
                     <AddNewPropertyPage />
 
 
+
                     {/* Document Upload */}
                     <div className="w-full flex flex-col gap-6 p-4">
 
@@ -161,6 +163,7 @@ const PropertyOwnership = () => {
                                 />
                             </div>
                         </div>
+                        <RentalDetails />
                         <div className={`w-full border text-[#717182] border-[#0000001A] h-[46px] flex items-center justify-between px-4 rounded-[10px] ${arimo.className}`}>
                             <h4 className={`text-gray-900 font-normal text-md ${poppins.className}`}>
                                 Add more property (Optional)
