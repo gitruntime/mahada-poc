@@ -79,7 +79,7 @@ const adminlogin = () => {
                         </div>
 
                         <h1 className="text-[#000000] mb-[20px] font-semibold text-[20px] sm:text-[24px]">
-                            Staff Login
+                            Department Login
                         </h1>
 
                         {/* Form */}
