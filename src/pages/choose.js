@@ -115,7 +115,7 @@ const Signup = () => {
                 </Link>
               </p>
               <p className={`text-center ${roboto.className}`}>
-                Login As a Staff{" -"} {" "}
+                Login As a Department{" -"} {" "}
                 <Link href="/adminlogin" className="text-[#F97415] font-semibold text-[16px] hover:underline">
                   Click here
                 </Link>
