@@ -18,8 +18,7 @@ const poppins = Poppins({
 const USERS = [
     { email: "clerk1@mhada.com", password: "password123", role: "clerk1" },
     { email: "clerk2@mhada.com", password: "password123", role: "clerk2" },
-    
-    { email: "admin@mhada.com", password: "password123", role: "admin" },
+    { email: "senior@mhada.com", password: "password123", role: "admin" },
 ];
 
 const adminlogin = () => {
