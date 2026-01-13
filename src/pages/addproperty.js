@@ -15,7 +15,7 @@ const addnewprop = () => {
       <BlankNavbar/>
       <div className={`px-4 sm:px-8 lg:px-20 mt-6 ${poppins.className}`}>
         <Link
-          href="/dashboard"
+          href="/Landlord"
           className={`text-[16px] font-medium leading-[100%] text-black cursor-pointer ${poppins.className}`}
           style={{ fontStyle: 'medium', letterSpacing: '0%' }}
         >

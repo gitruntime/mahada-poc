@@ -599,9 +599,9 @@ const PropertyCard = ({ property }) => {
                         </p>
                     </div>
 
-                    <button className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-[12px]">
+                    <Link  href="/propertydetails"   className="bg-orange-500 hover:bg-orange-600 text-white px-5 py-3 rounded-[12px]">
                         View Details
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -624,7 +624,7 @@ const AllProperties = () => {
         <div className="w-full overflow-x-hidden">
             <div className="w-full max-w-[1440px] h-[64px] flex items-center px-[100px] py-[20px] border-b border-gray-300">
                 <nav className={`flex items-center gap-2 text-[16px]  ${poppins.className}`}>
-                    <span className="text-gray-400 font-medium"> <Link href="/">Home</Link></span>
+                    <span className="text-gray-400 font-medium"> <Link href="/Landlord">Home</Link></span>
                     <span className="text-gray-400 font-medium" >{`>`} Properties</span>
                     <span className="text-black font-semibold">{`>`} Andheri</span>
 
