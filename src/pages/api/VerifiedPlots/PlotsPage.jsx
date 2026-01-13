@@ -177,7 +177,7 @@ const PlotsPage = () => {
                 </div>
 
                 {/* Footer */}
-                <div className="mt-4 pt-3 border-t flex items-center justify-between">
+                <div className="mt-4 pt-3 border-t border-[#E5E7EB] flex items-center justify-between">
                   <p className="text-orange-500 font-bold text-[18px]">
                     {property.price}
                   </p>
