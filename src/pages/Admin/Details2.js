@@ -22,32 +22,54 @@ const Details2 = () => {
     const [openDocument, setOpenDocument] = useState(false);
     const [note, setNote] = useState("");
 
+    const [showNoteModal, setShowNoteModal] = useState(false);
 
 
     const handleApproveClick = () => {
         setIsApproved(true);
-        setIsRejected(false); // ensure rejected state is cleared
+        setIsRejected(false);
 
         const approvedIds = JSON.parse(localStorage.getItem('approvedTenants') || '[]');
         const APPLICATION_ID = "TNT-REG-2025-009872";
         if (!approvedIds.includes(APPLICATION_ID)) approvedIds.push(APPLICATION_ID);
         localStorage.setItem('approvedTenants', JSON.stringify(approvedIds));
+
+        // Add to activity log
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        });
+        setActivityLog(prev => [...prev, { date: formattedDate, action: "Application Approved" } ,{ date: "13 Feb 2025", action: "Aadhaar verified by MH-VO-021" },
+        { date: "14 Feb 2025", action: "Forwarded for approval" },]);
     };
+
+
+    const [activityLog, setActivityLog] = useState([
+        { date: "12 Feb 2025", action: "Application submitted" },
+       
+    ]);
+
 
     const handleRejectClick = () => {
         setIsRejected(true);
-        setIsApproved(false); // safety
+        setIsApproved(false);
 
         const rejectedIds = JSON.parse(localStorage.getItem('rejectedTenants') || '[]');
         const APPLICATION_ID = "TNT-REG-2025-009872";
-
-        if (!rejectedIds.includes(APPLICATION_ID)) {
-            rejectedIds.push(APPLICATION_ID);
-        }
-
+        if (!rejectedIds.includes(APPLICATION_ID)) rejectedIds.push(APPLICATION_ID);
         localStorage.setItem('rejectedTenants', JSON.stringify(rejectedIds));
-    };
 
+        // Add to activity log
+        const today = new Date();
+        const formattedDate = today.toLocaleDateString('en-GB', {
+            day: '2-digit',
+            month: 'short',
+            year: 'numeric'
+        });
+        setActivityLog(prev => [...prev, { date: formattedDate, action: "Application Rejected" }]);
+    };
     return (
         <div className="min-h-screen bg-[#F9FAFB] pb-10">
             {/* Logged-in Info Bar */}
@@ -328,6 +350,40 @@ const Details2 = () => {
                                         </button>
 
                                     </div>
+                                    {/* Pan Card Document */}
+                                    <div className="flex items-center justify-between p-5 bg-white border border-gray-200 rounded-lg shadow-sm">
+                                        <div className="flex items-start space-x-4">
+                                            {/* Document Icon */}
+                                            <div className="p-2 bg-gray-50 rounded-md">
+                                                <Image src="/document_icon.png" width={20} height={20} />
+                                            </div>
+
+                                            {/* Document Details */}
+                                            <div>
+                                                <h3 className={`text-[#171717] ${poppins.className} font-normal`}>Pan Card</h3>
+                                                <div className="mt-1 flex items-center space-x-2">
+                                                    <span className="inline-flex gap-2 items-center px-4 py-1 rounded-[8px] text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                                                        <Image src="/check_icon.png" width={12} height={12} />
+                                                        Verified
+                                                    </span>
+                                                </div>
+                                                <div className={`mt-3 text-[12px] text-[#737373] ${poppins.className} space-y-1`}>
+                                                    <p>Verified By: Officer ID MH-VO-021</p>
+                                                    <p>Verified On: 13 Feb 2025</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            // onClick={() => setOpenDocument(true)}
+                                            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg shadow-sm cursor-pointer 
+               hover:bg-gray-100 hover:text-gray-900 transition-colors duration-200"
+                                        >
+                                            View Document
+                                        </button>
+
+                                    </div>
+
 
                                     {/* Employment Proof Document */}
                                     <div className="flex items-center justify-between p-5 bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -418,19 +474,18 @@ const Details2 = () => {
 
                     {/* Right Sidebar - Activity Log */}
                     <div className={`border-l w-[490px] border-[#E5E5E5] ${poppins.className} p-8 bg-[#fcfcfc]`}>
-                        <h2 className="text-[#171717] font-bold text-[16px] mb-6">Activity Log</h2>
+                        <h2 className="text-[#171717] font-bold text-[16px] mb-6">Activity Log (Previous notings)</h2>
                         <div>
-                            <div class="w-full max-w-xl rounded-lg border border-gray-200 bg-white overflow-hidden">
-                                <div class="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
-                                    <span class="text-gray-500">12 Feb 2025</span>
-                                    <span class="mx-2">–</span>
-                                    <span className='text-[#404040] '>Application submitted</span>
-                                </div>
+                            <div className="w-full max-w-xl rounded-lg border border-gray-200 bg-white overflow-hidden">
+    {activityLog.map((item, idx) => (
+        <div key={idx} className="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
+            <span className="text-gray-500">{item.date}</span>
+            <span className="mx-2">–</span>
+            <span className='text-[#404040]'>{item.action}</span>
+        </div>
+    ))}
+</div>
 
-
-
-
-                            </div>
 
                         </div>
                     </div>
@@ -448,6 +503,7 @@ const Details2 = () => {
                 />
             )}
 
+            {/* Right Sidebar Modal */}
             {/* Right Sidebar Modal */}
             <div
                 className={`fixed top-0 right-0 h-full w-[420px] bg-[#C7C7C7] z-50 shadow-xl transform transition-transform duration-300
@@ -496,19 +552,36 @@ const Details2 = () => {
                             <button
                                 onClick={() => {
                                     if (note.trim() === "") return; // optional: prevent empty notes
-                                    alert("Note added!"); // simple notification
-                                    setOpenDocument(false); // close modal
-                                    setNote(""); // reset textarea
+                                    setShowNoteModal(true); // show confirmation modal
+                                    // Don't reset note here, so it stays in textarea
+                                    // setNote(""); <- remove this line
                                 }}
                                 className="px-4 py-2 text-sm bg-orange-500 text-white rounded-md"
                             >
                                 Save
                             </button>
-                        </div>
 
+                        </div>
                     </div>
                 </div>
+
+                {/* Note Added Confirmation Modal */}
+                {showNoteModal && (
+                    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/40">
+                        <div className="bg-white rounded-lg p-6 w-80 text-center shadow-lg">
+                            <h2 className="text-lg font-semibold mb-2">Note Added!</h2>
+                            <p className="text-sm text-gray-600 mb-4">Your note has been successfully saved.</p>
+                            <button
+                                onClick={() => setShowNoteModal(false)}
+                                className="px-4 py-2 bg-orange-500 text-white rounded-md"
+                            >
+                                OK
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
+
 
 
 
