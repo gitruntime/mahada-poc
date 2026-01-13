@@ -15,6 +15,23 @@ const arimo = Arimo({
 
 const ReviewCardLandlord = () => {
     const [accepted, setAccepted] = useState(false);
+    const [paymentDone, setPaymentDone] = useState(false);
+
+    const handlePayment = () => {
+        // Open payment page in a new tab
+        const paymentWindow = window.open(
+            "https://payments-test.cashfree.com/forms/mhada-payment",
+            "_blank"
+        );
+
+        // Check if user comes back to the tab
+        const checkFocus = setInterval(() => {
+            if (document.hasFocus()) {
+                clearInterval(checkFocus);
+                setPaymentDone(true); // mark payment done
+            }
+        }, 500);
+    };
     return (
         <div className="relative mt-24 mb-3 px-4 sm:px-6 lg:px-12 w-full flex justify-center">
             <div className="w-full max-w-5xl flex flex-col gap-6">
@@ -223,7 +240,7 @@ const ReviewCardLandlord = () => {
 
 
                         {/* Navigation Buttons */}
-                        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full max-w-[900px] mx-auto">
+                        {/* <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full max-w-[900px] mx-auto">
                             <Link
                                 href="/Landlord/bankinfo"
                                 className="px-6 py-2 bg-white border-2 border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-center"
@@ -241,7 +258,36 @@ const ReviewCardLandlord = () => {
                                 Pay registration fee
                                 <img src="/righticon.png" className="w-4 h-4" alt="Next" />
                             </Link>
+                        </div> */}
+                        {/* Navigation Buttons */}
+                        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-4 w-full max-w-[900px] mx-auto">
+                            <Link
+                               href="/Landlord/bankinfo"
+                                className="px-6 py-2 bg-white border-2 border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 text-center"
+                            >
+                                Previous
+                            </Link>
+                            <div className="flex flex-col gap-4">
+                                {!paymentDone ? (
+                                    <button
+                                        onClick={handlePayment}
+                                        className="px-6 py-2 rounded-xl border-2 border-[#FF7A18] text-[#F97415] bg-orange-50 hover:bg-orange-100 transition"
+                                        disabled={!accepted} // require checkbox
+                                    >
+                                        Pay registration fee
+                                    </button>
+                                ) : (
+                                    <Link href="/Landlord/logindone">
+                                        <button
+                                            className="px-6 py-2 w-full rounded-xl border-2 border-green-600 text-white bg-green-600 hover:bg-green-700 transition"
+                                        >
+                                            Proceed
+                                        </button>
+                                    </Link>
+                                )}
+                            </div>
                         </div>
+                        
                     </div>
 
 

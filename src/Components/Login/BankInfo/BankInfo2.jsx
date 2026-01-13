@@ -8,13 +8,13 @@ const poppins = Poppins({
 });
 
 const BankInfo2 = () => {
-    const [formData, setFormData] = useState({
-        bankName: "",
-        accountNumber: "987654321098",
-        ifscCode: "SBIN0000456",
-        firstName: "Rahul",
-
-    });
+     const [formData, setFormData] = useState({
+            bankName: "State Bank of India",
+            accountNumber: "12345678901",
+            ifscCode: "SBIN0000456",
+            firstName: "Rohit",
+        });
+    
 
     const [errors, setErrors] = useState({});
 
@@ -115,7 +115,7 @@ const BankInfo2 = () => {
                         <div className="w-full relative h-2 mb-6 bg-gray-300 rounded-full">
                             <div
                                 className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full"
-                                style={{ width: "56%" }}
+                                style={{ width: "71%" }}
                             ></div>
                         </div>
                         <div className="flex justify-between w-full">

@@ -94,7 +94,7 @@ const PropertyOwnership = () => {
                         </h4>
 
                         <div className="w-full relative h-2 mb-6 bg-gray-300 rounded-full">
-                            <div className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full" style={{ width: "22%" }}></div>
+                            <div className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full" style={{ width: "49%" }}></div>
                         </div>
 
                         <div className="flex justify-between w-full">

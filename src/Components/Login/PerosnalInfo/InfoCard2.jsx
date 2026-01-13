@@ -12,7 +12,7 @@ const InfoCard = () => {
     firstName: "Testfirstname",
     lastName: "Testlastname",
     email: "testaddress@gmail.com",
-    emailOtp: "12345",
+    emailOtp: "123456",
     dob: "2000-01-01",
     address: "123, MG Road, Andheri East",
     city: "Mumbai",
@@ -122,7 +122,7 @@ const InfoCard = () => {
                         <div className="w-full relative h-2 mb-6 bg-gray-300 rounded-full">
                             <div
                                 className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full"
-                                style={{ width: "5.33%" }}
+                                style={{ width: "4%" }}
                             ></div>
                         </div>
                         <div className="flex justify-between w-full">

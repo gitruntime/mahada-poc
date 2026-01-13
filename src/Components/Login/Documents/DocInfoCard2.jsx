@@ -24,10 +24,10 @@ const DocInfoCard2 = () => {
 
   const [formData, setFormData] = useState({
 
-    adhar: "1234 5678 9012",
-    adharOtp: "",
-    pan: "",
-    panOtp: "",
+     adhar: "123412341234",
+    adharOtp: "123456",
+    pan: "ABCDE1234F",
+    panOtp: "654321"
 
   });
   const [errors, setErrors] = useState({});
@@ -208,7 +208,7 @@ const DocInfoCard2 = () => {
               <h4 className={`text-gray-900 font-normal mb-[20px] text-md ${poppins.className}`}>Tenant Identity Verification</h4>
 
               <div className="w-full relative h-2 mb-6 bg-gray-300 rounded-full">
-                <div className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full" style={{ width: "22%" }}></div>
+                <div className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full" style={{ width: "27%" }}></div>
               </div>
               <div className="flex justify-between w-full">
                 {[
