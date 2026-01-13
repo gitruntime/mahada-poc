@@ -22,8 +22,24 @@ const arimo = Arimo({
 
 const Form3 = () => {
     const [accepted, setAccepted] = useState(false);
+    const [paymentDone, setPaymentDone] = useState(false);
     const [images, setImages] = useState([]);
     const [docs, setDocs] = useState([]);
+
+
+    const handlePayment = () => {
+        const paymentWindow = window.open(
+            'https://payments-test.cashfree.com/forms/mhada-payment',
+            '_blank'
+        );
+
+        const checkFocus = setInterval(() => {
+            if (document.hasFocus()) {
+                clearInterval(checkFocus);
+                setPaymentDone(true);
+            }
+        }, 500);
+    };
 
     useEffect(() => {
         const storedImages = JSON.parse(localStorage.getItem('uploadedImages')) || [];
@@ -69,7 +85,7 @@ const Form3 = () => {
                                     { icon: "/document_icon.png", label: "Property Info" },
 
 
-                                    { icon: "/grayupload.png", label: "Upload",  },
+                                    { icon: "/grayupload.png", label: "Upload", },
                                     { icon: "/review_icon.png", label: "Review & Submit", },
                                 ].map((step, idx) => (
                                     <div key={idx} className="flex flex-col items-center text-center">
@@ -166,20 +182,26 @@ const Form3 = () => {
                             Previous
                         </Link>
 
-                        <Link
-                            href="/Landlord/paymentgateway2"
-                            className={`w-full sm:w-auto bg-orange-500 text-white ${poppins.className} 
-          flex justify-center items-center gap-2 px-6 py-2.5 rounded-lg
-          cursor-pointer transition-all duration-300 ease-in-out
-          hover:bg-orange-600 hover:shadow-md hover:scale-[1.02] active:scale-[0.98]`}
-                        >
-                            Next
-                            <img
-                                src="/righticon.png"
-                                alt="Next Icon"
-                                className="w-4 h-4 ml-1 transition-transform duration-300 hover:translate-x-1"
-                            />
-                        </Link>
+                        {!paymentDone ? (
+                            <button
+                                onClick={handlePayment}
+                                disabled={!accepted}
+                                className={`w-full sm:w-auto px-6 py-2.5 rounded-lg border-2 transition
+            ${accepted
+                                        ? 'border-orange-500 text-orange-600 bg-orange-50 hover:bg-orange-100'
+                                        : 'border-gray-300 text-gray-400 cursor-not-allowed'
+                                    }`}
+                            >
+                                Pay listing fee
+                            </button>
+                        ) : (
+                            <Link href="/Landlord/logindone2">
+                                <button className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-green-600 text-white hover:bg-green-700">
+                                    Proceed
+                                </button>
+                            </Link>
+                        )}
+
                     </div>
                 </div>
             </div>
