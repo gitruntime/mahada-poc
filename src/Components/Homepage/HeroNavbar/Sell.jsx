@@ -56,7 +56,7 @@ const Sell = () => {
                         ))}
                     </div>
                     {index === 0 && (
-                        <Link href="/addproperty"
+                        <div 
                             className={`
     mt-auto w-[200px] h-[54px] bg-[#028541] text-white  justify-center flex items-center    
     ${poppins.className} font-medium px-4 py-2 rounded-[12px] 
@@ -65,7 +65,7 @@ const Sell = () => {
   `}
                         >
                             List Your Property
-                        </Link>
+                        </div>
                     )}
                 </div>
             ))}
