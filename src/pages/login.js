@@ -16,8 +16,9 @@ const poppins = Poppins({
 
 const Login = () => {
     const router = useRouter();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("Landlord1@gmail.com");
+const [password, setPassword] = useState("password123");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -73,6 +74,7 @@ const Login = () => {
                                     </label>
                                     <input
                                         type="email"
+                                       
                                         required
                                         placeholder="Example@email.com"
                                         value={email}
@@ -87,6 +89,7 @@ const Login = () => {
                                     </label>
                                     <input
                                         type="password"
+                                  
                                         minLength={8}
                                         required
                                         placeholder="at least 8 characters"
