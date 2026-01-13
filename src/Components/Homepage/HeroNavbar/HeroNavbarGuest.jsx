@@ -11,7 +11,7 @@ import { useRouter } from "next/router";
 import PropertyMenu from "@/Components/Homepage/HeroNavbar/PropertyMenu.jsx";
 import Rent from '@/Components/Homepage/HeroNavbar/Rent.jsx';
 
-import Sell from '@/Components/Homepage/HeroNavbar/Sell.jsx';
+import SellGuest from '@/Components/Homepage/HeroNavbar/SellGuest.jsx';
 import CityDropdownDiv from './CityDropdownDiv';
 
 const poppins = Poppins({
@@ -179,7 +179,7 @@ const HeroNavbar = () => {
     transition-all duration-200
     z-50
 ">
-                        <Sell className="w-full h-full" />
+                        <SellGuest className="w-full h-full" />
 
 
 
@@ -258,7 +258,7 @@ const HeroNavbar = () => {
 
                 {/* Notification */}
                 <div className="relative flex flex-col items-center justify-center cursor-pointer w-[32px] h-[32px] rounded-full border-[1px] bg-white/20"
-                    onClick={() => setShowNotifications(!showNotifications)}>
+                    >
                     <Bell size={18} className="text-white" />
 
                     <span className="absolute -top-1 -right-1 min-w-[16px] h-[16px] px-[2px] 
