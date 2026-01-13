@@ -7,7 +7,6 @@ import Banner from '@/Components/Homepage/Banner'
 import AdvicePage from '@/Components/Advice/AdvicePage'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import HeroGuest from '@/Components/Homepage/HeroGuest'
 
 
 
@@ -21,7 +20,7 @@ const index = () => {
 
   return (
     <Layout >
-      <HeroGuest />
+      <Hero />
       <PropertyPage />
       <PlotsPage />
       <Banner />

@@ -19,16 +19,28 @@ const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-        if (email && password) {
-            sessionStorage.setItem("isAuthenticated", "true");
-            router.push("/");
-        } else {
-            console.log("Invalid credentials");
-        }
-    };
+    // Check for Landlord credentials
+    if (email === "Landlord1@gmail.com" && password === "password123") {
+        sessionStorage.setItem("isAuthenticated", "true");
+        sessionStorage.setItem("role", "landlord"); // optional, if you want to use later
+        router.push("/Landlord");
+    } 
+    // Check for Tenant credentials
+    else if (email === "Tenant1@gmail.com" && password === "password123") {
+        sessionStorage.setItem("isAuthenticated", "true");
+        sessionStorage.setItem("role", "tenant"); // optional
+        router.push("/Tenant");
+    } 
+    // Invalid credentials
+    else {
+        alert("Invalid email or password");
+        console.log("Invalid credentials");
+    }
+};
+
 
     return (
         <div className="min-h-screen flex flex-col lg:flex-row w-full">
@@ -114,7 +126,7 @@ const Login = () => {
                             {/* Sign up */}
                             <p className={`mt-8 font-normal text-center ${roboto.className} text-[16px] sm:text-[18px]`}>
                                 Don’t you have an account?{" "}
-                                <Link href="/signup" className={`font-normal ${roboto.className} text-[#028541] cursor-pointer hover:underline`}>
+                                <Link href="/choose" className={`font-normal ${roboto.className} text-[#028541] cursor-pointer hover:underline`}>
                                     Sign up
                                 </Link>
                             </p>

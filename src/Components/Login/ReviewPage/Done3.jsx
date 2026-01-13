@@ -71,10 +71,10 @@ const Done3 = () => {
         </div>
 
         <Link
-          href="/dashboard"
+          href="/"
           className={` bg-orange-500 w-1/2 text-white px-6 py-2 rounded-[8px] font-semibold text-[14px] ${poppins.className} hover:bg-orange-700 transition`}
         >
-          Go to Dashboard
+          Go to Homepage
         </Link>
       </div>
 
