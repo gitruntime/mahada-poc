@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Link from "next/link";
 
 const EsignOtp = () => {
-  const [otp, setOtp] = useState(Array(6).fill(""));
+  const [otp, setOtp] = useState(Array(6).fill("2"));
   const inputsRef = useRef([]);
 
   const handleChange = (value, index) => {

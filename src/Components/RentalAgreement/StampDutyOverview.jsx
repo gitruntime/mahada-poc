@@ -11,8 +11,23 @@ const poppins = Poppins({
 const StampDutyOverview = () => {
     const [confirmInfo, setConfirmInfo] = useState(false);
     const [confirmPayment, setConfirmPayment] = useState(false);
+    const [paymentDone, setPaymentDone] = useState(false);
+
 
     const accepted = confirmInfo && confirmPayment;
+    const handlePayment = () => {
+        window.open(
+            "https://payments-test.cashfree.com/forms/mhada-payment",
+            "_blank"
+        );
+
+        const checkFocus = setInterval(() => {
+            if (document.hasFocus()) {
+                clearInterval(checkFocus);
+                setPaymentDone(true);
+            }
+        }, 500);
+    };
 
 
     return (
@@ -186,21 +201,30 @@ const StampDutyOverview = () => {
                 >
                     Previous
                 </Link>
-                <Link
-                    href={accepted ? "/Tenant/paymentgateway2" : "#"}
-                    className={`flex justify-center items-center gap-2 text-[14px] px-6 py-2.5 rounded-lg transition-all duration-300 ease-in-out
-                    ${poppins.className} 
-                    ${accepted
-                            ? 'bg-orange-500 text-white hover:bg-orange-600 hover:shadow-md hover:scale-[1.02]'
-                            : 'bg-gray-300 text-gray-500 cursor-not-allowed pointer-events-none'}`}
-                >
-                    Next
-                    <img
-                        src="/righticon.png"
-                        className="w-[16px] h-[16px] transition-transform duration-300 group-hover:translate-x-1"
-                        alt=""
-                    />
-                </Link>
+                {!paymentDone ? (
+                    <button
+                        onClick={handlePayment}
+                        disabled={!accepted}
+                        className={`flex justify-center items-center gap-2 text-[14px] px-6 py-2.5 rounded-lg transition-all duration-300
+        ${poppins.className}
+        ${accepted
+                                ? "bg-orange-500 text-white hover:bg-orange-600 hover:shadow-md hover:scale-[1.02]"
+                                : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                            }`}
+                    >
+                        Pay Stamp Duty
+                        <img src="/righticon.png" className="w-[16px] h-[16px]" />
+                    </button>
+                ) : (
+                    <Link
+                        href="/paymentsucess"
+                        className="flex justify-center items-center gap-2 text-[14px] px-6 py-2.5 rounded-lg bg-green-600 text-white hover:bg-green-700"
+                    >
+                        Proceed
+                        <img src="/righticon.png" className="w-[16px] h-[16px]" />
+                    </Link>
+                )}
+
             </div>
         </div>
     );

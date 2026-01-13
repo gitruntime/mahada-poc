@@ -15,6 +15,7 @@ const Pcc2 = () => {
     const [isPccUploaded, setIsPccUploaded] = useState(false);
     const [errors, setErrors] = useState({});
     const [showPopup, setShowPopup] = useState(false);
+    const [pccnumber, setPccNumber] = useState(222222222222222)
 
     // ✅ Load draft from localStorage on mount
     useEffect(() => {
@@ -41,9 +42,9 @@ const Pcc2 = () => {
 
     const validate = () => {
         let tempErrors = {};
-        if (!formData.pccNumber) {
+        if (!pccnumber) {
             tempErrors.pccNumber = "PCC Number is required";
-        } else if (!/^\d{12,15}$/.test(formData.pccNumber)) {
+        } else if (!/^\d{12,15}$/.test(pccnumber)) {
             tempErrors.pccNumber = "Enter a valid PCC number";
         }
         if (!isPccUploaded) {
@@ -79,14 +80,17 @@ const Pcc2 = () => {
                                 </label>
                                 <input
                                     id="pccNumber"
+                                    
                                     type="tel"
                                     placeholder="0000 0000 0000 0000 00000"
                                     className={`w-full p-2 border rounded-lg bg-gray-50 ${poppins.className} ${errors.pccNumber ? "border-red-500" : "border-gray-300"}`}
-                                    value={formData.pccNumber}
+                                value={pccnumber}
                                     onChange={(e) => {
                                         const value = e.target.value.replace(/\D/g, "");
                                         if (value.length <= 15) {
-                                            handleChange({ target: { id: "pccNumber", value } });
+                                            // handleChange({ target: { id: "pccNumber", value } })
+                                            // ;
+                                            setPccNumber(value)
                                         }
                                     }}
                                 />
