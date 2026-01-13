@@ -47,7 +47,7 @@ const Clerk2Navbar = ({ activeTab, setActiveTab }) => {
           </div>
           <div className="flex justify-center">
   <Link
-    href="/choose"
+     href="/adminlogin"
     className="w-[80px] h-[30px] flex items-center justify-center bg-red-500 text-white font-medium rounded-full border border-white hover:bg-red-600 transition-colors duration-300"
   >
     Logout

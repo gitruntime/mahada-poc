@@ -17,6 +17,9 @@ const TenantRegApplication = () => {
     const [isApproved, setIsApproved] = useState(false);
     const [remark, setRemark] = useState("");
     const [isRejected, setIsRejected] = useState(false); // NEW
+    const [openDocument, setOpenDocument] = useState(false);
+    const [note, setNote] = useState("");
+    const [showNoteModal, setShowNoteModal] = useState(false);
 
 
     const handleApproveClick = () => {
@@ -310,9 +313,45 @@ const TenantRegApplication = () => {
                                             </div>
                                         </div>
 
-                                        <button className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-sm">
+                                        <button
+                                            onClick={() => setOpenDocument(true)}
+                                            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+                                        >
                                             View Document
                                         </button>
+
+                                    </div>
+                                       {/* Pan Card Document */}
+                                    <div className="flex items-center justify-between p-5 bg-white border border-gray-200 rounded-lg shadow-sm">
+                                        <div className="flex items-start space-x-4">
+                                            {/* Document Icon */}
+                                            <div className="p-2 bg-gray-50 rounded-md">
+                                                <Image src="/document_icon.png" width={20} height={20} />
+                                            </div>
+
+                                            {/* Document Details */}
+                                            <div>
+                                                <h3 className={`text-[#171717] ${poppins.className} font-normal`}>Pan Card</h3>
+                                                <div className="mt-1 flex items-center space-x-2">
+                                                    <span className="inline-flex gap-2 items-center px-4 py-1 rounded-[8px] text-xs font-medium bg-green-50 text-green-700 border border-green-200">
+                                                        <Image src="/check_icon.png" width={12} height={12} />
+                                                        Verified
+                                                    </span>
+                                                </div>
+                                                <div className={`mt-3 text-[12px] text-[#737373] ${poppins.className} space-y-1`}>
+                                                    <p>Verified By: Officer ID MH-VO-021</p>
+                                                    <p>Verified On: 13 Feb 2025</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <button
+                                            // onClick={() => setOpenDocument(true)}
+                                            className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors shadow-sm"
+                                        >
+                                            View Document
+                                        </button>
+
                                     </div>
 
                                     {/* Employment Proof Document */}
@@ -403,49 +442,160 @@ const TenantRegApplication = () => {
                     </div>
 
                     {/* Right Sidebar - Activity Log */}
-                    <div className={`border-l w-[490px] border-[#E5E5E5] ${poppins.className} p-8 bg-[#fcfcfc]`}>
-                        <h2 className="text-[#171717] font-bold text-[16px] mb-6">Activity Log</h2>
-                        <div>
-                            <div class="w-full max-w-xl rounded-lg border border-gray-200 bg-white overflow-hidden">
-                                <div class="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
-                                    <span class="text-gray-500">12 Feb 2025</span>
-                                    <span class="mx-2">–</span>
-                                    <span className='text-[#404040] '>Application submitted</span>
+                    <div className='flex flex-col'>
+                        <div className={`border-l w-[490px] border-[#E5E5E5] ${poppins.className} p-8 bg-[#fcfcfc]`}>
+                            <h2 className="text-[#171717] font-bold text-[16px] mb-6">Previous noting</h2>
+
+                            <div className="w-full max-w-xl rounded-lg border border-gray-200 bg-white overflow-hidden">
+
+                                {/* Entry 1 */}
+                                <div className="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
+                                    <span className="text-gray-500">13 Feb 2025</span>
+                                    <span className="mx-2">–</span>
+                                    <span className="text-[#404040]"> Aadhaar verified by MH-VO-021</span>
                                 </div>
 
-                                <div class="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
-                                    <span class="text-gray-500">13 Feb 2025</span>
-                                    <span class="mx-2">–</span>
-                                    <span className='text-[#404040] '>Aadhaar verified by MH-VO-021</span>
+                                {/* Entry 2 */}
+                                <div className="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
+
+                                    <span className="text-[#0A0A0A66] font-medium">
+                                        All remarks by MH-VO-021 :
+                                    </span>
+                                    <div className="mt-1 text-[#0A0A0A] text-[14px]">
+                                        All submitted documents have been verified successfully.
+                                    </div>
                                 </div>
 
-                                <div class="px-4 py-3 text-gray-700 text-[15px]">
-                                    <span class="text-gray-500">14 Feb 2025</span>
-                                    <span class="mx-2">–</span>
-                                    <span className='text-[#404040] '>Forwarded for approval</span>
-                                </div>
-                                {isApproved && (
-                                    <div className="px-4 py-3 text-gray-700 text-[15px] border-t border-gray-200">
-                                        <span className="text-gray-500">14 Feb 2025</span>
-                                        <span className="mx-2">–</span>
-                                        <span className="text-[#404040]">
-                                            Registration approved by AA-Mumbai
-                                        </span>
-                                    </div>
-                                )}
-                                 {isRejected && (
-                                    <div className="px-4 py-3 text-gray-700 text-[15px] border-t border-gray-200">
-                                        <span className="text-gray-500">14 Feb 2025</span>
-                                        <span className="mx-2">–</span>
-                                        <span className="text-[#404040]">
-                                            Registration rejected by AA-Mumbai
-                                        </span>
-                                    </div>
-                                )}
+
+
+
                             </div>
+                        </div>
 
+                        <div className={`border-l w-[490px] border-[#E5E5E5] ${poppins.className} p-8 bg-[#fcfcfc]`}>
+                            <h2 className="text-[#171717] font-bold text-[16px] mb-6">Activity Log</h2>
+                            <div>
+                                <div class="w-full max-w-xl rounded-lg border border-gray-200 bg-white overflow-hidden">
+                                    <div class="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
+                                        <span class="text-gray-500">12 Feb 2025</span>
+                                        <span class="mx-2">–</span>
+                                        <span className='text-[#404040] '>Application submitted</span>
+                                    </div>
+
+                                    <div class="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
+                                        <span class="text-gray-500">13 Feb 2025</span>
+                                        <span class="mx-2">–</span>
+                                        <span className='text-[#404040] '>Aadhaar verified by MH-VO-021</span>
+                                    </div>
+
+                                    <div class="px-4 py-3 text-gray-700 text-[15px]">
+                                        <span class="text-gray-500">14 Feb 2025</span>
+                                        <span class="mx-2">–</span>
+                                        <span className='text-[#404040] '>Forwarded for approval</span>
+                                    </div>
+                                    {isApproved && (
+                                        <div className="px-4 py-3 text-gray-700 text-[15px] border-t border-gray-200">
+                                            <span className="text-gray-500">14 Feb 2025</span>
+                                            <span className="mx-2">–</span>
+                                            <span className="text-[#404040]">
+                                                Registration approved by AA-Mumbai
+                                            </span>
+                                        </div>
+                                    )}
+                                    {isRejected && (
+                                        <div className="px-4 py-3 text-gray-700 text-[15px] border-t border-gray-200">
+                                            <span className="text-gray-500">14 Feb 2025</span>
+                                            <span className="mx-2">–</span>
+                                            <span className="text-[#404040]">
+                                                Registration rejected by AA-Mumbai
+                                            </span>
+                                        </div>
+                                    )}
+                                </div>
+
+                            </div>
                         </div>
                     </div>
+                    {/* Right Sidebar Modal */}
+                    <div
+                                    className={`fixed top-0 right-0 h-full w-[420px] bg-[#C7C7C7] z-50 shadow-xl transform transition-transform duration-300
+                        ${openDocument ? "translate-x-0" : "translate-x-full"}`}
+                                >
+                                    {/* Modal Inner Wrapper */}
+                                    <div className="h-full p-3">
+                                        <div className="relative h-full rounded-md flex flex-col">
+                    
+                                            {/* Close Button */}
+                                            <button
+                                                onClick={() => setOpenDocument(false)}
+                                                className="absolute top-2 right-2 w-6 h-6 rounded-full bg-black text-white text-xs flex items-center justify-center"
+                                            >
+                                                ✕
+                                            </button>
+                    
+                                            {/* Aadhaar Image Section */}
+                                            <div className="p-3 border-gray-200">
+                                                <Image
+                                                    src="/dummyadhar.png"
+                                                    width={500}
+                                                    height={640}
+                                                    className="w-full rounded-sm"
+                                                />
+                                            </div>
+                    
+                                            {/* Notes Area */}
+                                            <div className="flex-1 p-3">
+                                                <textarea
+                                                    value={note}
+                                                    onChange={(e) => setNote(e.target.value)}
+                                                    placeholder="Type notes here"
+                                                    className="w-full h-full border border-gray-300 bg-[#F7FBFF] rounded-[12px] px-3 py-2 text-sm resize-none focus:outline-none"
+                                                />
+                                            </div>
+                    
+                                            {/* Footer Actions */}
+                                            <div className="flex justify-end gap-3 p-3 border-gray-200">
+                                                <button
+                                                    onClick={() => setOpenDocument(false)}
+                                                    className="px-4 py-2 text-sm border border-gray-400 rounded-md text-gray-600"
+                                                >
+                                                    Discard
+                                                </button>
+                                                <button
+                                                    onClick={() => {
+                                                        if (note.trim() === "") return; // optional: prevent empty notes
+                                                        setShowNoteModal(true); // show confirmation modal
+                                                        // Don't reset note here, so it stays in textarea
+                                                        // setNote(""); <- remove this line
+                                                    }}
+                                                    className="px-4 py-2 text-sm bg-orange-500 text-white rounded-md"
+                                                >
+                                                    Save
+                                                </button>
+                    
+                                            </div>
+                                        </div>
+                                    </div>
+                    
+                                    {/* Note Added Confirmation Modal */}
+                                    {showNoteModal && (
+                                        <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/40">
+                                            <div className="bg-white rounded-lg p-6 w-80 text-center shadow-lg">
+                                                <h2 className="text-lg font-semibold mb-2">Note Added!</h2>
+                                                <p className="text-sm text-gray-600 mb-4">Your note has been successfully saved.</p>
+                                                <button
+                                                    onClick={() => setShowNoteModal(false)}
+                                                    className="px-4 py-2 bg-orange-500 text-white rounded-md"
+                                                >
+                                                    OK
+                                                </button>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+
+
+
 
                 </div>
             </div>

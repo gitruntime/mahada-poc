@@ -7,6 +7,7 @@ import AdminNavbar from '@/Components/Admin/AdminNavbar';
 import Rejected from '@/Components/Admin/Rejected';
 import Clerk2 from '@/Components/Admin/Clerk2';
 import Clerkcopy from '@/Components/Admin/Clerkcopy';
+import Rejected2 from '@/Components/Admin/Rejected2';
 const poppins = Poppins({
     subsets: ['latin'],
     weight: ['400', '600', '700'],
@@ -41,14 +42,14 @@ const Details2 = () => {
             month: 'short',
             year: 'numeric'
         });
-        setActivityLog(prev => [...prev, { date: formattedDate, action: "Application Approved" } ,{ date: "13 Feb 2025", action: "Aadhaar verified by MH-VO-021" },
+        setActivityLog(prev => [...prev, { date: formattedDate, action: "Application Approved" }, { date: "13 Feb 2025", action: "Aadhaar verified by MH-VO-021" },
         { date: "14 Feb 2025", action: "Forwarded for approval" },]);
     };
 
 
     const [activityLog, setActivityLog] = useState([
         { date: "12 Feb 2025", action: "Application submitted" },
-       
+
     ]);
 
 
@@ -202,7 +203,7 @@ const Details2 = () => {
                     {isApproved ? (
                         <Clerkcopy remark={remark} />
                     ) : isRejected ? (
-                        <Rejected remark={remark} />
+                        <Rejected2 remark={remark} />
                     ) : (
                         <Clerk2
                             onApprove={handleApproveClick}
@@ -477,14 +478,14 @@ const Details2 = () => {
                         <h2 className="text-[#171717] font-bold text-[16px] mb-6">Activity Log (Previous notings)</h2>
                         <div>
                             <div className="w-full max-w-xl rounded-lg border border-gray-200 bg-white overflow-hidden">
-    {activityLog.map((item, idx) => (
-        <div key={idx} className="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
-            <span className="text-gray-500">{item.date}</span>
-            <span className="mx-2">–</span>
-            <span className='text-[#404040]'>{item.action}</span>
-        </div>
-    ))}
-</div>
+                                {activityLog.map((item, idx) => (
+                                    <div key={idx} className="px-4 py-3 border-b border-gray-200 text-gray-700 text-[15px]">
+                                        <span className="text-gray-500">{item.date}</span>
+                                        <span className="mx-2">–</span>
+                                        <span className='text-[#404040]'>{item.action}</span>
+                                    </div>
+                                ))}
+                            </div>
 
 
                         </div>
