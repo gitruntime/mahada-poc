@@ -50,11 +50,43 @@ const Form3 = () => {
                     {/* Header */}
                     <div className="text-left  sm:px-4 mb-6  pt-[20px] ml-[20px] sm:mb-10 space-y-2">
                         <h1 className="text-[24px] sm:text-[30px] font-bold text-[#0F1729]">
-                            Upload Images and Documents
+                            Review and Payment
                         </h1>
                         <p className={`text-[12px] sm:text-[14px] leading-[18px] sm:leading-[20px] text-[#717182] ${arimo.className}`}>
-                            Please upload clear, colored scans or photos of your documents. All documents are required.
-                        </p>
+                            The property listing fee is collected towards administrative processing, verification, and activation of the rental listing on the portal.                        </p>
+                    </div>
+                    {/* KYC Verification Card */}
+                    <div className="w-full  rounded-2xl p-4  sm:p-6 flex flex-col gap-6">
+                        <div className="flex flex-col items-center w-full">
+                            <div className="w-full relative h-2 mb-4 bg-gray-300 rounded-full">
+                                <div
+                                    className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full"
+                                    style={{ width: "100%" }}
+                                ></div>
+                            </div>
+                            <div className="flex justify-between w-full">
+                                {[
+                                    { icon: "/document_icon.png", label: "Property Info" },
+
+
+                                    { icon: "/grayupload.png", label: "Upload",  },
+                                    { icon: "/review_icon.png", label: "Review & Submit", },
+                                ].map((step, idx) => (
+                                    <div key={idx} className="flex flex-col items-center text-center">
+                                        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step.inactive ? "" : ""}`}>
+                                            <img src={step.icon} alt={step.label} className="w-5 h-5" />
+                                        </div>
+                                        <span
+                                            className={`text-[12px] mt-1 ${poppins.className} ${step.inactive ? "text-gray-400" : "text-black"}`}
+                                        >
+                                            {step.label}
+                                        </span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+
                     </div>
 
                     {/* Property Info */}

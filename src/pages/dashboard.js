@@ -11,6 +11,13 @@ import MyProperties from "@/Components/Dashboard/MyProperties"
 import MyTProperties from "@/Components/Dashboard/MyTProperties"
 import Tenant from "@/Components/Homepage/Properties/Tenant"
 import ProperPageL from "@/Components/Homepage/Properties/ProperPageL"
+import { Poppins } from "next/font/google";
+import Link from "next/link";
+
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["400", "600", "700"],
+});
 
 
 const Dashboard = () => {
@@ -28,7 +35,12 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <DashboardNavbar />
-      <BreadCrumbs />
+      <div className="w-full max-w-[1440px] h-[64px] flex items-center px-[100px] py-[20px] border-b border-gray-300">
+            <nav className={`flex items-center gap-2 text-[16px]  ${poppins.className}`}>
+                <span className="text-gray-400 font-medium"> <Link href="/Landlord">Home</Link></span>
+                <span className="text-black font-semibold">{`>`} My Dashboard</span>
+            </nav>  
+        </div>
 
       {/* Profile switch */}
       {showProfile2 ? <Profile2 /> : <ProfileSection />}

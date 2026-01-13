@@ -19,14 +19,14 @@ const DashboardNavbar = () => {
         <nav className="w-full h-[64px] shadow-[0px_3px_14.4px_0px_rgba(0,0,0,0.25)]  px-[80px] flex items-center justify-between bg-white text-white">
 
             {/* Left: Logo */}
-            <Link href="/" className={`flex w-full h-[36px] items-center px-[20px] gap-2 ${poppins.className}`}>
+            <div  className={`flex w-full h-[36px] items-center px-[20px] gap-2 ${poppins.className}`}>
                 <h1 className="relative text-[24px] text-black font-semibold">
                     Mhada <span className="text-orange-500">Estate</span>
 
                     {/* underline */}
                     <span className="absolute left-0 -bottom-0.5 w-full h-[2px] bg-orange-500"></span>
                 </h1>
-            </Link>
+            </div>
 
 
 

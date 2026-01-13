@@ -26,17 +26,17 @@ const inputBaseClass = `
 `;
 
 const AddNewPropertyPage2 = () => {
- const [formData, setFormData] = useState({
-  title: "Green Valley Residency",
-  propertyType: "Residential Apartment",
-  address: "Flat No. 302, Green Valley Society, MG Road",
-  city: "Mumbai",
-  state: "Maharashtra",
-  pin: "400001",
-  ownershipDate: "2023-06-15",
-  latitude: "19.0760",
-  longitude: "72.8777",
-});
+  const [formData, setFormData] = useState({
+    title: "Green Valley Residency",
+    propertyType: "Residential Apartment",
+    address: "Flat No. 302, Green Valley Society, MG Road",
+    city: "Mumbai",
+    state: "Maharashtra",
+    pin: "400001",
+    ownershipDate: "2023-06-15",
+    latitude: "19.0760",
+    longitude: "72.8777",
+  });
 
 
   const [errors, setErrors] = useState({});
@@ -97,6 +97,39 @@ const AddNewPropertyPage2 = () => {
         <h2 className={`text-[24px] font-semibold text-[#0A0A0A] mb-6 ${poppins.className}`}>
           Add Property
         </h2>
+        {/* KYC Verification Card */}
+        <div className="w-full  rounded-2xl p-4  sm:p-6 flex flex-col gap-6">
+          <div className="flex flex-col items-center w-full">
+            <div className="w-full relative h-2 mb-4 bg-gray-300 rounded-full">
+              <div
+                className="absolute top-0 left-0 h-2 bg-orange-500 rounded-full"
+                style={{ width: "4%" }}
+              ></div>
+            </div>
+            <div className="flex justify-between w-full">
+              {[
+                { icon: "/document_icon.png", label: "Property Info" },
+               
+               
+                { icon: "/grayupload.png", label: "Upload", inactive: true },
+                { icon: "/review_icon.png", label: "Review & Submit", inactive: true },
+              ].map((step, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center">
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center ${step.inactive ? "" : ""}`}>
+                    <img src={step.icon} alt={step.label} className="w-5 h-5" />
+                  </div>
+                  <span
+                    className={`text-[12px] mt-1 ${poppins.className} ${step.inactive ? "text-gray-400" : "text-black"}`}
+                  >
+                    {step.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+
+        </div>
 
         {/* FORM GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5 mb-8">
