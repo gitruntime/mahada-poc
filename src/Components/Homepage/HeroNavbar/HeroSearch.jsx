@@ -40,48 +40,70 @@ const HeroSearch = () => {
 
         {/* City + Property Type */}
         <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
-          <select
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="bg-[#F4F2EE] rounded-[10px] px-4 h-[52px] w-full sm:w-[175px] cursor-pointer text-gray-700"
-          >
-            <option value="">Select City</option>
-            {cities.map((c) => (
-              <option key={c} value={c}>{c}</option>
-            ))}
-          </select>
+          <div className="relative w-full sm:w-[175px]">
+            <select
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              className="bg-[#F4F2EE] rounded-[10px] px-4 pr-10 h-[52px] w-full cursor-pointer text-gray-700
+               appearance-none focus:outline-none"
+            >
+              <option value="">Select City</option>
+              {cities.map((c) => (
+                <option key={c} value={c}>{c}</option>
+              ))}
+            </select>
 
-          <select
-            value={propertyType}
-            onChange={(e) => setPropertyType(e.target.value)}
-            className="bg-[#F4F2EE] rounded-[10px] px-4 h-[52px] w-full sm:w-[180px] cursor-pointer text-gray-700"
-          >
-            <option value="">Property Type</option>
-            {propertyTypes.map((p) => (
-              <option key={p} value={p}>{p}</option>
-            ))}
-          </select>
+            {/* Custom Dropdown Icon */}
+            <img
+              src="/graydrop.png"   // replace with your icon path
+              alt="dropdown"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-[16px] h-[16px] pointer-events-none"
+            />
+          </div>
+
+
+          <div className="relative w-full sm:w-[180px]">
+            <select
+              value={propertyType}
+              onChange={(e) => setPropertyType(e.target.value)}
+              className="bg-[#F4F2EE] rounded-[10px] px-4 pr-10 h-[52px] w-full cursor-pointer text-gray-700
+               appearance-none focus:outline-none"
+            >
+              <option value="">Property Type</option>
+              {propertyTypes.map((p) => (
+                <option key={p} value={p}>{p}</option>
+              ))}
+            </select>
+
+            {/* Custom Dropdown Icon */}
+           <img
+              src="/graydrop.png"   // replace with your icon path
+              alt="dropdown"
+              className="absolute right-4 top-1/2 -translate-y-1/2 w-[16px] h-[16px] pointer-events-none"
+            />
+          </div>
+
         </div>
 
         {/* Buttons */}
         <div className="flex gap-3 w-full sm:w-auto">
-  <button
-    className="flex items-center justify-center gap-2 h-[48px] w-full sm:w-[90px] rounded-[10px] border-2 border-orange-500 text-orange-500 
+          <button
+            className="flex items-center justify-center gap-2 h-[48px] w-full sm:w-[90px] rounded-[10px] border-2 border-orange-500 text-orange-500 
                hover:bg-orange-50 hover:scale-105 hover:shadow-md transition transform duration-200"
-  >
-    <img src="/filtericon.png" alt="Filter" className="w-4 h-4" />
-    <span className="text-sm font-medium">Filters</span>
-  </button>
+          >
+            <img src="/filtericon.png" alt="Filter" className="w-4 h-4" />
+            <span className="text-sm font-medium">Filters</span>
+          </button>
 
-  <button
-    onClick={handleSearch}
-    className={`${poppins.className} flex items-center justify-center gap-2 h-[48px] w-full sm:w-[105px] rounded-[12px] bg-orange-500 text-white font-medium text-[15px] 
+          <button
+            onClick={handleSearch}
+            className={`${poppins.className} flex items-center justify-center gap-2 h-[48px] w-full sm:w-[105px] rounded-[12px] bg-orange-500 text-white font-medium text-[15px] 
                hover:bg-orange-600 hover:scale-105 hover:shadow-lg transition transform duration-200`}
-  >
-    <img src="/searchicon.png" alt="Search" className="w-4 h-4" />
-    Search
-  </button>
-</div>
+          >
+            <img src="/searchicon.png" alt="Search" className="w-4 h-4" />
+            Search
+          </button>
+        </div>
 
       </div>
     </div>
