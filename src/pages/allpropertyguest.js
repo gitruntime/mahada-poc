@@ -12,7 +12,7 @@ const poppins = Poppins({
 const allpropertyguest = () => {
   return (
     <div>
-        <BlankNavbar/>
+        {/* <BlankNavbar/> */}
         
         <AllPropertiesGuest/>
 
