@@ -188,15 +188,15 @@ const Form3 = () => {
                                 disabled={!accepted}
                                 className={`w-full sm:w-auto px-6 py-2.5 rounded-lg border-2 transition
             ${accepted
-                                        ? 'border-orange-500 text-orange-600 bg-orange-50 hover:bg-orange-100'
+                                        ? 'border-orange-500 text-white bg-[#F97415] cursor-pointer '
                                         : 'border-gray-300 text-gray-400 cursor-not-allowed'
                                     }`}
                             >
-                                Pay listing fee
+                                Proceed to Pay Listing Fee
                             </button>
                         ) : (
                             <Link href="/Landlord/logindone2">
-                                <button className="w-full sm:w-auto px-6 py-2.5 rounded-lg bg-green-600 text-white hover:bg-green-700">
+                                <button className="w-full sm:w-auto px-6 py-2.5  cursor-pointer rounded-lg bg-green-600 text-white hover:bg-green-700">
                                     Proceed
                                 </button>
                             </Link>

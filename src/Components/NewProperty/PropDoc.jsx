@@ -22,7 +22,7 @@ const PropDoc = ({ docs }) => {
   return (
     <div className="px-4 space-y-4">
       <h3 className={`text-[18px] font-normal ${poppins.className}`}>
-        Uploaded Documents
+       Documents
       </h3>
 
       <div className="grid grid-cols-2  sm:grid-cols-3 md:grid-cols-4 gap-4">

@@ -35,26 +35,14 @@ const PropertyRight = () => {
 
       {/* Action Buttons */}
       <div className="flex gap-3 mb-4">
-        {/* Rent Property */}
-        <Link href="/rent" className="flex-1 flex items-center cursor-pointer justify-center gap-2 bg-[#F97415] text-white py-2 rounded-xl font-medium text-[16px] 
-                     hover:bg-orange-600 hover:scale-105 hover:shadow-lg transition-all duration-200">
-          <img src="/personlogo.png" alt="Rent" className="w-5 h-5" />
-          Rent Property
-        </Link>
-
-        {/* Sell Property */}
-        <button className="flex-1 flex items-center cursor-pointer justify-center gap-2 border-2 border-[#F97415] text-[#F97415] py-2 rounded-xl font-medium text-[16px] 
-                     hover:bg-orange-50 hover:scale-105 hover:shadow-lg transition-all duration-200">
-          <img src="/selllogo.png" alt="Sell" className="w-5 h-5" />
-          Sell Property
-        </button>
+       
 
         {/* Manage Property */}
-        <button className="flex-1 flex items-center cursor-pointer justify-center gap-2 border border-gray-300 text-gray-800 py-2 rounded-xl font-medium text-[16px] 
+        <Link href="/rent" className="flex-1 flex items-center cursor-pointer justify-center gap-2 border border-gray-300 text-gray-800 py-2 rounded-xl font-medium text-[16px] 
                      hover:bg-gray-50 hover:scale-105 hover:shadow-lg transition-all duration-200">
           <img src="/managelogo.png" alt="Manage" className="w-5 h-5" />
           Manage Property
-        </button>
+        </Link>
       </div>
 
 
