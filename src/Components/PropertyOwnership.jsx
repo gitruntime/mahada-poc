@@ -178,7 +178,7 @@ const PropertyOwnership = () => {
 
                             {/* Previous */}
                             <Link
-                                href="/Landlord/personalinfo"
+                                href="/Landlord/document_info"
                                 className={`
       px-6 h-[36px]
       flex items-center justify-center

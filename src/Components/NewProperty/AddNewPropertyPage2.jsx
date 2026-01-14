@@ -158,7 +158,7 @@ const AddNewPropertyPage2 = () => {
                 value={formData.propertyType}
                 onChange={handleChange}
               >
-                <option value="">Select property type</option>
+               
                 <option value="apartment">Apartment</option>
                 <option value="villa">Villa</option>
                 <option value="flat">Flat</option>

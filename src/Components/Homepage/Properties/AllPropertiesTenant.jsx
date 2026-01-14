@@ -357,28 +357,28 @@ const AllPropertiesTenant = () => {
 
 
 
-                    <select value={district} onChange={(e) => setDistrict(e.target.value)} className="w-full mb-3 p-2 border rounded-md text-sm">
-                        <option value="">Select District</option>
+                    <select value={district} onChange={(e) => setDistrict(e.target.value)} className="w-full mb-3 p-2  rounded-md text-sm">
+                        <option value=""> Districts</option>
                         {districts.map(d => <option key={d} value={d}>{d}</option>)}
                     </select>
 
-                    <select value={location} onChange={(e) => setLocation(e.target.value)} className="w-full mb-3 p-2 border rounded-md text-sm">
-                        <option value="">Select Location</option>
+                    <select value={location} onChange={(e) => setLocation(e.target.value)} className="w-full mb-3 p-2  rounded-md text-sm">
+                        <option value="">Region</option>
                         {locations.map(l => <option key={l} value={l}>{l}</option>)}
                     </select>
 
-                    <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)} className="w-full mb-3 p-2 border rounded-md text-sm">
-                        <option value="">Property Type</option>
+                    <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)} className="w-full mb-3 p-2  rounded-md text-sm">
+                        <option value="">Property type</option>
                         {propertyTypes.map(t => <option key={t} value={t}>{t}</option>)}
                     </select>
 
-                    <select value={availability} onChange={(e) => setAvailability(e.target.value)} className="w-full mb-3 p-2 border rounded-md text-sm">
+                    <select value={availability} onChange={(e) => setAvailability(e.target.value)} className="w-full mb-3 p-2  rounded-md text-sm">
                         <option value="">Availability</option>
                         {availabilities.map(a => <option key={a} value={a}>{a}</option>)}
                     </select>
 
                     <div className="mt-4">
-                        <p className="text-sm font-medium mb-2">Price ≤ ₹{price}</p>
+                        <p className="text-sm font-medium mb-2">Price Range - ₹{price}</p>
                         <input type="range" min="10000" max="100000" step="1000" value={price} onChange={(e) => setPrice(Number(e.target.value))} className="w-full accent-green-700" />
                     </div>
                 </div>
